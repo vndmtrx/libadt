@@ -12,3 +12,31 @@ ADTs are a theoretical concept in computer science, used in the design and analy
 ### Why?
 
 Because in C we deal directly with memory, and the structures provided by the language are quite primitive. And since in higher level languages there are other structures (such as classes and objects) that implement many of the features of data structures, there would be no advantage (or learning) in implementing these structures.
+
+### What Structures do you have now?
+
+None. But this repository is in its very beginning.
+
+### What structures do you plan to implement?
+
+At the present time, the following structures are being implemented:
+
+* Simple linked list;
+* Double linked list;
+* Queue using simple linked list as infrastructure;
+* Stack using simple linked list as infrastructure;
+* Deque using double linked list as infrastructure;
+* Queue and Stack using deque as infrastructure;
+
+Once completed, the next to be implemented are as follows:
+
+* Trees (Binary Search Tree, AVL Tree, Red-black Tree);
+* Associative Arrays;
+* Sets;
+* Graphs;
+* Sparse Matrix;
+* Stack and Queue using Tree as infrastructure;
+
+### Future and beyond...
+
+There is no future set. Getting to the point we implement all the most common and important structures, other focuses will be defined, always having its focus on the learning provided to the person who will use these structures.
