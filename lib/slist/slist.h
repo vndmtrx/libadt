@@ -9,9 +9,9 @@ void slist_init(slist_root *list);
 
 void slist_destroy(slist_root *list);
 
-int slist_insert_next(slist_root *list, slist_node *current, const void *data);
+int slist_insert_el(slist_root *list, slist_node *current, const void *data);
 
-int slist_rem_next(slist_root *list, slist_node *current, void **data);
+int slist_rem_el(slist_root *list, slist_node *current, void **data);
 
 int slist_size(slist_root *list);
 
