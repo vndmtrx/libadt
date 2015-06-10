@@ -68,3 +68,30 @@ int slist_insert_el(slist_root *list, slist_node *current, const void *data) {
 	list->size++;
 	return 0;
 }
+
+/*
+ * Remove the element indicated by *current and save the respective 
+ * data in **data.
+ * Compĺexity: O(n).
+ */
+int slist_rem_el(slist_root *list, slist_node *current, void **data) {
+	slist_node *node;
+	if (current->root == list) {
+		if (current == list->head) {
+			list->head = slist_el_next(current);
+		} else {
+			node = list->head;
+			while (slist_el_next(node) != current) {
+				node = slist_el_next(node);
+			}
+			node->next = slist_el_next(current);
+		}
+		*data = &slist_el_data(current);
+		free(current);
+	} else {
+		perror("The 'current' element doesn't belong to 'list'.");
+		return -2;
+	}
+	list->size--;
+	return 0;
+}

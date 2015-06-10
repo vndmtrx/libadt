@@ -29,6 +29,7 @@ int slist_insert_el(slist_root *list, slist_node *current, const void *data);
 /*
  * Remove the element indicated by *current and save the respective 
  * data in **data.
+ * Compĺexity: O(n).
  */
 int slist_rem_el(slist_root *list, slist_node *current, void **data);
 
