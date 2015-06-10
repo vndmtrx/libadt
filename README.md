@@ -22,10 +22,10 @@ None. But this repository is in its very beginning.
 
 At the present time, the following structures are being implemented:
 
-* Simple linked list;
+* Single linked list;
 * Double linked list;
-* Queue using simple linked list as infrastructure;
-* Stack using simple linked list as infrastructure;
+* Queue using single linked list as infrastructure;
+* Stack using single linked list as infrastructure;
 * Deque using double linked list as infrastructure;
 * Queue and Stack using deque as infrastructure;
 
