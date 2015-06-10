@@ -33,11 +33,6 @@ int slist_insert_el(slist_root *list, slist_node *current, const void *data);
 int slist_rem_el(slist_root *list, slist_node *current, void **data);
 
 /*
- * Returns the size of the list.
- */
-int slist_size(slist_root *list);
-
-/*
  *  Returns the first element of the list.
  */
 int slist_head(slist_root *list);
@@ -52,6 +47,11 @@ int slist_tail(slist_root *list);
  * it will be used, otherwise, uses free.
  */
 void slist_destroy(slist_root **list);
+
+/*
+ * Returns the size of the list.
+ */
+#define slist_size(list) ((list)->size)
 
 /*
  * Test if element is actually the head of the list.
