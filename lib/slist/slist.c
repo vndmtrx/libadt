@@ -16,8 +16,7 @@ struct _slist_node {
 }
 
 /* 
- * Create a empty list structure, set a destroy function for its elements
- * and return the new structure on first function parameter.
+ * Create a empty list structure, set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
  * call slist_destroy. For malloc/calloc data, free must be used. If data
  * is a struct with other members, a function designed to free its memory
@@ -25,12 +24,10 @@ struct _slist_node {
  * memory outside, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root **list, void (destroy)(void *data)) {
-	slist_root newlist = (slist_root *) malloc(sizeof(slist_root);
-	newlist->size = 0;
-	newlist->head = NULL;
-	newlist->destroyfunc = destroyfunc;
-	*list = &newlist;
+void slist_create(slist_root *list, void (destroy)(void *element)) {
+	list->size = 0;
+	list->head = NULL;
+	list->destroyfunc = destroyfunc;
 }
 
 /*
