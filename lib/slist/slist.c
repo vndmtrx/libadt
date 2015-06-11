@@ -1,7 +1,7 @@
-#include "slist.h"
-
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <slist.h>
 
 struct _slist_root {
 	int size;			// Size of the list structure.
