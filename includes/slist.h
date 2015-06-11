@@ -5,6 +5,18 @@ typedef struct _slist_root slist_root;
 
 typedef struct _slist_node slist_node;
 
+struct _slist_root {
+	int size;			// Size of the list structure.
+	void (*destroyfunc)(void *data);
+	slist_node *head;	// Position from where we start walking the list.
+};
+
+struct _slist_node {
+	slist_node *next;	// Pointer to next slist_node element.
+	slist_root *root;	// Pointer to initial list structure.
+	void *data;			// Pointer to the element added on the list.
+};
+
 
 /* 
  * Create a empty list structure, set a destroy function for its elements.
@@ -15,14 +27,14 @@ typedef struct _slist_node slist_node;
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, void (destroy)(void *element));
+void slist_create(slist_root *list, void (destroyfunc)(void *element));
 
 /*
  * Insert an element in the list after the current element indicated.
  * If *current is NULL, *data is not appended.
  * Complexity: O(1).
  */
-int slist_insert_el(slist_root *list, slist_node *current, const void *data);
+int slist_insert_el(slist_root *list, slist_node *current, void *data);
 
 /*
  * Remove the element indicated by *current and save the respective 
@@ -50,26 +62,26 @@ void slist_destroy(slist_root *list);
 /*
  * Returns the size of the list.
  */
-#define slist_size(list) ((list)->size)
+#define slist_size(list) ((list) ->size)
 
 /*
  * Test if element is actually the head of the list.
  */
-#define slist_el_is_head(list, element) ((((element)->root == (list)) && ((element) == (list)->head)) ? 1 : 0)
+#define slist_el_is_head(list, element) ((((element) ->root == (list)) && ((element) == (list) ->head)) ? 1 : 0)
 
 /*
  * Test if element is actually the tail of the list.
  */
-#define slist_el_is_tail(list, element) ((((element)->root == (list)) && ((element)->next == NULL)) ? 1 : 0)
+#define slist_el_is_tail(list, element) ((((element) ->root == (list)) && ((element) ->next == NULL)) ? 1 : 0)
 
 /*
  * Return the data from the element.
  */
-#define slist_el_data(element) ((element)->data)
+#define slist_el_data(element) ((element) ->data)
 
 /*
  * Return the next element on the list.
  */
-#define slist_el_next(element) ((element)->next)
+#define slist_el_next(element) ((element) ->next)
 
 #endif

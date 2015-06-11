@@ -3,18 +3,6 @@
 
 #include <slist.h>
 
-struct _slist_root {
-	int size;			// Size of the list structure.
-	void (*destroyfunc)(void *data);
-	slist_node *head;	// Position from where we start walking the list.
-}
-
-struct _slist_node {
-	slist_node *next;	// Pointer to next slist_node element.
-	slist_root *root;	// Pointer to initial list structure.
-	void *item;			// Pointer to the element added on the list.
-}
-
 /* 
  * Create a empty list structure, set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
@@ -24,7 +12,7 @@ struct _slist_node {
  * memory outside, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, void (destroy)(void *element)) {
+void slist_create(slist_root *list, void (destroyfunc)(void *element)) {
 	list->size = 0;
 	list->head = NULL;
 	list->destroyfunc = destroyfunc;
@@ -35,14 +23,14 @@ void slist_create(slist_root *list, void (destroy)(void *element)) {
  * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).
  */
-int slist_insert_el(slist_root *list, slist_node *current, const void *data) {
+int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
 	slist_node *newelement;
 	newelement = (slist_node *) malloc(sizeof(slist_node));
 	if (newelement == NULL) {
 		perror("Can't create new element.");
 		return -1;
 	}
-	newelement->item = data;
+	newelement->data = data;
 	newelement->root = list;
 	newelement->next = NULL;
 	if (current == NULL) {
