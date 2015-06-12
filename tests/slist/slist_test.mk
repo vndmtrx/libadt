@@ -14,4 +14,4 @@ tracetest1: test1
 	strace build/$^
 
 valgrindtest1: test1
-	valgrind build/$^
+	valgrind -v build/$^

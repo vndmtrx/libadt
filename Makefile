@@ -1,9 +1,7 @@
 CC=gcc
 LD=gcc
-CFLAGS=-Iincludes/ -g -Wall
+CFLAGS=-Iincludes -g -Wall -Werror -std=c99 -pedantic-errors
 LDFLAGS=
-
-OBJS=teste1.o
 
 .PHONY: clean
 
