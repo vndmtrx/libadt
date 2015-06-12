@@ -59,35 +59,37 @@ int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
  * Compĺexity: O(n).
  */
 int slist_rem_el(slist_root *list, slist_node *current, void **data) {
-	slist_node *node;
-	if (list->size > 0) {
-		if (current != NULL) {
-			node = list->head;
-			while (node->next != current) {
-				if (node->next == NULL) {
-					perror("Item is not on the list.");
-					return -2;
-				}
-				node == node->next;
-			}
-			node->next = current->next;
-			
+	if (current != NULL) {
+		if (list->size > 1) { // More than two elements on list;
 			if (current == list->head) {
 				list->head = current->next;
+			} else {
+				slist_node *node = list->head;
+				while (node->next != current) {
+					node == node->next;
+				}
+				
+				if (current == list->tail) {
+					node->next = NULL;
+					list->tail = node;
+				} else {
+					node->next = current->next;
+				}
 			}
-			if (current == list->tail) {
-				list->tail = node;
-			}
-			
-			*data = &(current->data);
-			free(current);
-		} else {
-			
+		} else if (list->size == 1) { // Only one element on list;
+			list->head = NULL;
+			list->tail = NULL;
+		} else { // No elements on list;
+			perror("List is empty.");
+			return -1;
 		}
+		
+		*data = &(current->data);
+		free(current);
 		list->size--;
-	} else {
-		perror("List is empty.");
-		return -1;
+	} else { // Why remove an item that does not exist?
+			perror("No element to remove.");
+			return -1;
 	}
 	return 0;
 }
