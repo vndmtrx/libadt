@@ -12,7 +12,7 @@
  * memory outside, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, void (destroyfunc)(void *element)) {
+void slist_create(slist_root *list, t_destroyfunc destroyfunc) {
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
@@ -31,15 +31,14 @@ int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
 		return -1;
 	}
 	new->data = data;
-	new->root = list;
 	new->next = NULL;
 	if (list->size == 0) {
 		list->head = new;
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->next = list->next;
-			list->next = new;
+			new->next = list->head;
+			list->head = new;
 		} else {
 			if (current->next != NULL) {
 				new->next = current->next;
@@ -60,13 +59,13 @@ int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
  */
 int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 	if (current != NULL) {
-		if (list->size > 1) { // More than two elements on list;
+		if (slist_size(list) > 1) { // More than two elements on list;
 			if (current == list->head) {
 				list->head = current->next;
 			} else {
 				slist_node *node = list->head;
 				while (node->next != current) {
-					node == node->next;
+					node = node->next;
 				}
 				
 				if (current == list->tail) {
@@ -76,7 +75,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 					node->next = current->next;
 				}
 			}
-		} else if (list->size == 1) { // Only one element on list;
+		} else if (slist_size(list) == 1) { // Only one element on list;
 			list->head = NULL;
 			list->tail = NULL;
 		} else { // No elements on list;
@@ -84,7 +83,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 			return -1;
 		}
 		
-		*data = &(current->data);
+		*data = current->data;
 		free(current);
 		list->size--;
 	} else { // Why remove an item that does not exist?
@@ -115,7 +114,7 @@ slist_node *slist_tail(slist_root *list) {
 void slist_destroy(slist_root *list) {
 	void *data;
 	while (slist_size(list) > 0) {
-		slist_rem_el(list, NULL, &data);
+		slist_rem_el(list, list->head, &data);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
 		}
