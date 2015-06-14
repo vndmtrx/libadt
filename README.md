@@ -16,7 +16,7 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 ### What Structures do you have now?
 
-* Single linked list;
+* Single linked list ([README](lib/lists/README.md));
 
 But this repository is in its very beginning and another structures will come in time.
 
