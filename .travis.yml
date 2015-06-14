@@ -1,0 +1,18 @@
+# Travis-CI Build for libadt
+# see travis-ci.org for details
+
+language: c
+
+os:
+  - linux
+
+env:
+  global:
+   - SECRET_TOKEN=rPPjmuNMjbdspnrrTxqf
+
+branches:
+  only:
+    - master
+
+script:
+  - make
