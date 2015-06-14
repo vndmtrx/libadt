@@ -12,9 +12,10 @@
  * memory outside, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, void (destroyfunc)(void *element)) {
+void slist_create(slist_root *list, t_destroyfunc destroyfunc) {
 	list->size = 0;
 	list->head = NULL;
+	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
 }
 
@@ -24,30 +25,27 @@ void slist_create(slist_root *list, void (destroyfunc)(void *element)) {
  * Complexity: O(1).
  */
 int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
-	slist_node *newelement;
-	newelement = (slist_node *) malloc(sizeof(slist_node));
-	if (newelement == NULL) {
+	slist_node *new = (slist_node *) malloc(sizeof(slist_node));
+	if (new == NULL) {
 		perror("Can't create new element.");
 		return -1;
 	}
-	newelement->data = data;
-	newelement->root = list;
-	newelement->next = NULL;
-	if (current == NULL) {
-		if (list->head != NULL) {
-			newelement->next = list->head;
-		}
-		list->head = newelement;
+	new->data = data;
+	new->next = NULL;
+	if (list->size == 0) {
+		list->head = new;
+		list->tail = new;
 	} else {
-		if (current->root == list) {
-			if (current->next != NULL) {
-				newelement->next = slist_el_next(current);
-			}
-			current->next = newelement;
+		if (current == NULL) {
+			new->next = list->head;
+			list->head = new;
 		} else {
-			free(newelement);
-			perror("The 'current' element doesn't belong to 'list'.");
-			return -2;
+			if (current->next != NULL) {
+				new->next = current->next;
+			} else {
+				list->tail = new;
+			}
+			current->next = new;
 		}
 	}
 	list->size++;
@@ -60,23 +58,51 @@ int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
  * Compĺexity: O(n).
  */
 int slist_rem_el(slist_root *list, slist_node *current, void **data) {
-	slist_node *node;
-	if (current->root == list) {
-		if (current == list->head) {
-			list->head = slist_el_next(current);
-		} else {
-			node = list->head;
-			while (slist_el_next(node) != current) {
-				node = slist_el_next(node);
+	if (current != NULL) {
+		if (slist_size(list) > 1) { // More than two elements on list;
+			if (current == list->head) {
+				list->head = current->next;
+			} else {
+				slist_node *node = list->head;
+				while (node->next != current) {
+					node = node->next;
+				}
+				
+				if (current == list->tail) {
+					node->next = NULL;
+					list->tail = node;
+				} else {
+					node->next = current->next;
+				}
 			}
-			node->next = slist_el_next(current);
+		} else if (slist_size(list) == 1) { // Only one element on list;
+			list->head = NULL;
+			list->tail = NULL;
+		} else { // No elements on list;
+			perror("List is empty.");
+			return -1;
 		}
-		*data = &slist_el_data(current);
+		
+		*data = current->data;
 		free(current);
-	} else {
-		perror("The 'current' element doesn't belong to 'list'.");
-		return -2;
+		list->size--;
+	} else { // Why remove an item that does not exist?
+			perror("No element to remove.");
+			return -1;
 	}
-	list->size--;
 	return 0;
+}
+
+/*
+ * Destroy the list and the elements in it. If destroy function is provided,
+ * it will be used.
+ */
+void slist_destroy(slist_root *list) {
+	void *data;
+	while (slist_size(list) > 0) {
+		slist_rem_el(list, list->head, &data);
+		if (list->destroyfunc != NULL) {
+			list->destroyfunc(data);
+		}
+	}
 }
