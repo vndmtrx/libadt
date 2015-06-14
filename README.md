@@ -18,7 +18,7 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 * Single linked list;
 
-But this repository is in its very beginning another will come in time.
+But this repository is in its very beginning and another structures will come in time.
 
 ### What structures do you plan to implement?
 
