@@ -14,4 +14,4 @@ slist_trace: slist_tests
 	strace build/$^
 
 slist_vg: slist_tests
-	valgrind -v build/$^
+	valgrind -v --leak-check=full build/$^
