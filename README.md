@@ -1,7 +1,9 @@
-libadt - an abstract data types library
-=======================================
-
+# libadt - an abstract data types library
 ![BinaryTree](logo.png)
+
+### Status
+
+[![Build Status](https://travis-ci.org/vndmtrx/libadt.svg?branch=master)](https://travis-ci.org/vndmtrx/libadt)
 
 ### What is libadt?
 
