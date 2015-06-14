@@ -33,13 +33,22 @@ int main() {
 		slist_insert_el(a, a->tail, num);
 	}
 	
-	// Test 4 - Remove from the head of the list (without current param);
+	// Test 4 - Swap two items on the list;
+	slist_swap_el(a, a->head->next, a->head->next->next->next);
+	slist_swap_el(a, a->head, a->head->next->next->next);
+	slist_swap_el(a, a->head->next->next, a->tail);
 	
-	// Test 5 - Remove from the middle of the list (with current param = head);
+	// Test 5 - Swap head and tail on the list;
+	slist_swap_el(a, a->head, a->tail);
+	slist_swap_el(a, a->tail, a->head);
 	
-	// Test 6 - Remove from the end of the list (with current param = tail);
+	// Test 6 - Remove from the head of the list (without current param);
 	
-	// Test 7 - Destroy list (call destroyfunc for every member);
+	// Test 7 - Remove from the middle of the list (with current param = head);
+	
+	// Test 8 - Remove from the end of the list (with current param = tail);
+	
+	// Test 9 - Destroy list (call destroyfunc for every member);
 	slist_destroy(a);
 	
 	free(a);
