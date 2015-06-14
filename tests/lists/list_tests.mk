@@ -1,17 +1,17 @@
-# Build target for Single Linked List Tests
-build/test1.o: tests/slist/test1.c | build
+# Build target for Linked List Tests
+build/slist_tests.o: tests/lists/slist_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/test1: build/test1.o build/slist.o
+build/slist_tests: build/slist_tests.o build/slist.o
 	$(LD) $(LDFLAGS) $^ -o $@
 
-test1: build/test1
+slist_tests: build/slist_tests
 
-runtest1: test1
+slist_time: slist_tests
 	/usr/bin/time -v build/$^
 
-tracetest1: test1
+slist_trace: slist_tests
 	strace build/$^
 
-valgrindtest1: test1
+slist_vg: slist_tests
 	valgrind -v build/$^

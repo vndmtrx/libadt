@@ -1,12 +1,12 @@
 # Compilation rules for lib tests.
 
 # SLIST
-include tests/slist/slist_test.mk
+include tests/lists/list_tests.mk
 
-tests: test1
+tests: slist_tests
 
-time_test: runtest1
+time_tests: slist_time
 
-strace_test: tracetest1
+trace_tests: slist_trace
 
-valgrind_test: valgrindtest1
+vg_tests: slist_vg
