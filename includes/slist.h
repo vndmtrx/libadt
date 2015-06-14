@@ -37,6 +37,11 @@ void slist_create(slist_root *list, void (destroyfunc)(void *element));
 int slist_insert_el(slist_root *list, slist_node *current, void *data);
 
 /*
+ * Change positions of the two elements on the list.
+ */
+int slist_mv_el(slist_root *list, slist_node *el1, *el2);
+
+/*
  * Remove the element indicated by *current and save the respective 
  * data in **data.
  * Compĺexity: O(n).
