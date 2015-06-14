@@ -32,6 +32,7 @@ At the present time, the following structures are being implemented:
 Once completed, the next to be implemented are as follows:
 
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
+* Heaps;
 * Associative Arrays;
 * Sets;
 * Graphs;
