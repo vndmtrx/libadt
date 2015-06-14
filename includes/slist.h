@@ -46,20 +46,20 @@ int slist_insert_el(slist_root *list, slist_node *current, void *data);
 int slist_rem_el(slist_root *list, slist_node *current, void **data);
 
 /*
- *  Returns the first element of the list.
- */
-slist_node *slist_head(slist_root *list);
-
-/*
- * Returns the last element of the list.
- */
-slist_node *slist_tail(slist_root *list);
-
-/*
  * Destroy the list and the elements in it. If destroy function is provided,
  * it will be used, otherwise, uses free.
  */
 void slist_destroy(slist_root *list);
+
+/*
+ *  Returns the first element of the list.
+ */
+#define slist_head(list) ((list) ->head)
+
+/*
+ * Returns the last element of the list.
+ */
+#define slist_tail(list) ((list) ->tail)
 
 /*
  * Returns the size of the list.

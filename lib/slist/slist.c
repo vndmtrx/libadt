@@ -94,20 +94,6 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 }
 
 /*
- *  Returns the first element of the list.
- */
-slist_node *slist_head(slist_root *list) {
-	return list->head;
-}
-
-/*
- * Returns the last element of the list.
- */
-slist_node *slist_tail(slist_root *list) {
-	return list->tail;
-}
-
-/*
  * Destroy the list and the elements in it. If destroy function is provided,
  * it will be used.
  */
