@@ -39,7 +39,7 @@ int slist_insert_el(slist_root *list, slist_node *current, void *data);
 /*
  * Change positions of the two elements on the list.
  */
-int slist_swap_el(slist_root *list, slist_node *el1, *el2);
+int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2);
 
 /*
  * Remove the element indicated by *current and save the respective 
