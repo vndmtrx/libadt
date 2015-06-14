@@ -16,13 +16,14 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 ### What Structures do you have now?
 
-None. But this repository is in its very beginning.
+* Single linked list;
+
+But this repository is in its very beginning another will come in time.
 
 ### What structures do you plan to implement?
 
 At the present time, the following structures are being implemented:
 
-* Single linked list;
 * Double linked list;
 * Queue using single linked list as infrastructure;
 * Stack using single linked list as infrastructure;
