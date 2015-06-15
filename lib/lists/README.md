@@ -20,6 +20,10 @@ Single Linked Lists
 
 ### Operations and complexities
 
+Single linked lists are among the simplest and most common data structures. They can be used to implement several other common abstract data types, including lists (the abstract data type), stacks, queues, associative arrays, and S-expressions, though it is not uncommon to implement the other data structures directly without using a list as the basis of implementation.
+
+On the other hand, simple linked lists by themselves do not allow random access to the data, or any form of efficient indexing. Thus, many basic operations — such as obtaining the last node of the list (assuming that the last node is not maintained as separate node reference in the list structure), or finding a node that contains a given datum, or locating the place where a new node should be inserted — may require sequential scanning of most or all of the list elements.
+
 function name | complexity | explanation
 :-- | :--:  |:--
 slist_create | O(1) | 
@@ -27,8 +31,3 @@ slist_insert_el | O(1) |
 slist_swap_el | O(n) | because it needs to find prior element
 slist_rem_el | O(n) | because it needs to find prior element
 slist_destroy | O(n) | removing in the head avoids the O(n^2)
-
-Single linked lists are among the simplest and most common data structures. They can be used to implement several other common abstract data types, including lists (the abstract data type), stacks, queues, associative arrays, and S-expressions, though it is not uncommon to implement the other data structures directly without using a list as the basis of implementation.
-
-On the other hand, simple linked lists by themselves do not allow random access to the data, or any form of efficient indexing. Thus, many basic operations — such as obtaining the last node of the list (assuming that the last node is not maintained as separate node reference in the list structure), or finding a node that contains a given datum, or locating the place where a new node should be inserted — may require sequential scanning of most or all of the list elements.
-
