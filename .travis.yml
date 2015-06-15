@@ -19,6 +19,8 @@ branches:
     - master
 
 before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install valgrind -y
   - make clean
 
 script:
