@@ -34,7 +34,7 @@ int main() {
 	}
 	
 	// Test 4 - Swap two items on the list;
-	slist_swap_el(a, a->head->next, a->head->next->next->next);
+	slist_swap_el(a, a->head->next->next, a->head->next->next->next->next);
 	slist_swap_el(a, a->head, a->head->next->next->next);
 	slist_swap_el(a, a->head->next->next, a->tail);
 	
@@ -42,11 +42,17 @@ int main() {
 	slist_swap_el(a, a->head, a->tail);
 	slist_swap_el(a, a->tail, a->head);
 	
-	// Test 6 - Remove from the head of the list (without current param);
+	// Test 6 - Remove from the head of the list;
+	slist_rem_el(a, a->head, (void *) &num);
+	free(num);
 	
-	// Test 7 - Remove from the middle of the list (with current param = head);
+	// Test 7 - Remove from the middle of the list;
+	slist_rem_el(a, a->head->next->next, (void *) &num);
+	free(num);
 	
-	// Test 8 - Remove from the end of the list (with current param = tail);
+	// Test 8 - Remove from the tail of the list;
+	slist_rem_el(a, a->tail, (void *) &num);
+	free(num);
 	
 	// Test 9 - Destroy list (call destroyfunc for every member);
 	slist_destroy(a);
