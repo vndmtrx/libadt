@@ -3,6 +3,10 @@
 
 language: c
 
+compiler:
+  - gcc
+  - clang
+
 os:
   - linux
 
@@ -14,5 +18,9 @@ branches:
   only:
     - master
 
+before_script:
+  - make clean
+
 script:
-  - make
+  - make -e
+  - make vg_tests
