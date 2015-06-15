@@ -150,8 +150,8 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 		free(current);
 		list->size--;
 	} else { // Why remove an item that does not exist?
-			perror("No element to remove.");
-			return -1;
+		perror("No element to remove.");
+		return -1;
 	}
 	return 0;
 }
