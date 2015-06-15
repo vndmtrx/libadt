@@ -48,7 +48,7 @@ void slist_create(slist_root *list, t_destroyfunc destroyfunc) {
  * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).
  */
-int slist_insert_el(slist_root *list, slist_node *current,  void *data) {
+int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 	slist_node *new = (slist_node *) malloc(sizeof(slist_node));
 	if (new == NULL) {
 		perror("Can't create new element.");

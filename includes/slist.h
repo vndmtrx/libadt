@@ -33,10 +33,10 @@ void slist_create(slist_root *list, t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the list after the current element indicated.
- * If *current is NULL, *data is not appended.
+ * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).
  */
-int slist_insert_el(slist_root *list, slist_node *current, void *data);
+int slist_insert_el_next(slist_root *list, slist_node *current, void *data);
 
 /*
  * Change positions of the two elements on the list.
@@ -79,6 +79,6 @@ void slist_destroy(slist_root *list);
 /*
  * Test if element is actually the tail of the list.
  */
-#define slist_is_el_tail(list, element) ((((element) ->root == (list)) && ((element) ->next == NULL)) ? 1 : 0)
+#define slist_is_el_tail(list, element) ((((element) ->root == (list)) && ((element) == (list) ->tail)) ? 1 : 0)
 
 #endif
