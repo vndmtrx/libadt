@@ -18,11 +18,11 @@ The common operations executed on lists are the following:
 Single Linked Lists
 -------------------
 
-### Operations and complexities
-
 Single linked lists are among the simplest and most common data structures. They can be used to implement several other common abstract data types, including lists (the abstract data type), stacks, queues, associative arrays, and S-expressions, though it is not uncommon to implement the other data structures directly without using a list as the basis of implementation.
 
 On the other hand, simple linked lists by themselves do not allow random access to the data, or any form of efficient indexing. Thus, many basic operations — such as obtaining the last node of the list (assuming that the last node is not maintained as separate node reference in the list structure), or finding a node that contains a given datum, or locating the place where a new node should be inserted — may require sequential scanning of most or all of the list elements.
+
+### Operations and complexities
 
 function name | complexity | explanation
 :-- | :--:  |:--
