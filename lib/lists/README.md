@@ -29,5 +29,5 @@ function name | complexity | explanation
 slist_create | O(1) | 
 slist_insert_el | O(1) | 
 slist_swap_el | O(n) | because it needs to find prior element
-slist_rem_el | O(n) | because it needs to find prior element
+slist_rem_el | O(n) | O(1) if remove the head element
 slist_destroy | O(n) | removing in the head avoids the O(n^2)
