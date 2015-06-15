@@ -16,21 +16,21 @@ int main() {
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = 1;
-		slist_insert_el(a, NULL, num);
+		slist_insert_el_next(a, NULL, num);
 	}
 	
 	// Test 2 - Insert in the middle of the list (with current param = head);
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = 2;
-		slist_insert_el(a, a->head, num);
+		slist_insert_el_next(a, a->head, num);
 	}
 	
 	// Test 3 - Insert in the tail of the list (with current param = tail);
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = 3;
-		slist_insert_el(a, a->tail, num);
+		slist_insert_el_next(a, a->tail, num);
 	}
 	
 	// Test 4 - Swap two items on the list;
