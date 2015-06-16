@@ -78,14 +78,36 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 
 /*
  * Move an element after the newpos element indicated.
- * Complexity: O(1).
+ * Complexity: O(n).
  */
-int slist_move_el_next(slist_root *list, slist_node *current, *slist_node newpos) {
-	return -1;
+int slist_move_el_next(slist_root *list, slist_node *current, slist_node *newpos) {
+	if (current != NULL) {
+		slist_node *n1, *n2, *p;
+		if (newpos != NULL) {
+			n1 = current->next;
+			n2 = newpos->next;
+			
+			if (current != list->head) {
+				p = slist_find_prior(list, current);
+				p->next = n1;
+			} else {
+				list->head = n1;
+			}
+			
+			current->next = n2;
+			newpos->next = current;
+		} else {
+			
+		}
+	} else {
+		perror("Current is NULL. Can't move.");
+		return -1;
+	}
 }
 
 /*
  * Change positions of the two elements on the list.
+ * Complexity: O(n).
  */
 int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
@@ -167,6 +189,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 /*
  * Destroy the list and the elements in it. If destroy function is provided,
  * it will be used.
+ * Complexity: O(n).
  */
 void slist_destroy(slist_root *list) {
 	void *data;
