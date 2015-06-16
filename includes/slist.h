@@ -39,6 +39,12 @@ void slist_create(slist_root *list, t_destroyfunc destroyfunc);
 int slist_insert_el_next(slist_root *list, slist_node *current, void *data);
 
 /*
+ * Move an element after the newpos element indicated.
+ * Complexity: O(1).
+ */
+int slist_move_el_next(slist_root *list, slist_node *current, *slist_node newpos);
+
+/*
  * Change positions of the two elements on the list.
  */
 int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2);
