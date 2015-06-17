@@ -1,5 +1,7 @@
 # Build target for Linked List Tests
 
+list_tests: slist_tests dlist_tests
+
 # Single Linked List
 build/slist_tests.o: tests/lists/slist_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -17,7 +19,6 @@ slist_trace: slist_tests
 
 slist_vg: slist_tests
 	valgrind -v --leak-check=full build/$^
-
 
 # Double Linked List
 build/dlist_tests.o: tests/lists/dlist_tests.c | build

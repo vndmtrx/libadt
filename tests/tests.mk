@@ -3,7 +3,7 @@
 # SLIST
 include tests/lists/build.mk
 
-tests: slist_tests dlist_tests
+tests: list_tests
 
 time_tests: slist_time dlist_time
 
