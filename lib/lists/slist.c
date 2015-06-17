@@ -77,32 +77,11 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 }
 
 /*
- * Move an element after the newpos element indicated.
+ * Move an element to the position of newpos element.
  * Complexity: O(n).
  */
-int slist_move_el_next(slist_root *list, slist_node *current, slist_node *newpos) {
-	if (current != NULL) {
-		slist_node *n1, *n2, *p;
-		if (newpos != NULL) {
-			n1 = current->next;
-			n2 = newpos->next;
-			
-			if (current != list->head) {
-				p = slist_find_prior(list, current);
-				p->next = n1;
-			} else {
-				list->head = n1;
-			}
-			
-			current->next = n2;
-			newpos->next = current;
-		} else {
-			
-		}
-	} else {
-		perror("Current is NULL. Can't move.");
-		return -1;
-	}
+int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
+	return -1;
 }
 
 /*
