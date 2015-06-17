@@ -1,4 +1,4 @@
 #Compilation rules for lib items.
 
 #SLIST - Build target for Single Linked List
-include lib/lists/lists.mk
+include lib/lists/build.mk

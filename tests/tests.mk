@@ -1,7 +1,7 @@
 # Compilation rules for lib tests.
 
 # SLIST
-include tests/lists/list_tests.mk
+include tests/lists/build.mk
 
 tests: slist_tests dlist_tests
 
