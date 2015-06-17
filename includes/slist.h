@@ -39,7 +39,14 @@ void slist_create(slist_root *list, t_destroyfunc destroyfunc);
 int slist_insert_el_next(slist_root *list, slist_node *current, void *data);
 
 /*
+ * Move an element after the newpos element indicated.
+ * Complexity: O(1).
+ */
+int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos);
+
+/*
  * Change positions of the two elements on the list.
+ * Complexity: O(n).
  */
 int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2);
 
@@ -53,6 +60,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data);
 /*
  * Destroy the list and the elements in it. If destroy function is provided,
  * it will be used, otherwise, uses free.
+ * Complexity: O(n).
  */
 void slist_destroy(slist_root *list);
 
@@ -70,15 +78,5 @@ void slist_destroy(slist_root *list);
  * Returns the size of the list.
  */
 #define slist_size(list) ((list) ->size)
-
-/*
- * Test if element is actually the head of the list.
- */
-#define slist_is_el_head(list, element) ((((element) ->root == (list)) && ((element) == (list) ->head)) ? 1 : 0)
-
-/*
- * Test if element is actually the tail of the list.
- */
-#define slist_is_el_tail(list, element) ((((element) ->root == (list)) && ((element) == (list) ->tail)) ? 1 : 0)
 
 #endif

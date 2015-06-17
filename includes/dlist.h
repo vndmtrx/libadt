@@ -47,6 +47,18 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data);
 int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data);
 
 /*
+ * Move an element after the newpos element indicated.
+ * Complexity: O(1).
+ */
+int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos);
+
+/*
+ * Move an element before the newpos element indicated.
+ * Complexity: O(1).
+ */
+int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos);
+
+/*
  * Change positions of the two elements on the list.
  */
 int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
