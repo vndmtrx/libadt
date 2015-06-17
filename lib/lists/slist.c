@@ -81,7 +81,44 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
  * Complexity: O(n).
  */
 int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
-	return -1;
+	if (slist_size(list) > 1) {
+		if (current != NULL && newpos != NULL) {
+			slist_node *p1, *p2;
+			if (current != list->head && newpos != list->head) {
+				p1 = slist_find_prior(list, current);
+				p2 = slist_find_prior(list, newpos);
+				p1->next = current->next;
+				p2->next = current;
+				
+				if (current == list->tail) {
+					list->tail = p1;
+				}
+			} else {
+				if (current == list->head) {
+					p2 = slist_find_prior(list, newpos);
+					p2->next = current;
+					list->head = current->next;
+				} else if (newpos == list->head) {
+					p1 = slist_find_prior(list, current);
+					p1->next = current->next;
+					list->head = current;
+					
+					if (current == list->tail) {
+						list->tail = p1;
+					}
+				}
+			}
+			
+			current->next = newpos;
+			return 0;
+		} else {
+			perror("One of the elements is NULL. Can't swap.");
+			return -1;
+		}
+	} else {
+		perror("No enough elements to move.");
+		return -1;
+	}
 }
 
 /*
