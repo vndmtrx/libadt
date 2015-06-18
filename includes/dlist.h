@@ -15,8 +15,8 @@ struct _dlist_root {
 };
 
 struct _dlist_node {
-	dlist_node *prev;	// Pointer to prev slist_node element.
-	dlist_node *next;	// Pointer to next slist_node element.
+	dlist_node *prev;	// Pointer to prev dlist_node element.
+	dlist_node *next;	// Pointer to next dlist_node element.
 	void *data;			// Pointer to the element added on the list.
 };
 
@@ -24,7 +24,7 @@ struct _dlist_node {
 /* 
  * Create a empty list structure, set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
- * call slist_destroy. For malloc/calloc data, free must be used. If data
+ * call dlist_destroy. For malloc/calloc data, free must be used. If data
  * is a struct with other members, a function designed to free its memory
  * must be provided. If the data is static or have another way to free its
  * memory, NULL must be set.

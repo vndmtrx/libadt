@@ -64,11 +64,10 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 			new->next = list->head;
 			list->head = new;
 		} else {
-			if (current->next != NULL) {
-				new->next = current->next;
-			} else {
+			if (current == list->tail) {
 				list->tail = new;
 			}
+			new->next = current->next;
 			current->next = new;
 		}
 	}
