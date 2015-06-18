@@ -14,7 +14,7 @@ Libadt is a C library for those who want to study a little more about Abstract D
 
 ### Why?
 
-Because in C we deal directly with memory, and the structures provided by the language are quite primitive. And since in higher level languages there are other structures (such as classes and objects) that implement many of the features of data structures, there would be no advantage (or learning) in implementing these structures.
+Because in C we deal directly with memory, and the structures provided by the language are quite primitive. And since in higher level languages there are other structures (such as classes and objects) that implement many of the features of data structures, there would be no advantage (or learning) in implementing these structures on such languages.
 
 ### What Structures do you have now?
 
