@@ -11,6 +11,7 @@ The common operations executed on lists are the following:
 
  * create() - Create the list structure;
  * insert() - Add an element in the list, either on specific position or in the the list edges;
+ * move() - Change position of one element on the list;
  * swap() - Change the position of two elements on the list;
  * remove() - Drop an element from the list, returning its data;
  * destroy() - Destroy the list structure. If there is elements in it, they are destroyed also.
@@ -28,6 +29,7 @@ function name | complexity | explanation
 :-- | :--:  |:--
 slist_create | O(1) | 
 slist_insert_el_next | O(1) | 
+slist_move_el | O(n)| because it needs to find prior element
 slist_swap_el | O(n) | because it needs to find prior element
 slist_rem_el | O(n) | O(1) if remove the head element
 slist_destroy | O(n) | removing in the head avoids the O(n^2)
