@@ -44,10 +44,12 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
 		} else {
 			new->prev = current;
 			new->next = current->next;
-			current->next = new;
 			if (current == list->tail) {
 				list->tail = new;
+			} else {
+				current->next->prev = new;
 			}
+			current->next = new;
 		}
 	}
 	list->size++;
@@ -59,7 +61,37 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
  * If *current is NULL, *data is appended on the tail.
  * Complexity: O(1).
  */
-int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data);
+int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
+	dlist_node *new = (dlist_node *) malloc(sizeof(dlist_node));
+	if (new == NULL) {
+		perror("Can't create new element.");
+		return -1;
+	}
+	new->data = data;
+	new->prev = NULL;
+	new->next = NULL;
+	if (list->size == 0) {
+		list->head = new;
+		list->tail = new;
+	} else {
+		if (current == NULL) {
+			new->prev = list->tail;
+			list->tail->next = new;
+			list->tail = new;
+		} else {
+			new->next = current;
+			new->prev = current->prev;
+			if (current == list->head) {
+				list->head = new;
+			} else {
+				current->prev->next = new;
+			}
+			current->prev = new;
+		}
+	}
+	list->size++;
+	return 0;
+}
 
 /*
  * Move an element after the newpos element indicated.

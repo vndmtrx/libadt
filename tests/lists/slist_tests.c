@@ -1,22 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include <slist.h>
 
 #define QTD 20
+
+void print_el(slist_node *node) {
+	printf("(");
+	if (node != NULL) {
+		printf("'%d', ", *((int *) node->data));
+		
+		if (node->next != NULL) {
+			printf("%d", *((int *) node->next->data));
+		} else {
+			printf("NULL");
+		}
+	} else {
+		printf("NULL");
+	}
+	printf(") ");
+}
 
 void print_list(slist_root *list) {
 	slist_node *node = list->head;
 	printf("[");
 	if (slist_size(list) > 0) {
 		do {
-			printf("%d, ", *((int *) node->data));
+			print_el(node);
 			node = node->next;
-		} while (node != list->tail && node->next != NULL);
+		} while (node != NULL);
 	}
 	printf("]\n");
-	//sleep(1);
 }
 
 int main() {
