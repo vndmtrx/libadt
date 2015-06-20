@@ -7,7 +7,7 @@ build/slist_tests.o: tests/lists/slist_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 build/slist_tests: build/slist_tests.o build/slist.o
-	$(LD) $(LDFLAGS) $^ -o $@
+	$(CC) $(LDFLAGS) $^ -o $@
 
 slist_tests: build/slist_tests
 
@@ -25,7 +25,7 @@ build/dlist_tests.o: tests/lists/dlist_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 build/dlist_tests: build/dlist_tests.o build/dlist.o
-	$(LD) $(LDFLAGS) $^ -o $@
+	$(CC) $(LDFLAGS) $^ -o $@
 
 dlist_tests: build/dlist_tests
 
