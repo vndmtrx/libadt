@@ -98,6 +98,7 @@ int main() {
 	
 	printf("##### Test 10 - Remove from the head of the list\n");
 	slist_rem_el(a, a->head, (void *) &num);
+	print_list(a);
 	free(num);
 	
 	printf("##### Test 11 - Remove from the middle of the list\n");
