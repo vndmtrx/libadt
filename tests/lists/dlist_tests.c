@@ -94,22 +94,40 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 7 - Remove from the head of the list\n");
+	printf("##### Test 7 - Move head item to middle of the list\n");
+	dlist_move_el_next(a, a->head, a->head->next->next);
+	print_list(a);
+	
+	printf("##### Test 8 - Move item to tail of the list\n");
+	dlist_move_el_next(a, a->head->next, a->tail);
+	print_list(a);
+	
+	printf("##### Test 9 - Move item to another position\n");
+	dlist_move_el_next(a, a->head->next->next->next, a->head->next);
+	print_list(a);
+	
+	printf("##### Test 10 - Move head to tail (and back again)\n");
+	dlist_move_el_next(a, a->head, a->tail);
+	print_list(a);
+	dlist_move_el_next(a, a->tail, a->head);
+	print_list(a);
+	
+	printf("##### Test 11 - Remove from the head of the list\n");
 	dlist_rem_el(a, a->head, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 8 - Remove from the middle of the list\n");
+	printf("##### Test 12 - Remove from the middle of the list\n");
 	dlist_rem_el(a, a->head->next->next, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 9 - Remove from the tail of the list\n");
+	printf("##### Test 13 - Remove from the tail of the list\n");
 	dlist_rem_el(a, a->tail, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 10 - Destroy list (call destroyfunc for every member)\n");
+	printf("##### Test 14 - Destroy list (call destroyfunc for every member)\n");
 	dlist_destroy(a);
 	print_list(a);
 	
