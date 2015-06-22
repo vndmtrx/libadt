@@ -60,6 +60,7 @@ int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos
 
 /*
  * Change positions of the two elements on the list.
+ * Complexity: O(1).
  */
 int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
 
@@ -72,7 +73,8 @@ int dlist_rem_el(dlist_root *list, dlist_node *current, void **data);
 
 /*
  * Destroy the list and the elements in it. If destroy function is provided,
- * it will be used, otherwise, uses free.
+ * it will be used.
+ * Complexity: O(n).
  */
 void dlist_destroy(dlist_root *list);
 
