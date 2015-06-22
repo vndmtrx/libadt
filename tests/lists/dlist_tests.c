@@ -94,7 +94,22 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 13 - Destroy list (call destroyfunc for every member)\n");
+	printf("##### Test 7 - Remove from the head of the list\n");
+	dlist_rem_el(a, a->head, (void *) &num);
+	print_list(a);
+	free(num);
+	
+	printf("##### Test 8 - Remove from the middle of the list\n");
+	dlist_rem_el(a, a->head->next->next, (void *) &num);
+	print_list(a);
+	free(num);
+	
+	printf("##### Test 9 - Remove from the tail of the list\n");
+	dlist_rem_el(a, a->tail, (void *) &num);
+	print_list(a);
+	free(num);
+	
+	printf("##### Test 10 - Destroy list (call destroyfunc for every member)\n");
 	dlist_destroy(a);
 	print_list(a);
 	
