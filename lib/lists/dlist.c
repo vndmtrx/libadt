@@ -137,7 +137,41 @@ int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos
  * Move an element before the newpos element indicated.
  * Complexity: O(1).
  */
-int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos);
+int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos) {
+	if (dlist_size(list) > 1) {
+		if (current != NULL && newpos != NULL) {
+			if (current == list->tail) {
+				current->prev->next = NULL;
+				list->tail = current->prev;
+			} else if (current == list->head) {
+				current->next->prev = NULL;
+				list->head = current->next;
+			} else {
+				current->prev->next = current->next;
+				current->next->prev = current->prev;
+			}
+			
+			if (newpos == list->head) {
+				current->prev = NULL;
+				list->head = current;
+			} else {
+				current->prev = newpos->prev;
+				newpos->prev->next = current;
+			}
+			
+			current->next = newpos;
+			newpos->prev = current;
+			
+			return 0;
+		} else {
+			perror("One of the elements is NULL. Can't swap.");
+			return -1;
+		}
+	} else {
+		perror("No enough elements to move.");
+		return -1;
+	}
+}
 
 /*
  * Change positions of the two elements on the list.
