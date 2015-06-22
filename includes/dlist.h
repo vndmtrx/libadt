@@ -91,14 +91,4 @@ void dlist_destroy(dlist_root *list);
  */
 #define dlist_size(list) ((list) ->size)
 
-/*
- * Test if element is actually the head of the list.
- */
-#define dlist_is_el_head(list, element) ((((element) ->root == (list)) && ((element) == (list) ->head)) ? 1 : 0)
-
-/*
- * Test if element is actually the tail of the list.
- */
-#define dlist_is_el_tail(list, element) ((((element) ->root == (list)) && ((element) == (list) ->tail)) ? 1 : 0)
-
 #endif
