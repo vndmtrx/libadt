@@ -46,7 +46,7 @@ int main() {
 	a = (dlist_root *) malloc(sizeof(dlist_root));
 	dlist_create(a, &free);
 	
-	printf("##### Test 1 - Insert in the head of the list (without current param)\n");
+	printf("##### Test 1 - dlist_insert_el_next - Insert in the head of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i;
@@ -54,7 +54,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 2 - Insert in the middle of the list (with current param = head)\n");
+	printf("##### Test 2 - dlist_insert_el_next - Insert in the middle of the list (with current param = head)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + QTD;
@@ -62,7 +62,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 3 - Insert in the tail of the list (with current param = tail)\n");
+	printf("##### Test 3 - dlist_insert_el_next - Insert in the tail of the list (with current param = tail)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + (QTD * 2);
@@ -70,7 +70,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 4 - Insert in the tail of the list (without current param)\n");
+	printf("##### Test 4 - dlist_insert_el_prev - Insert in the tail of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i;
@@ -78,7 +78,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 5 - Insert in the middle of the list (with current param = tail)\n");
+	printf("##### Test 5 - dlist_insert_el_prev - Insert in the middle of the list (with current param = tail)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + QTD;
@@ -86,7 +86,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 6 - Insert in the head of the list (with current param = head)\n");
+	printf("##### Test 6 - dlist_insert_el_prev - Insert in the head of the list (with current param = head)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + (QTD * 2);
@@ -94,40 +94,58 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 7 - Move head item to middle of the list\n");
+	printf("##### Test 7 - dlist_move_el_next - Move head item to middle of the list\n");
 	dlist_move_el_next(a, a->head, a->head->next->next);
 	print_list(a);
 	
-	printf("##### Test 8 - Move item to tail of the list\n");
+	printf("##### Test 8 - dlist_move_el_next - Move item to tail of the list\n");
 	dlist_move_el_next(a, a->head->next, a->tail);
 	print_list(a);
 	
-	printf("##### Test 9 - Move item to another position\n");
+	printf("##### Test 9 - dlist_move_el_next - Move item to another position\n");
 	dlist_move_el_next(a, a->head->next->next->next, a->head->next);
 	print_list(a);
 	
-	printf("##### Test 10 - Move head to tail (and back again)\n");
+	printf("##### Test 10 - dlist_move_el_next - Move head to tail (and back again)\n");
 	dlist_move_el_next(a, a->head, a->tail);
 	print_list(a);
 	dlist_move_el_next(a, a->tail, a->head);
 	print_list(a);
 	
-	printf("##### Test 11 - Remove from the head of the list\n");
+	printf("##### Test 11 - dlist_move_el_prev - Move head item to middle of the list\n");
+	dlist_move_el_prev(a, a->head, a->head->next->next);
+	print_list(a);
+	
+	printf("##### Test 12 - dlist_move_el_prev - Move item to tail of the list\n");
+	dlist_move_el_prev(a, a->head->next, a->tail);
+	print_list(a);
+	
+	printf("##### Test 13 - dlist_move_el_prev - Move item to another position\n");
+	dlist_move_el_prev(a, a->head->next->next->next, a->head->next);
+	print_list(a);
+	
+	printf("##### Test 14 - dlist_move_el_prev - Move head to tail (and back again)\n");
+	dlist_move_el_prev(a, a->head, a->tail);
+	print_list(a);
+	dlist_move_el_prev(a, a->tail, a->head);
+	print_list(a);
+	
+	printf("##### Test 15 - dlist_rem_el - Remove from the head of the list\n");
 	dlist_rem_el(a, a->head, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 12 - Remove from the middle of the list\n");
+	printf("##### Test 16 - dlist_rem_el - Remove from the middle of the list\n");
 	dlist_rem_el(a, a->head->next->next, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 13 - Remove from the tail of the list\n");
+	printf("##### Test 17 - dlist_rem_el - Remove from the tail of the list\n");
 	dlist_rem_el(a, a->tail, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 14 - Destroy list (call destroyfunc for every member)\n");
+	printf("##### Test 18 - dlist_destroy - Destroy list (call destroyfunc for every member)\n");
 	dlist_destroy(a);
 	print_list(a);
 	

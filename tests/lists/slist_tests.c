@@ -40,7 +40,7 @@ int main() {
 	a = (slist_root *) malloc(sizeof(slist_root));
 	slist_create(a, &free);
 	
-	printf("##### Test 1 - Insert in the head of the list (without current param)\n");
+	printf("##### Test 1 - slist_insert_el_next - Insert in the head of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i;
@@ -48,7 +48,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 2 - Insert in the middle of the list (with current param = head)\n");
+	printf("##### Test 2 - slist_insert_el_next - Insert in the middle of the list (with current param = head)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + QTD;
@@ -56,7 +56,7 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 3 - Insert in the tail of the list (with current param = tail)\n");
+	printf("##### Test 3 - slist_insert_el_next - Insert in the tail of the list (with current param = tail)\n");
 	for (int i = 0; i < QTD; i++) {
 		num = (int *) malloc(sizeof(int));
 		*num = i + (QTD * 2);
@@ -64,25 +64,25 @@ int main() {
 	}
 	print_list(a);
 	
-	printf("##### Test 4 - Move head item to middle of the list\n");
+	printf("##### Test 4 - slist_move_el - Move head item to middle of the list\n");
 	slist_move_el(a, a->head, a->head->next->next);
 	print_list(a);
 	
-	printf("#####  Test 5 - Move item to tail of the list\n");
+	printf("#####  Test 5 - slist_move_el - Move item to tail of the list\n");
 	slist_move_el(a, a->head->next, a->tail);
 	print_list(a);
 	
-	printf("##### Test 6 - Move item to another position\n");
+	printf("##### Test 6 - slist_move_el - Move item to another position\n");
 	slist_move_el(a, a->head->next->next->next, a->head->next);
 	print_list(a);
 	
-	printf("##### Test 7 - Move head to tail (and back again)\n");
+	printf("##### Test 7 - slist_move_el - Move head to tail (and back again)\n");
 	slist_move_el(a, a->head, a->tail);
 	print_list(a);
 	slist_move_el(a, a->tail, a->head);
 	print_list(a);
 	
-	printf("##### Test 8 - Swap two items on the list\n");
+	printf("##### Test 8 - slist_swap_el - Swap two items on the list\n");
 	slist_swap_el(a, a->head->next->next, a->head->next->next->next->next);
 	print_list(a);
 	slist_swap_el(a, a->head, a->head->next->next->next);
@@ -90,28 +90,28 @@ int main() {
 	slist_swap_el(a, a->head->next->next, a->tail);
 	print_list(a);
 	
-	printf("##### Test 9 - Swap head and tail on the list\n");
+	printf("##### Test 9 - slist_swap_el - Swap head and tail on the list\n");
 	slist_swap_el(a, a->head, a->tail);
 	print_list(a);
 	slist_swap_el(a, a->tail, a->head);
 	print_list(a);
 	
-	printf("##### Test 10 - Remove from the head of the list\n");
+	printf("##### Test 10 - slist_rem_el - Remove from the head of the list\n");
 	slist_rem_el(a, a->head, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 11 - Remove from the middle of the list\n");
+	printf("##### Test 11 - slist_rem_el - Remove from the middle of the list\n");
 	slist_rem_el(a, a->head->next->next, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 12 - Remove from the tail of the list\n");
+	printf("##### Test 12 - slist_rem_el - Remove from the tail of the list\n");
 	slist_rem_el(a, a->tail, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 13 - Destroy list (call destroyfunc for every member)\n");
+	printf("##### Test 13 - slist_destroy - Destroy list (call destroyfunc for every member)\n");
 	slist_destroy(a);
 	print_list(a);
 	
