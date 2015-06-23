@@ -67,7 +67,7 @@ int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
 /*
  * Remove the element indicated by *current and save the respective 
  * data in **data.
- * Compĺexity: O(n).
+ * Compĺexity: O(1).
  */
 int dlist_rem_el(dlist_root *list, dlist_node *current, void **data);
 
