@@ -177,7 +177,33 @@ int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos
  * Change positions of the two elements on the list.
  * Complexity: O(1).
  */
-int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
+int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2) {
+	if (el1 != NULL && el2 != NULL) {
+		dlist_node *p_el1, *n_el1, *p_el2, *n_el2;
+		
+		p_el1 = el1->prev;
+		n_el1 = el1->next;
+		p_el2 = el2->prev;
+		n_el2 = el2->next;
+		
+		if (el2 != list->head) {
+			dlist_move_el_next(list, el1, p_el2);
+		} else {
+			dlist_move_el_prev(list, el1, n_el2);
+		}
+		
+		if (el1 != list->tail) {
+			dlist_move_el_prev(list, el2, n_el1);
+		} else {
+			dlist_move_el_next(list, el2, p_el1);
+		}
+		
+		return 0;
+	} else {
+		perror("One of the elements is NULL. Can't swap.");
+		return -1;
+	}
+}
 
 /*
  * Remove the element indicated by *current and save the respective 
