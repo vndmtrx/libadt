@@ -130,22 +130,38 @@ int main() {
 	dlist_move_el_prev(a, a->tail, a->head);
 	print_list(a);
 	
-	printf("##### Test 15 - dlist_rem_el - Remove from the head of the list\n");
+	printf("##### Test 15 - dlist_swap_el - Swap head with other element\n");
+	dlist_swap_el(a, a->head, a->tail->prev);
+	print_list(a);
+	
+	printf("##### Test 16 - dlist_swap_el - Swap tail with other element\n");
+	dlist_swap_el(a, a->tail, a->head->next);
+	print_list(a);
+	
+	printf("##### Test 17 - dlist_swap_el - Swap head and tail\n");
+	dlist_swap_el(a, a->head, a->tail);
+	print_list(a);
+	
+	printf("##### Test 18 - dlist_swap_el - Swap other elements\n");
+	dlist_swap_el(a, a->head->next, a->tail->prev);
+	print_list(a);
+	
+	printf("##### Test 19 - dlist_rem_el - Remove from the head of the list\n");
 	dlist_rem_el(a, a->head, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 16 - dlist_rem_el - Remove from the middle of the list\n");
+	printf("##### Test 20 - dlist_rem_el - Remove from the middle of the list\n");
 	dlist_rem_el(a, a->head->next->next, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 17 - dlist_rem_el - Remove from the tail of the list\n");
+	printf("##### Test 21 - dlist_rem_el - Remove from the tail of the list\n");
 	dlist_rem_el(a, a->tail, (void *) &num);
 	print_list(a);
 	free(num);
 	
-	printf("##### Test 18 - dlist_destroy - Destroy list (call destroyfunc for every member)\n");
+	printf("##### Test 22 - dlist_destroy - Destroy list (call destroyfunc for every member)\n");
 	dlist_destroy(a);
 	print_list(a);
 	
