@@ -1,7 +1,13 @@
 # Compilation rules for lib tests.
 
-# SLIST
+# LISTS
 include tests/lists/build.mk
+
+# QUEUES
+include tests/queues/build.mk
+
+# STACKS
+include tests/stacks/build.mk
 
 tests: list_tests
 
