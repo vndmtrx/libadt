@@ -13,6 +13,6 @@ int sl_queue_peek(sl_queue_root *queue, void **data);
 
 int sl_queue_pop(sl_queue_root *queue, void **data);
 
-void slist_destroy(sl_queue_root *queue);
+void sl_queue_destroy(sl_queue_root *queue);
 
 #endif
