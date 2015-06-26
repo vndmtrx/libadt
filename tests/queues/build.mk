@@ -1,39 +1,18 @@
-## Build target for Linked List Tests
+## Build target for Queue tests
 
-#list_tests: slist_tests dlist_tests
+queue_tests: sl_queue_tests
 
-## Single Linked List
-#build/slist_tests.o: tests/lists/slist_tests.c | build
-	#$(CC) $(CFLAGS) -c $^ -o $@
+# Single Linked List
+build/sl_queue_tests.o: tests/queues/sl_queue_tests.c | build
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-#build/slist_tests: build/slist_tests.o build/slist.o
-	#$(CC) $(LDFLAGS) $^ -o $@
+build/sl_queue_tests: build/sl_queue_tests.o build/sl_queue.o build/slist.o
+	$(CC) $(LDFLAGS) $^ -o $@
 
-#slist_tests: build/slist_tests
+sl_queue_tests: build/sl_queue_tests
 
-#slist_time: slist_tests
-	#/usr/bin/time -v build/$^
+sl_queue_time: sl_queue_tests
+	/usr/bin/time -v build/$^
 
-#slist_trace: slist_tests
-	#strace build/$^
-
-#slist_vg: slist_tests
-	#valgrind -v --leak-check=full build/$^
-
-## Double Linked List
-#build/dlist_tests.o: tests/lists/dlist_tests.c | build
-	#$(CC) $(CFLAGS) -c $^ -o $@
-
-#build/dlist_tests: build/dlist_tests.o build/dlist.o
-	#$(CC) $(LDFLAGS) $^ -o $@
-
-#dlist_tests: build/dlist_tests
-
-#dlist_time: dlist_tests
-	#/usr/bin/time -v build/$^
-
-#dlist_trace: dlist_tests
-	#strace build/$^
-
-#dlist_vg: dlist_tests
-	#valgrind -v --leak-check=full build/$^
+sl_queue_vg: sl_queue_tests
+	valgrind -v --leak-check=full build/$^

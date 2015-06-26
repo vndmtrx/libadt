@@ -14,9 +14,6 @@ slist_tests: build/slist_tests
 slist_time: slist_tests
 	/usr/bin/time -v build/$^
 
-slist_trace: slist_tests
-	strace build/$^
-
 slist_vg: slist_tests
 	valgrind -v --leak-check=full build/$^
 
@@ -31,9 +28,6 @@ dlist_tests: build/dlist_tests
 
 dlist_time: dlist_tests
 	/usr/bin/time -v build/$^
-
-dlist_trace: dlist_tests
-	strace build/$^
 
 dlist_vg: dlist_tests
 	valgrind -v --leak-check=full build/$^
