@@ -5,7 +5,7 @@ LDFLAGS=
 
 .PHONY: clean
 
-all: tests
+all: mk_tests
 
 # Source Files
 
