@@ -5,10 +5,10 @@
 
 #define QTD 10
 
-void print_list(slist_root *list) {
-	slist_node *node = list->head;
+void print_list(sl_queue_root *queue) {
+	slist_node *node = queue->head;
 	printf("[");
-	if (slist_size(list) > 0) {
+	if (sl_queue_size(queue) > 0) {
 		do {
 			printf("%d, ", *((int *) node->data));
 			node = node->next;
