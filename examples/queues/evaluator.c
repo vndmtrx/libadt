@@ -44,5 +44,9 @@ int main(int argc, char *argv[]) {
 			}
 		}
 	}
+	
+	sl_queue_create(queue, &free);
+	free(queue);
+	
 	return EXIT_SUCCESS;
 }
