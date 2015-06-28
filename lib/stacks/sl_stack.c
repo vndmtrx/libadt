@@ -4,7 +4,7 @@
 #include <sl_stack.h>
 
 /* 
- * Create a empty stack structure (FiLo - First In / Last Out) and set a
+ * Create a empty stack structure (LiFo - Last In / First Out) and set a
  * destroy function for its elements.
  * 
  * The destroy argument gives a way to free the entire structure when we
@@ -42,7 +42,7 @@ int sl_stack_peek(sl_stack_root *stack, void **data) {
 
 /*
  * Remove an element from the stack and return its element.
- * Stacks are First In Last Out, so the item removed is the last item
+ * Stacks are Last In First Out, so the item removed is the last item
  * added.
  * Complexity: O(1).
  */
