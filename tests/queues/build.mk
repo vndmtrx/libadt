@@ -2,7 +2,7 @@
 
 queue_tests: sl_queue_tests
 
-# Single Linked List
+# Queues
 build/sl_queue_tests.o: tests/queues/sl_queue_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
