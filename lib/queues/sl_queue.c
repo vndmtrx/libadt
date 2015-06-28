@@ -54,7 +54,7 @@ int sl_queue_pop(sl_queue_root *queue, void **data) {
 }
 
 /*
- * Destroy the list and the elements in it. If destroy function is provided,
+ * Destroy the queue and the elements in it. If destroy function is provided,
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
