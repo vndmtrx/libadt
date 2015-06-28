@@ -6,7 +6,7 @@ stack_tests: sl_stack_tests
 build/sl_stack_tests.o: tests/stacks/sl_stack_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/sl_stack_tests: build/sl_stack_tests.o build/sl_stack.o build/slist.o
+build/sl_stack_tests: build/sl_stack_tests.o build/sl_stack.o
 	$(CC) $(LDFLAGS) $^ -o $@
 
 sl_stack_tests: build/sl_stack_tests

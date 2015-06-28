@@ -1,6 +1,9 @@
 # Build target for singly-list-backed queue
-build/sl_queue.o: lib/queues/sl_queue.c includes/sl_queue.h includes/slist.h | build
+build/sl_queue.partial: lib/queues/sl_queue.c includes/sl_queue.h includes/slist.h | build
 	$(CC) $(CFLAGS) -c $< -o $@
+
+build/sl_queue.o: build/sl_queue.partial build/slist.o
+	ld $(LDFLAGS) -r $^ -o $@
 
 # Build target for Double Linked List
 #build/dlist.o: lib/lists/dlist.c includes/dlist.h | build

@@ -6,7 +6,7 @@ queue_tests: sl_queue_tests
 build/sl_queue_tests.o: tests/queues/sl_queue_tests.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/sl_queue_tests: build/sl_queue_tests.o build/sl_queue.o build/slist.o
+build/sl_queue_tests: build/sl_queue_tests.o build/sl_queue.o
 	$(CC) $(LDFLAGS) $^ -o $@
 
 sl_queue_tests: build/sl_queue_tests
