@@ -19,10 +19,7 @@ branches:
     - master
 
 before_script:
-  - sudo apt-get update -qq
-  - sudo apt-get install valgrind -y -qq
   - make clean
 
 script:
   - make -e
-  - make vg_tests
