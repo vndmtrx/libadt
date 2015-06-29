@@ -31,13 +31,12 @@ int sl_stack_push(sl_stack_root *stack, void *data) {
  * If stack is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
-int sl_stack_peek(sl_stack_root *stack, void **data) {
+void * sl_stack_peek(sl_stack_root *stack) {
 	if (slist_size(stack) > 0) {
-		*data = stack->head->data;
+		return stack->head->data;
 		return 0;
 	} else {
-		*data = NULL;
-		return -1;
+		return NULL;
 	}
 }
 
@@ -47,12 +46,12 @@ int sl_stack_peek(sl_stack_root *stack, void **data) {
  * added.
  * Complexity: O(1).
  */
-int sl_stack_pop(sl_stack_root *stack, void **data) {
+void * sl_stack_pop(sl_stack_root *stack) {
 	if (slist_size(stack) > 0) {
-		return slist_rem_el(stack, stack->head, data);
+		return slist_rem_el(stack, stack->head);
 	} else {
-		perror("Stack is empty!");
-		return -1;
+		fprintf(stderr, "Stack is empty!");
+		return NULL;
 	}
 }
 

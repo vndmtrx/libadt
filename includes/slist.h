@@ -55,7 +55,7 @@ int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2);
  * data in **data.
  * Compĺexity: O(n).
  */
-int slist_rem_el(slist_root *list, slist_node *current, void **data);
+void * slist_rem_el(slist_root *list, slist_node *current);
 
 /*
  * Destroy the list and the elements in it. If destroy function is provided,

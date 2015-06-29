@@ -22,7 +22,7 @@ static slist_node *slist_find_prior(slist_root *list, slist_node *current) {
 		
 		return node;
 	} else {
-		perror("No prior element to find. Current doesn't exist.");
+		fprintf(stderr, "No prior element to find. Current doesn't exist.");
 		return NULL;
 	}
 }
@@ -51,7 +51,7 @@ void slist_create(slist_root *list, t_destroyfunc destroyfunc) {
 int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 	slist_node *new = (slist_node *) malloc(sizeof(slist_node));
 	if (new == NULL) {
-		perror("Can't create new element.");
+		fprintf(stderr, "Can't create new element.");
 		return -1;
 	}
 	new->data = data;
@@ -111,11 +111,11 @@ int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
 			current->next = newpos;
 			return 0;
 		} else {
-			perror("One of the elements is NULL. Can't swap.");
+			fprintf(stderr, "One of the elements is NULL. Can't swap.");
 			return -1;
 		}
 	} else {
-		perror("No enough elements to move.");
+		fprintf(stderr, "No enough elements to move.");
 		return -1;
 	}
 }
@@ -155,7 +155,7 @@ int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
 		
 		return 0;
 	} else {
-		perror("One of the elements is NULL. Can't swap.");
+		fprintf(stderr, "One of the elements is NULL. Can't swap.");
 		return -1;
 	}
 }
@@ -165,7 +165,8 @@ int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
  * data in **data.
  * Compĺexity: O(n).
  */
-int slist_rem_el(slist_root *list, slist_node *current, void **data) {
+void * slist_rem_el(slist_root *list, slist_node *current) {
+	void *data;
 	if (current != NULL) {
 		if (slist_size(list) > 1) { // More than two elements on list;
 			if (current == list->head) {
@@ -173,7 +174,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 			} else {
 				slist_node *node = slist_find_prior(list, current);
 				if (node == NULL) {
-					return -1;
+					return NULL;
 				}
 				
 				if (current == list->tail) {
@@ -187,18 +188,19 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 			list->head = NULL;
 			list->tail = NULL;
 		} else { // No elements on list;
-			perror("List is empty.");
-			return -1;
+			fprintf(stderr, "List is empty.");
+			return NULL;
 		}
 		
-		*data = current->data;
+		data = current->data;
 		free(current);
 		list->size--;
+		
+		return data;
 	} else { // Why remove an item that does not exist?
-		perror("No element to remove.");
-		return -1;
+		fprintf(stderr, "No element to remove.");
+		return NULL;
 	}
-	return 0;
 }
 
 /*
@@ -209,7 +211,7 @@ int slist_rem_el(slist_root *list, slist_node *current, void **data) {
 void slist_destroy(slist_root *list) {
 	void *data;
 	while (slist_size(list) > 0) {
-		slist_rem_el(list, list->head, &data);
+		data = slist_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
 		}

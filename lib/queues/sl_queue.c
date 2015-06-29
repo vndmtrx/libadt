@@ -29,13 +29,12 @@ int sl_queue_push(sl_queue_root *queue, void *data) {
  * If queue is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
-int sl_queue_peek(sl_queue_root *queue, void **data) {
+void * sl_queue_peek(sl_queue_root *queue) {
 	if (slist_size(queue) > 0) {
-		*data = queue->head->data;
-		return 0;
+		return queue->head->data;
 	} else {
-		*data = NULL;
-		return -1;
+		fprintf(stderr, "Queue is empty!");
+		return NULL;
 	}
 }
 
@@ -45,12 +44,12 @@ int sl_queue_peek(sl_queue_root *queue, void **data) {
  * added.
  * Complexity: O(1).
  */
-int sl_queue_pop(sl_queue_root *queue, void **data) {
+void * sl_queue_pop(sl_queue_root *queue) {
 	if (slist_size(queue) > 0) {
-		return slist_rem_el(queue, queue->head, data);
+		return slist_rem_el(queue, queue->head);
 	} else {
-		perror("Queue is empty!");
-		return -1;
+		fprintf(stderr, "Queue is empty!");
+		return NULL;
 	}
 }
 

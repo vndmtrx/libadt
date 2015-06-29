@@ -29,7 +29,7 @@ int sl_queue_push(sl_queue_root *queue, void *data);
  * If queue is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
-int sl_queue_peek(sl_queue_root *queue, void **data);
+void * sl_queue_peek(sl_queue_root *queue);
 
 /*
  * Remove an element from the queue and return its element.
@@ -37,7 +37,7 @@ int sl_queue_peek(sl_queue_root *queue, void **data);
  * added.
  * Complexity: O(1).
  */
-int sl_queue_pop(sl_queue_root *queue, void **data);
+void * sl_queue_pop(sl_queue_root *queue);
 
 /*
  * Destroy the queue and the elements in it. If destroy function is provided,

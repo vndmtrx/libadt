@@ -29,7 +29,7 @@ int sl_stack_push(sl_stack_root *stack, void *data);
  * If stack is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
-int sl_stack_peek(sl_stack_root *stack, void **data);
+void * sl_stack_peek(sl_stack_root *stack);
 
 /*
  * Remove an element from the stack and return its element.
@@ -37,7 +37,7 @@ int sl_stack_peek(sl_stack_root *stack, void **data);
  * added.
  * Complexity: O(1).
  */
-int sl_stack_pop(sl_stack_root *stack, void **data);
+void * sl_stack_pop(sl_stack_root *stack);
 
 /*
  * Destroy the stack and the elements in it. If destroy function is provided,
