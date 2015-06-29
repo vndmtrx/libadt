@@ -28,6 +28,7 @@ int sl_stack_push(sl_stack_root *stack, void *data) {
 
 /*
  * Look the last item of the stack without remove it.
+ * If stack is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
 int sl_stack_peek(sl_stack_root *stack, void **data) {
@@ -35,7 +36,7 @@ int sl_stack_peek(sl_stack_root *stack, void **data) {
 		*data = stack->head->data;
 		return 0;
 	} else {
-		perror("Stack is empty!");
+		*data = NULL;
 		return -1;
 	}
 }

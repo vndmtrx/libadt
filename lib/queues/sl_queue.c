@@ -26,6 +26,7 @@ int sl_queue_push(sl_queue_root *queue, void *data) {
 
 /*
  * Look the last item of the queue without remove it.
+ * If queue is empty, set data NULL and return -1;
  * Complexity: O(1).
  */
 int sl_queue_peek(sl_queue_root *queue, void **data) {
@@ -33,7 +34,7 @@ int sl_queue_peek(sl_queue_root *queue, void **data) {
 		*data = queue->head->data;
 		return 0;
 	} else {
-		perror("Queue is empty!");
+		*data = NULL;
 		return -1;
 	}
 }
