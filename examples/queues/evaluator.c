@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
 			while (sl_queue_size(queue) > 0) {
 				if (num < (LONG_MAX/10)) {
 					num_converted = 1;
-					sl_queue_pop(queue, (void *) &cm);
+					cm = sl_queue_pop(queue);
 					num = (num * 10) + digit(*cm);
 					free(cm);
 				} else {
-					perror("Number is longer than 'long' type.\n");
+					fprintf(stderr, "Number is longer than 'long' type.\n");
 					return EXIT_FAILURE;
 				}
 			}
@@ -45,7 +45,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	sl_queue_create(queue, &free);
 	free(queue);
 	
 	return EXIT_SUCCESS;
