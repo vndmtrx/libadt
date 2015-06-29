@@ -97,17 +97,17 @@ int main() {
 	print_list(a);
 	
 	printf("##### Test 10 - slist_rem_el - Remove from the head of the list\n");
-	slist_rem_el(a, a->head, (void *) &num);
+	num = slist_rem_el(a, a->head);
 	print_list(a);
 	free(num);
 	
 	printf("##### Test 11 - slist_rem_el - Remove from the middle of the list\n");
-	slist_rem_el(a, a->head->next->next, (void *) &num);
+	num = slist_rem_el(a, a->head->next->next);
 	print_list(a);
 	free(num);
 	
 	printf("##### Test 12 - slist_rem_el - Remove from the tail of the list\n");
-	slist_rem_el(a, a->tail, (void *) &num);
+	num = slist_rem_el(a, a->tail);
 	print_list(a);
 	free(num);
 	

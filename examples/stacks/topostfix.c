@@ -4,6 +4,18 @@
 
 #include <sl_stack.h>
 
+void print_list(sl_stack_root *stack) {
+	slist_node *node = stack->head;
+	printf("[");
+	if (sl_stack_size(stack) > 0) {
+		do {
+			printf("%d, ", *((char *) node->data));
+			node = node->next;
+		} while (node != NULL);
+	}
+	printf("]\n");
+}
+
 int precedence(char op) {
 	if (op == '(') {
 		return 0;
@@ -33,46 +45,46 @@ int main(int argc, char *argv[]) {
 		if (isalpha(c) || isdigit(c)) {
 			printf("%c", c);
 		} else {
-			printf(" ");
 			if (c == '(') {
 				cm = (char *) malloc(sizeof(char));
 				*cm = c;
 				
 				sl_stack_push(stack, cm);
 			} else if (c == ')') {
-				sl_stack_pop(stack, (void *) &cs);
+				cs = sl_stack_pop(stack);
 				while (*cs != '(') {
-					printf("%c ", *cs);
+					printf("%c", *cs);
 					free(cs);
-					if (sl_stack_pop(stack, (void *) &cs) == -1) return EXIT_FAILURE;
+					if ((cs = sl_stack_pop(stack)) == NULL) return EXIT_FAILURE;
 				}
 			} else if (isoperator(c)) {
 				while (sl_stack_size(stack) > 0) {
-					sl_stack_peek(stack, (void *) &cs);
+					cs = sl_stack_peek(stack);
 					if (precedence(*cs) >= precedence(c)) {
-						printf("%c ", *cs);
+						printf("%c", *cs);
 						free(cs);
-						sl_stack_pop(stack, (void *) &cs);
+						cs = sl_stack_pop(stack);
 					} else {
 						break;
 					}
 				}
 				
-				free(cs);
 				cm = (char *) malloc(sizeof(char));
 				*cm = c;
 				
 				sl_stack_push(stack, cm);
+				//print_list(stack);
 			} else {
 				while (sl_stack_size(stack) > 0) {
-					sl_stack_pop(stack, (void *) &cs);
-					printf("%c ", *cs);
+					cs = sl_stack_pop(stack);
+					printf("%c", *cs);
 					free(cs);
 				}
 			}
 		}
 	}
 	
+	free(stack);
 	printf("\n");
 	
 	return EXIT_SUCCESS;

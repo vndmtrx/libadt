@@ -33,12 +33,12 @@ int main() {
 	print_list(a);
 	
 	printf("##### Test 2 - sl_stack_peek - View the top element without pop it from the stack.\n");
-	sl_stack_peek(a, (void *) &num);
+	num = sl_stack_peek(a);
 	printf("Peeked item: %d\n", *num);
 	
 	printf("##### Test 3 - sl_stack_pop - Remove the top element without pop it from the stack.\n");
 	for (int i = 0; i < 5; i++) {
-		sl_stack_pop(a, (void *) &num);
+		num = sl_stack_pop(a);
 		printf("Popped item: %d\n", *num);
 		free(num);
 	}
