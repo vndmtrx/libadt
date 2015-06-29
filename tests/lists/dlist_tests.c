@@ -147,17 +147,17 @@ int main() {
 	print_list(a);
 	
 	printf("##### Test 19 - dlist_rem_el - Remove from the head of the list\n");
-	dlist_rem_el(a, a->head, (void *) &num);
+	num = dlist_rem_el(a, a->head);
 	print_list(a);
 	free(num);
 	
 	printf("##### Test 20 - dlist_rem_el - Remove from the middle of the list\n");
-	dlist_rem_el(a, a->head->next->next, (void *) &num);
+	num = dlist_rem_el(a, a->head->next->next);
 	print_list(a);
 	free(num);
 	
 	printf("##### Test 21 - dlist_rem_el - Remove from the tail of the list\n");
-	dlist_rem_el(a, a->tail, (void *) &num);
+	num = dlist_rem_el(a, a->tail);
 	print_list(a);
 	free(num);
 	

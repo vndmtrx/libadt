@@ -33,12 +33,12 @@ int main() {
 	print_list(a);
 	
 	printf("##### Test 2 - sl_queue_peek - View the last element without pop it from the queue.\n");
-	sl_queue_peek(a, (void *) &num);
+	num = sl_queue_peek(a);
 	printf("Peeked item: %d\n", *num);
 	
 	printf("##### Test 3 - sl_queue_pop - Remove the last element without pop it from the queue.\n");
 	for (int i = 0; i < 5; i++) {
-		sl_queue_pop(a, (void *) &num);
+		num = sl_queue_pop(a);
 		printf("Popped item: %d\n", *num);
 		free(num);
 	}
