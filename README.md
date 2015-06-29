@@ -20,8 +20,8 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 * Singly linked list ([README](lib/lists/README.md#singly-linked-lists));
 * Doubly linked list ([README](lib/lists/README.md#doubly-linked-lists));
-* Queue using singly linked list as infrastructure (README);
-* Stack using singly linked list as infrastructure (README);
+* Queue using singly linked list as infrastructure ([README](lib/queues/README.md));
+* Stack using singly linked list as infrastructure ([README](lib/stacks/README.md));
 
 But this repository is in its very beginning and another structures will come in time.
 
