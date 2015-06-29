@@ -4,6 +4,6 @@
 include examples/queues/build.mk
 
 # STACKS
-#include tests/stacks/build.mk
+include examples/stacks/build.mk
 
-mk_examples: evaluator
+mk_examples: evaluator topostfix

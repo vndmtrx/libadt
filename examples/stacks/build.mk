@@ -1,17 +1,18 @@
-## Build target for Queue examples
+## Build target for Stack examples
 
 # Queues
-build/evaluator.o: examples/queues/evaluator.c | build
+build/topostfix.o: examples/stacks/topostfix.c | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/evaluator: examples/queues/evaluator.o build/sl_queue.o
+build/topostfix: examples/stacks/topostfix.o build/sl_stack.o
 	$(CC) $(LDFLAGS) $^ -o $@
 
-evaluator: build/evaluator
+topostfix: build/topostfix
 
-evaluator_test: evaluator
+topostfix_test: topostfix
 	echo "123+45+98534" | ./build/$^
 	echo "123+45-STRING&8+98534" | ./build/$^
 
-evaluator_vg: evaluator
+topostfix_vg: topostfix
 	echo "123+45+98534-1326847#123276!438947StRiNg222*11111" | valgrind -v --leak-check=full build/$^
+
