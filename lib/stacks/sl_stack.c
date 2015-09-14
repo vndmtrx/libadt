@@ -34,7 +34,6 @@ int sl_stack_push(sl_stack_root *stack, void *data) {
 void * sl_stack_peek(sl_stack_root *stack) {
 	if (slist_size(stack) > 0) {
 		return stack->head->data;
-		return 0;
 	} else {
 		return NULL;
 	}
