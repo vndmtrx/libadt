@@ -9,12 +9,12 @@ The principal benefit of a linked list over a conventional array is that the lis
 
 The common operations executed on lists are the following:
 
- * create() - Create the list structure;
- * insert() - Add an element in the list, either on specific position or in the the list edges;
- * move() - Change position of one element on the list;
- * swap() - Change the position of two elements on the list;
- * remove() - Drop an element from the list, returning its data;
- * destroy() - Destroy the list structure. If there is elements in it, they are destroyed also.
+ * _create()_ - Create the list structure;
+ * _insert()_ - Add an element in the list, either on specific position or in the the list edges;
+ * _move()_ - Change position of one element on the list;
+ * _swap()_ - Change the position of two elements on the list;
+ * _remove()_ - Drop an element from the list, returning its data;
+ * _destroy()_ - Destroy the list structure. If there is elements in it, they are destroyed also.
 
 Singly Linked Lists
 -------------------
@@ -27,12 +27,12 @@ On the other hand, singly linked lists by themselves do not allow random access 
 
 function name | complexity | explanation
 :-- | :--:  |:--
-slist_create | O(1) | 
-slist_insert_el_next | O(1) | 
-slist_move_el | O(n)| because it needs to find prior element
-slist_swap_el | O(n) | because it needs to find prior element
-slist_rem_el | O(n) | O(1) if remove the head element
-slist_destroy | O(n) | removing in the head avoids the O(n^2)
+_slist_create_ | O(1) | 
+_slist_insert_el_next_ | O(1) | 
+_slist_move_el_ | O(n)| because it needs to find prior element
+_slist_swap_el_ | O(n) | because it needs to find prior element
+_slist_rem_el_ | O(n) | O(1) if remove the head element
+_slist_destroy_ | O(n) | removing in the head avoids the O(n^2)
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
 
@@ -47,13 +47,13 @@ The two node links allow traversal of the list in either direction. While adding
 
 function name | complexity | explanation
 :-- | :--:  |:--
-dlist_create | O(1) | 
-dlist_insert_el_next | O(1) | 
-dlist_insert_el_prev | O(1) | 
-dlist_move_el_next | O(1)| 
-dlist_move_el_prev | O(1)| 
-dlist_swap_el | O(1) | two move operations
-dlist_rem_el | O(1) | 
-dlist_destroy | O(n) | 
+_dlist_create_ | O(1) | 
+_dlist_insert_el_next_ | O(1) | 
+_dlist_insert_el_prev_ | O(1) | 
+_dlist_move_el_next_ | O(1)| 
+_dlist_move_el_prev_ | O(1)| 
+_dlist_swap_el_ | O(1) | two move operations
+_dlist_rem_el_ | O(1) | 
+_dlist_destroy_ | O(n) | 
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list)
