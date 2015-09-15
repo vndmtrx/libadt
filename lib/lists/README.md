@@ -23,7 +23,7 @@ Singly linked lists are among the simplest and most common data structures. They
 
 On the other hand, singly linked lists by themselves do not allow random access to the data, or any form of efficient indexing. Thus, many basic operations — such as obtaining the last node of the list (assuming that the last node is not maintained as separate node reference in the list structure), or finding a node that contains a given datum, or locating the place where a new node should be inserted — may require sequential scanning of most or all of the list elements.
 
-### Operations and complexities
+### Implementation and complexities
 
 function name | complexity | explanation
 :-- | :--:  |:--
@@ -43,7 +43,7 @@ Like singly linked lists, doubly-linked list is a linked data structure that con
 
 The two node links allow traversal of the list in either direction. While adding or removing a node in a doubly-linked list requires changing more links than the same operations on a singly linked list, the operations are simpler and potentially more efficient (for nodes other than first nodes) because there is no need to keep track of the previous node during traversal or no need to traverse the list to find the previous node, so that its link can be modified.
 
-### Operations and complexities
+### Implementation and complexities
 
 function name | complexity | explanation
 :-- | :--:  |:--
