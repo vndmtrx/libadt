@@ -12,7 +12,7 @@ More on [Wikipedia](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
 The common ADT operations executed on queues are the following:
 
 * _create()_ - Create the queue structure;
-* _push()_ - Insert an element in the queue, in the head;
+* _push()_ - Insert an element on the queue, in the head;
 * _peek()_ - Look for the tail of the queue, without remove the element from the queue;
 * _pop()_ - Remove the tail element of the queue;
 * _destroy()_ - Destroy the queue structure. If there are elements in it, they are destroyed also.
