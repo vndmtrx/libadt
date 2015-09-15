@@ -5,7 +5,7 @@ A deque (Double Ended QUEue) is an abstract data type that generalizes a queue a
 
 This is similar to a data structure of queue or stack. The difference is that the data can be read, inserted or removed at both ends.
 
-Deques can be used in job scheduling and to implement non-deterministic finite automata. For the first, a special type of job scheduling, called A-Steal, implements a task scheduler for several processors. For Each processor, it is maintained a deque with threads to be executed. The next thread to be executed by an specific processor is caught from the head of the deque. When a processor finishes execution of its own threads, it can "steal" a thread from another processor. In this case, the stolen thread is caught from the tail of the deque.
+Deques can be used in job scheduling and to implement non-deterministic finite automata. For the first, a special type of job scheduling, called A-Steal, implements a task scheduler for several processors. For Each processor, it is maintained a deque with threads to be executed. The next thread to be executed by an specific processor is caught from the head of the deque. When a processor finishes execution of its own threads, it can "steal" a thread from another processor. In this case, the stolen thread is caught from the tail of the deque. Another common application of the deque is storing a software application's list of undo operations.
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Double-ended_queue)
 
