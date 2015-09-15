@@ -42,6 +42,10 @@ Once completed, the next to be implemented are as follows:
 * Sparse Matrix;
 * Stack and Queue using Tree as infrastructure;
 
+### Naming structure
+
+In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "SL_" for use internally a simple linked list, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
+
 ### Future and beyond...
 
 There is no future set. Getting to the point we implement all the most common and important structures, other focuses will be defined, always having its focus on the learning provided to the person who will use these structures.
