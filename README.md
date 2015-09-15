@@ -29,7 +29,7 @@ But this repository is in its very beginning and another structures will come in
 
 At the present time, the following structures are being implemented:
 
-* Deque using doubly linked list as infrastructure([README](lib/deques/README.md));
+* Deque using doubly linked list as infrastructure ([README](lib/deques/README.md));
 * Queue and Stack using deque as infrastructure;
 
 Once completed, the next to be implemented are as follows:
