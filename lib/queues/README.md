@@ -25,4 +25,4 @@ _sl_queue_create_ | O(1) |
 _sl_queue_push_ | O(1) | 
 _sl_queue_peek_ | O(1)| 
 _sl_queue_pop_ | O(1) | 
-_sl_queue_destroy_ | O(n) | removing in the head avoids the O(n^2)
+_sl_queue_destroy_ | O(n) | 
