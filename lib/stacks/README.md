@@ -13,8 +13,8 @@ The common ADT operations executed on queues are the following:
 
 * _create()_ - Create the queue structure;
 * _push()_ - Insert an element on the head of the stack;
-* _peek()_ - Look for the head of the stack, without remove the element;
-* _pop()_ - Remove the head element of the stack;
+* _peek()_ - Look for the head of the stack, without remove it;
+* _pop()_ - Remove the head element of the stack, returning it;
 * _destroy()_ - Destroy the stack structure. If there are elements in it, they are destroyed also.
 
 ### Stack implementation and complexities
