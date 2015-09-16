@@ -9,5 +9,5 @@ include lib/queues/build.mk
 #STACKS - Build target for Stacks
 include lib/stacks/build.mk
 
-#STACKS - Build target for Deques
+#DEQUES - Build target for Deques
 include lib/deques/build.mk
