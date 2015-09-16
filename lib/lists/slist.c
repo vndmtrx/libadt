@@ -1,7 +1,7 @@
+#include <slist.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <slist.h>
 
 /*
  * Local function used to find the prior element of a item in the list.

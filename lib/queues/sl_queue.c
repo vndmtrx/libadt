@@ -1,7 +1,7 @@
+#include <sl_queue.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <sl_queue.h>
 
 /* 
  * Create a empty queue structure and set a destroy function for its elements.

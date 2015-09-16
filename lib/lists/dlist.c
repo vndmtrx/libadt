@@ -1,7 +1,7 @@
+#include <dlist.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <dlist.h>
 
 /* 
  * Create a empty list structure, set a destroy function for its elements.

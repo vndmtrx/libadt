@@ -1,7 +1,7 @@
+#include <sl_stack.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <sl_stack.h>
 
 /* 
  * Create a empty stack structure (LiFo - Last In / First Out) and set a

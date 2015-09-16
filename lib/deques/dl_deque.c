@@ -1,7 +1,7 @@
+#include <dl_deque.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <dl_deque.h>
 
 void dl_deque_create(dl_deque_root *deque, t_destroyfunc destroyfunc) {
 	dlist_create(deque, destroyfunc);
