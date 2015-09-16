@@ -1,5 +1,7 @@
 #include <dl_deque.h>
 
+#include <dlist.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 

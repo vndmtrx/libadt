@@ -2,9 +2,7 @@
 #define _LIBADT_SL_STACK_H
 
 #include <adt_commons.h>
-#include <slist.h>
-
-typedef slist_root sl_stack_root;
+#include <sl_stack_decl.h>
 
 /* 
  * Create a empty stack structure (FiLo - First In / Last Out) and set a
@@ -47,6 +45,6 @@ void * sl_stack_pop(sl_stack_root *stack);
  */
 void sl_stack_destroy(sl_stack_root *stack);
 
-#define sl_stack_size(stack) ((stack) ->size)
+int sl_stack_size(sl_stack_root *stack);
 
 #endif

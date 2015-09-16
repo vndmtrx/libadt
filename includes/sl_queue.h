@@ -2,9 +2,7 @@
 #define _LIBADT_SL_QUEUE_H
 
 #include <adt_commons.h>
-#include <slist.h>
-
-typedef slist_root sl_queue_root;
+#include <sl_queue_decl.h>
 
 /* 
  * Create a empty queue structure (FiFo - Fist In / First Out) and set a
@@ -47,6 +45,6 @@ void * sl_queue_pop(sl_queue_root *queue);
  */
 void sl_queue_destroy(sl_queue_root *queue);
 
-#define sl_queue_size(queue) ((queue) ->size)
+int sl_queue_size(sl_queue_root *queue);
 
 #endif

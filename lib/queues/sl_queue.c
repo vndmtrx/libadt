@@ -1,5 +1,7 @@
 #include <sl_queue.h>
 
+#include <slist.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,7 +32,7 @@ int sl_queue_push(sl_queue_root *queue, void *data) {
  * Complexity: O(1).
  */
 void * sl_queue_peek(sl_queue_root *queue) {
-	if (slist_size(queue) > 0) {
+	if (sl_queue_size(queue) > 0) {
 		return queue->head->data;
 	} else {
 		fprintf(stderr, "Queue is empty!");
@@ -45,7 +47,7 @@ void * sl_queue_peek(sl_queue_root *queue) {
  * Complexity: O(1).
  */
 void * sl_queue_pop(sl_queue_root *queue) {
-	if (slist_size(queue) > 0) {
+	if (sl_queue_size(queue) > 0) {
 		return slist_rem_el(queue, queue->head);
 	} else {
 		fprintf(stderr, "Queue is empty!");
@@ -60,4 +62,8 @@ void * sl_queue_pop(sl_queue_root *queue) {
  */
 void sl_queue_destroy(sl_queue_root *queue) {
 	slist_destroy(queue);
+}
+
+int sl_queue_size(sl_queue_root *queue) {
+	return slist_size(queue);
 }

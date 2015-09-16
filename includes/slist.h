@@ -3,9 +3,7 @@
 
 #include <adt_commons.h>
 
-typedef struct _slist_root slist_root;
-
-typedef struct _slist_node slist_node;
+#include <slist_decl.h>
 
 struct _slist_root {
 	int size;			// Size of the list structure.

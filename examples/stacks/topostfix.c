@@ -4,18 +4,6 @@
 
 #include <sl_stack.h>
 
-void print_list(sl_stack_root *stack) {
-	slist_node *node = stack->head;
-	printf("[");
-	if (sl_stack_size(stack) > 0) {
-		do {
-			printf("%d, ", *((char *) node->data));
-			node = node->next;
-		} while (node != NULL);
-	}
-	printf("]\n");
-}
-
 int precedence(char op) {
 	if (op == '(') {
 		return 0;
@@ -72,7 +60,6 @@ int main(int argc, char *argv[]) {
 				*cm = c;
 				
 				sl_stack_push(stack, cm);
-				//print_list(stack);
 			} else {
 				while (sl_stack_size(stack) > 0) {
 					cs = sl_stack_pop(stack);

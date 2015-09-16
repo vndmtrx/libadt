@@ -2,9 +2,7 @@
 #define _LIBADT_DL_DEQUE_H
 
 #include <adt_commons.h>
-#include <dlist.h>
-
-typedef dlist_root dl_deque_root;
+#include <dl_deque_decl.h>
 
 void dl_deque_create(dl_deque_root *deque, t_destroyfunc destroyfunc);
 
