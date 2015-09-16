@@ -14,8 +14,8 @@
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void sl_stack_create(sl_stack_root *stack, t_destroyfunc destroyfunc) {
-	slist_create(stack, destroyfunc);
+sl_stack_root * sl_stack_create(t_destroyfunc destroyfunc) {
+	return slist_create(destroyfunc);
 }
 
 /*

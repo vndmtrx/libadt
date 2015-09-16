@@ -1,11 +1,11 @@
 #ifndef _LIBADT_SLIST_H
 #define _LIBADT_SLIST_H
 
+#include <adt_commons.h>
+
 typedef struct _slist_root slist_root;
 
 typedef struct _slist_node slist_node;
-
-typedef void (*t_destroyfunc)(void *data);
 
 struct _slist_root {
 	int size;			// Size of the list structure.
@@ -29,7 +29,7 @@ struct _slist_node {
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, t_destroyfunc destroyfunc);
+slist_root * slist_create(t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the list after the current element indicated.

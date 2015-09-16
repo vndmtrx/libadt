@@ -1,6 +1,7 @@
 #ifndef _LIBADT_SL_QUEUE_H
 #define _LIBADT_SL_QUEUE_H
 
+#include <adt_commons.h>
 #include <slist.h>
 
 typedef slist_root sl_queue_root;
@@ -16,7 +17,7 @@ typedef slist_root sl_queue_root;
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void sl_queue_create(sl_queue_root *queue, t_destroyfunc destroyfunc);
+sl_queue_root * sl_queue_create(t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the queue.

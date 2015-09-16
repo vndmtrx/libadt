@@ -36,11 +36,13 @@ static slist_node *slist_find_prior(slist_root *list, slist_node *current) {
  * memory outside, NULL must be set.
  * Complexity: O(1).
  */
-void slist_create(slist_root *list, t_destroyfunc destroyfunc) {
+slist_root * slist_create(t_destroyfunc destroyfunc) {
+	slist_root *list = (slist_root *) malloc(sizeof(slist_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	return list;
 }
 
 /*
@@ -216,4 +218,5 @@ void slist_destroy(slist_root *list) {
 			list->destroyfunc(data);
 		}
 	}
+	free(list);
 }

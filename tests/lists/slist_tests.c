@@ -37,8 +37,7 @@ int main() {
 	slist_root *a;
 	int *num;
 	
-	a = (slist_root *) malloc(sizeof(slist_root));
-	slist_create(a, &free);
+	a = slist_create(&free);
 	
 	printf("##### Test 1 - slist_insert_el_next - Insert in the head of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -113,8 +112,6 @@ int main() {
 	
 	printf("##### Test 13 - slist_destroy - Destroy list (call destroyfunc for every member)\n");
 	slist_destroy(a);
-	print_list(a);
 	
-	free(a);
 	return EXIT_SUCCESS;
 }

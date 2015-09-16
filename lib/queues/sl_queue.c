@@ -12,8 +12,8 @@
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void sl_queue_create(sl_queue_root *queue, t_destroyfunc destroyfunc) {
-	slist_create(queue, destroyfunc);
+sl_queue_root * sl_queue_create(t_destroyfunc destroyfunc) {
+	return slist_create(destroyfunc);
 }
 
 /*

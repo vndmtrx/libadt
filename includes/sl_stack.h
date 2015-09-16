@@ -1,6 +1,7 @@
 #ifndef _LIBADT_SL_STACK_H
 #define _LIBADT_SL_STACK_H
 
+#include <adt_commons.h>
 #include <slist.h>
 
 typedef slist_root sl_stack_root;
@@ -16,7 +17,7 @@ typedef slist_root sl_stack_root;
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void sl_stack_create(sl_stack_root *stack, t_destroyfunc destroyfunc);
+sl_stack_root * sl_stack_create(t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the stack.

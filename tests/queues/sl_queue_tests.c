@@ -21,8 +21,7 @@ int main() {
 	sl_queue_root *a;
 	int *num;
 	
-	a = (sl_queue_root *) malloc(sizeof(sl_queue_root));
-	sl_queue_create(a, &free);
+	a = sl_queue_create(&free);
 	
 	printf("##### Test 1 - sl_queue_push - Insert element in the queue.\n");
 	for (int i = 0; i < QTD; i++) {
@@ -46,8 +45,6 @@ int main() {
 	
 	printf("##### Test 2 - sl_queue_destroy - Destroy queue (call destroyfunc for every member).\n");
 	sl_queue_destroy(a);
-	print_list(a);
 	
-	free(a);
 	return EXIT_SUCCESS;
 }

@@ -38,8 +38,7 @@ int main(int argc, char *argv[]) {
 	char c;
 	char *cm, *cs;
 	
-	sl_stack_root *stack = (sl_stack_root *) malloc(sizeof(sl_stack_root));
-	sl_stack_create(stack, &free);
+	sl_stack_root *stack = sl_stack_create(&free);
 	
 	while ((c = fgetc(stdin)) != EOF) {
 		if (isalpha(c) || isdigit(c)) {
@@ -84,7 +83,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	free(stack);
+	sl_stack_destroy(stack);
 	printf("\n");
 	
 	return EXIT_SUCCESS;

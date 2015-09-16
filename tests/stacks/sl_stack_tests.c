@@ -21,8 +21,7 @@ int main() {
 	sl_stack_root *a;
 	int *num;
 	
-	a = (sl_stack_root *) malloc(sizeof(sl_stack_root));
-	sl_stack_create(a, &free);
+	a = sl_stack_create(&free);
 	
 	printf("##### Test 1 - sl_stack_push - Insert element in the stack.\n");
 	for (int i = 0; i < QTD; i++) {
@@ -46,8 +45,6 @@ int main() {
 	
 	printf("##### Test 2 - sl_stack_destroy - Destroy stack (call destroyfunc for every member).\n");
 	sl_stack_destroy(a);
-	print_list(a);
 	
-	free(a);
 	return EXIT_SUCCESS;
 }

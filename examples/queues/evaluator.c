@@ -11,8 +11,7 @@ int main(int argc, char *argv[]) {
 	char c;
 	char *cm;
 	long num;
-	sl_queue_root *queue = (sl_queue_root *) malloc(sizeof(sl_queue_root));
-	sl_queue_create(queue, &free);
+	sl_queue_root *queue = sl_queue_create(&free);
 	
 	while ((c = fgetc(stdin)) != EOF) {
 		if (isdigit(c)) {
@@ -45,7 +44,8 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	free(queue);
+	sl_queue_destroy(queue);
+	printf("\n");
 	
 	return EXIT_SUCCESS;
 }

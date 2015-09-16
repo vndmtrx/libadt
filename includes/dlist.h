@@ -1,11 +1,11 @@
 #ifndef _LIBADT_DLIST_H
 #define _LIBADT_DLIST_H
 
+#include <adt_commons.h>
+
 typedef struct _dlist_root dlist_root;
 
 typedef struct _dlist_node dlist_node;
-
-typedef void (*t_destroyfunc)(void *data);
 
 struct _dlist_root {
 	int size;			// Size of the list structure.
