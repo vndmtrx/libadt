@@ -39,7 +39,7 @@ void * sl_stack_peek(sl_stack_root *stack);
 void * sl_stack_pop(sl_stack_root *stack);
 
 /*
- * Destroy the stack and the elements in it. If destroy function is provided,
+ * Destroy the stack and its elements, if have any. If destroy function is provided,
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */

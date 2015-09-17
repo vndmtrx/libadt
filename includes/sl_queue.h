@@ -39,7 +39,7 @@ void * sl_queue_peek(sl_queue_root *queue);
 void * sl_queue_pop(sl_queue_root *queue);
 
 /*
- * Destroy the queue and the elements in it. If destroy function is provided,
+ * Destroy the queue and its elements, if have any. If destroy function is provided,
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */

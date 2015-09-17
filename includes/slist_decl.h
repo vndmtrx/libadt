@@ -1,6 +1,11 @@
 #ifndef _LIBADT_SLIST_DECL_H
 #define _LIBADT_SLIST_DECL_H
 
+/*
+ * Type declaration for use with imports that require only the type, not
+ * the function prototypes. 
+ */
+
 struct _slist_root;
 
 struct _slist_node;

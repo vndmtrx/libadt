@@ -3,6 +3,11 @@
 
 #include <slist_decl.h>
 
+/*
+ * Type declaration for use with imports that require only the type, not
+ * the function prototypes. 
+ */
+
 typedef slist_root sl_queue_root;
 
 #endif
