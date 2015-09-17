@@ -3,15 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 
- * Create a empty list structure, set a destroy function for its elements.
- * The destroy argument gives a way to free the entire structure when we
- * call dlist_destroy. For malloc/calloc data, free must be used. If data
- * is a struct with other members, a function designed to free its memory
- * must be provided. If the data is static or have another way to free its
- * memory, NULL must be set.
- * Complexity: O(1).
- */
 void dlist_create(dlist_root *list, t_destroyfunc destroyfunc) {
 	list->size = 0;
 	list->head = NULL;
@@ -19,11 +10,6 @@ void dlist_create(dlist_root *list, t_destroyfunc destroyfunc) {
 	list->destroyfunc = destroyfunc;
 }
 
-/*
- * Insert an element in the list after the current element indicated.
- * If *current is NULL, *data is appended on the head.
- * Complexity: O(1).
- */
 int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
 	dlist_node *new = (dlist_node *) malloc(sizeof(dlist_node));
 	if (new == NULL) {
@@ -56,11 +42,6 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
 	return 0;
 }
 
-/*
- * Insert an element in the list before the current element indicated.
- * If *current is NULL, *data is appended on the tail.
- * Complexity: O(1).
- */
 int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
 	dlist_node *new = (dlist_node *) malloc(sizeof(dlist_node));
 	if (new == NULL) {
@@ -93,10 +74,6 @@ int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
 	return 0;
 }
 
-/*
- * Move an element after the newpos element indicated.
- * Complexity: O(1).
- */
 int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos) {
 	if (dlist_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
@@ -133,10 +110,6 @@ int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos
 	}
 }
 
-/*
- * Move an element before the newpos element indicated.
- * Complexity: O(1).
- */
 int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos) {
 	if (dlist_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
@@ -173,10 +146,6 @@ int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos
 	}
 }
 
-/*
- * Change positions of the two elements on the list.
- * Complexity: O(1).
- */
 int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
 		dlist_node *p_el1, *n_el1, *p_el2, *n_el2;
@@ -205,11 +174,6 @@ int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2) {
 	}
 }
 
-/*
- * Remove the element indicated by *current and save the respective 
- * data in **data.
- * Compĺexity: O(1).
- */
 void * dlist_rem_el(dlist_root *list, dlist_node *current) {
 	void *data;
 	if (current != NULL) {
@@ -243,11 +207,6 @@ void * dlist_rem_el(dlist_root *list, dlist_node *current) {
 	}
 }
 
-/*
- * Destroy the list and the elements in it. If destroy function is provided,
- * it will be used.
- * Complexity: O(n).
- */
 void dlist_destroy(dlist_root *list) {
 	void *data;
 	while (dlist_size(list) > 0) {

@@ -3,11 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * Local function used to find the prior element of a item in the list.
- * Only usable on single linked lists by the lack of prior pointer.
- * Complexity: O(n)
- */
 static slist_node *slist_find_prior(slist_root *list, slist_node *current) {
 	if (current != NULL) {
 		slist_node *node = list->head;
@@ -27,15 +22,6 @@ static slist_node *slist_find_prior(slist_root *list, slist_node *current) {
 	}
 }
 
-/* 
- * Create a empty list structure, set a destroy function for its elements.
- * The destroy argument gives a way to free the entire structure when we
- * call slist_destroy. For malloc/calloc data, free must be used. If data
- * is a struct with other members, a function designed to free its memory
- * can be provided. If the data is static or have another way to free its
- * memory outside, NULL must be set.
- * Complexity: O(1).
- */
 slist_root * slist_create(t_destroyfunc destroyfunc) {
 	slist_root *list = (slist_root *) malloc(sizeof(slist_root));
 	list->size = 0;
@@ -45,11 +31,6 @@ slist_root * slist_create(t_destroyfunc destroyfunc) {
 	return list;
 }
 
-/*
- * Insert an element in the list after the current element indicated.
- * If *current is NULL, *data is appended on the head.
- * Complexity: O(1).
- */
 int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 	slist_node *new = (slist_node *) malloc(sizeof(slist_node));
 	if (new == NULL) {
@@ -77,10 +58,6 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 	return 0;
 }
 
-/*
- * Move an element to the position of newpos element.
- * Complexity: O(n).
- */
 int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
 	if (slist_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
@@ -122,10 +99,6 @@ int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
 	}
 }
 
-/*
- * Change positions of the two elements on the list.
- * Complexity: O(n).
- */
 int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
 		slist_node *p1, *p2, *n1, *n2;
@@ -162,11 +135,6 @@ int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
 	}
 }
 
-/*
- * Remove the element indicated by *current and save the respective 
- * data in **data.
- * Compĺexity: O(n).
- */
 void * slist_rem_el(slist_root *list, slist_node *current) {
 	void *data;
 	if (current != NULL) {
@@ -205,11 +173,6 @@ void * slist_rem_el(slist_root *list, slist_node *current) {
 	}
 }
 
-/*
- * Destroy the list and the elements in it. If destroy function is provided,
- * it will be used.
- * Complexity: O(n).
- */
 void slist_destroy(slist_root *list) {
 	void *data;
 	while (slist_size(list) > 0) {
