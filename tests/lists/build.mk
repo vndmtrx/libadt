@@ -3,31 +3,31 @@
 list_tests: slist_tests dlist_tests
 
 # Single Linked List
-build/slist_tests.o: tests/lists/slist_tests.c | build
+$(addprefix $(BUILD_DIR), slist_tests.o): $(addprefix $(TESTS_DIR), lists/slist_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/slist_tests: build/slist_tests.o build/slist.o
+$(addprefix $(BUILD_DIR), slist_tests): $(addprefix $(BUILD_DIR), slist_tests.o slist.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-slist_tests: build/slist_tests
+slist_tests: $(addprefix $(BUILD_DIR), slist_tests)
 
 slist_time: slist_tests
-	/usr/bin/time -v build/$^
+	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
 slist_vg: slist_tests
-	valgrind -v --leak-check=full build/$^
+	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)
 
 # Double Linked List
-build/dlist_tests.o: tests/lists/dlist_tests.c | build
+$(addprefix $(BUILD_DIR), dlist_tests.o): $(addprefix $(TESTS_DIR), lists/dlist_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/dlist_tests: build/dlist_tests.o build/dlist.o
+$(addprefix $(BUILD_DIR), dlist_tests): $(addprefix $(BUILD_DIR), dlist_tests.o dlist.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-dlist_tests: build/dlist_tests
+dlist_tests: $(addprefix $(BUILD_DIR), dlist_tests)
 
 dlist_time: dlist_tests
-	/usr/bin/time -v build/$^
+	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
 dlist_vg: dlist_tests
-	valgrind -v --leak-check=full build/$^
+	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)

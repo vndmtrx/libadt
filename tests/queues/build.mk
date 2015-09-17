@@ -3,16 +3,16 @@
 queue_tests: sl_queue_tests
 
 # Queues
-build/sl_queue_tests.o: tests/queues/sl_queue_tests.c | build
+$(addprefix $(BUILD_DIR), sl_queue_tests.o): $(addprefix $(TESTS_DIR), queues/sl_queue_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/sl_queue_tests: build/sl_queue_tests.o build/sl_queue.o
+$(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_queue.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-sl_queue_tests: build/sl_queue_tests
+sl_queue_tests: $(addprefix $(BUILD_DIR), sl_queue_tests)
 
 sl_queue_time: sl_queue_tests
-	/usr/bin/time -v build/$^
+	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
 sl_queue_vg: sl_queue_tests
-	valgrind -v --leak-check=full build/$^
+	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)

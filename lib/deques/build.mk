@@ -1,10 +1,8 @@
 # Build target for doubly-list-backed deque
-build/dl_deque.partial: lib/deques/dl_deque.c includes/dl_deque.h includes/dlist.h | build
+$(addprefix $(BUILD_DIR), dl_deque.partial): $(addprefix $(LIB_DIR), deques/dl_deque.c) $(addprefix $(INC_DIR), dl_deque.h dlist.h) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
-build/dl_deque.o: build/dl_deque.partial build/dlist.o
+$(addprefix $(BUILD_DIR), dl_deque.o): $(addprefix $(BUILD_DIR), dl_deque.partial dlist.o)
 	ld $(LDFLAGS) -r $^ -o $@
 
-# Build target for Double Linked List
-#build/dlist.o: lib/lists/dlist.c includes/dlist.h | build
-#	$(CC) $(CFLAGS) -c $< -o $@
+dl_deque.o: $(addprefix $(BUILD_DIR), dl_deque.o)

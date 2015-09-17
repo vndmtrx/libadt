@@ -1,13 +1,15 @@
 #Compilation rules for lib items.
 
 #LISTS - Build target for Linked Lists
-include lib/lists/build.mk
+include $(addprefix $(LIB_DIR), lists/build.mk)
 
 #QUEUES - Build target for Queues
-include lib/queues/build.mk
+include $(addprefix $(LIB_DIR), queues/build.mk)
 
 #STACKS - Build target for Stacks
-include lib/stacks/build.mk
+include $(addprefix $(LIB_DIR), stacks/build.mk)
 
 #DEQUES - Build target for Deques
-include lib/deques/build.mk
+include $(addprefix $(LIB_DIR), deques/build.mk)
+
+libs: slist.o dlist.o sl_stack.o sl_queue.o dl_deque.o

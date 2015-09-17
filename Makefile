@@ -1,28 +1,36 @@
+ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+INC_DIR := $(addprefix $(ROOT_DIR), includes/)
+LIB_DIR := $(addprefix $(ROOT_DIR), lib/)
+TESTS_DIR := $(addprefix $(ROOT_DIR), tests/)
+EXAMPLES_DIR := $(addprefix $(ROOT_DIR), examples/)
+BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
+
 CC=gcc
 LD=gcc
-CFLAGS=-Iincludes -g -Wall -Werror -std=c99 -pedantic-errors
+CFLAGS=-I$(INC_DIR) -g -Wall -Werror -std=c99 -pedantic-errors
 LDFLAGS=
+
 
 .PHONY: clean
 
-all: mk_tests mk_examples
+all: libs
 
 # Source Files
 
-include lib/lib.mk
+include $(addprefix $(LIB_DIR), lib.mk)
 
 #Tests
 
-include tests/tests.mk
+include $(addprefix $(TESTS_DIR), tests.mk)
 
 #Examples
 
-include examples/examples.mk
+include $(addprefix $(EXAMPLES_DIR), examples.mk)
 
 #Helpers
 
 build:
-	mkdir -p $@
+	mkdir -p $(BUILD_DIR)
 
 clean:
-	rm -rfv build/
+	rm -rfv $(BUILD_DIR)

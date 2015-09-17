@@ -1,7 +1,11 @@
 # Build target for Single Linked List
-build/slist.o: lib/lists/slist.c includes/slist.h | build
+$(addprefix $(BUILD_DIR), slist.o): $(addprefix $(LIB_DIR), lists/slist.c) $(addprefix $(INC_DIR), slist.h) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Build target for Double Linked List
-build/dlist.o: lib/lists/dlist.c includes/dlist.h | build
+$(addprefix $(BUILD_DIR), dlist.o): $(addprefix $(LIB_DIR), lists/dlist.c) $(addprefix $(INC_DIR), dlist.h) | build
 	$(CC) $(CFLAGS) -c $< -o $@
+
+slist.o: $(addprefix $(BUILD_DIR), slist.o)
+
+dlist.o: $(addprefix $(BUILD_DIR), dlist.o)

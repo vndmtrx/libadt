@@ -1,14 +1,14 @@
 # Compilation rules for lib tests.
 
 # LISTS
-include tests/lists/build.mk
+include $(addprefix $(TESTS_DIR), lists/build.mk)
 
 # QUEUES
-include tests/queues/build.mk
+include $(addprefix $(TESTS_DIR), queues/build.mk)
 
 # STACKS
-include tests/stacks/build.mk
+include $(addprefix $(TESTS_DIR), stacks/build.mk)
 
-mk_tests: list_tests queue_tests stack_tests
+tests: list_tests queue_tests stack_tests
 
 vg_tests: slist_vg dlist_vg sl_queue_vg sl_stack_vg

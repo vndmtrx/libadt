@@ -1,9 +1,9 @@
 # Compilation rules for lib examples.
 
 # QUEUES
-include examples/queues/build.mk
+include $(addprefix $(EXAMPLES_DIR), queues/build.mk)
 
 # STACKS
-include examples/stacks/build.mk
+include $(addprefix $(EXAMPLES_DIR), stacks/build.mk)
 
-mk_examples: evaluator topostfix
+examples: evaluator topostfix
