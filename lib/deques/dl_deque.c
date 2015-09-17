@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 void dl_deque_create(dl_deque_root *deque, t_destroyfunc destroyfunc) {
 	dlist_create(deque, destroyfunc);
 }
@@ -54,5 +55,9 @@ void * dl_deque_pop(dl_deque_root *deque) {
 }
 
 void dl_deque_destroy(dl_deque_root *deque) {
-	
+	dlist_destroy(deque);
+}
+
+int dl_deque_size(dl_deque_root *deque) {
+	return dlist_size(deque);
 }
