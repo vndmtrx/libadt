@@ -70,7 +70,7 @@ int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
 void * dlist_rem_el(dlist_root *list, dlist_node *current);
 
 /*
- * Destroy the list and the elements in it. If destroy function is provided,
+ * Destroy the list and its elements, if have any. If destroy function is provided,
  * it will be used.
  * Complexity: O(n).
  */
