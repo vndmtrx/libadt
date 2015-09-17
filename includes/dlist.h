@@ -28,7 +28,7 @@ struct _dlist_node {
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void dlist_create(dlist_root *list, t_destroyfunc destroyfunc);
+dlist_root * dlist_create(t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the list after the current element indicated.

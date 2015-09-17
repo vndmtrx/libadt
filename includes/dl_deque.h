@@ -15,7 +15,7 @@
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-void dl_deque_create(dl_deque_root *deque, t_destroyfunc destroyfunc);
+dl_deque_root * dl_deque_create(t_destroyfunc destroyfunc);
 
 /*
  * Insert an element in the rear of the deque.

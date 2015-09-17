@@ -43,8 +43,7 @@ int main() {
 	dlist_root *a;
 	int *num;
 	
-	a = (dlist_root *) malloc(sizeof(dlist_root));
-	dlist_create(a, &free);
+	a = dlist_create(&free);
 	
 	printf("##### Test 1 - dlist_insert_el_next - Insert in the head of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -163,8 +162,6 @@ int main() {
 	
 	printf("##### Test 22 - dlist_destroy - Destroy list (call destroyfunc for every member)\n");
 	dlist_destroy(a);
-	print_list(a);
 	
-	free(a);
 	return EXIT_SUCCESS;
 }

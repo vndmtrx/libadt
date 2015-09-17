@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dlist_create(dlist_root *list, t_destroyfunc destroyfunc) {
+dlist_root * dlist_create(t_destroyfunc destroyfunc) {
+	dlist_root *list = (dlist_root *) malloc(sizeof(dlist_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	return list;
 }
 
 int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
@@ -215,4 +217,5 @@ void dlist_destroy(dlist_root *list) {
 			list->destroyfunc(data);
 		}
 	}
+	free(list);
 }

@@ -6,8 +6,8 @@
 #include <stdlib.h>
 
 
-void dl_deque_create(dl_deque_root *deque, t_destroyfunc destroyfunc) {
-	dlist_create(deque, destroyfunc);
+dl_deque_root * dl_deque_create(t_destroyfunc destroyfunc) {
+	return dlist_create(destroyfunc);
 }
 
 int dl_deque_put(dl_deque_root *deque, void *data) {
