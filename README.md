@@ -31,13 +31,13 @@ At the present time, the following structures are being implemented:
 
 * Deque using doubly linked list as infrastructure ([README](lib/deques/README.md));
 * Queue and Stack using deque as infrastructure;
+* Sets using doubly linked list;
 
 Once completed, the next to be implemented are as follows:
 
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
 * Heaps;
 * Associative Arrays;
-* Sets;
 * Graphs;
 * Sparse Matrix;
 * Stack and Queue using Tree as infrastructure;
