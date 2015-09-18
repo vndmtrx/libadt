@@ -14,12 +14,12 @@ More on [Wikipedia](https://en.wikipedia.org/wiki/Double-ended_queue)
 The common ADT operations executed on deques are the following:
 
 * _create()_ - Create the deque structure;
-* _push()_ - Insert an element on the deque, at the rear end of the deque;
-* _first()_ - Look for the first element of the deque, without remove it;
-* _pop()_ - Remove the element in the rear of the queue, returning it;
-* _put()_ - Insert an element on the deque, at the front end of the deque;
-* _last()_ - Look for the last element of the deque, without remove it;
-* _get()_ - Remove the element in the front of the queue, returning it;
+* _push_left()_ - Insert an element on the deque, at the rear end of the deque;
+* _peek_left()_ - Look for the first element of the deque, without remove it;
+* _pop_left()_ - Remove the element in the rear of the queue, returning it;
+* _push_right()_ - Insert an element on the deque, at the front end of the deque;
+* _peek_right()_ - Look for the last element of the deque, without remove it;
+* _pop_right()_ - Remove the element in the front of the queue, returning it;
 * _destroy()_ - Destroy the queue structure. If there are elements in it, they are destroyed also.
 
 ### Deque implementation and complexities
@@ -27,10 +27,10 @@ The common ADT operations executed on deques are the following:
 function name | complexity | explanation
 :-- | :--:  |:--
 _dl_deque_create_ | O(1) | 
-_dl_deque_push_ | O(1) | 
-_dl_deque_first_ | O(1)| 
-_dl_deque_pop_ | O(1) | 
-_dl_deque_put_ | O(1) | 
-_dl_deque_last_ | O(1)| 
-_dl_deque_get_ | O(1) | 
+_dl_deque_push_left_ | O(1) | 
+_dl_deque_peek_left_ | O(1)| 
+_dl_deque_pop_left_ | O(1) | 
+_dl_deque_push_right_ | O(1) | 
+_dl_deque_peek_right_ | O(1)| 
+_dl_deque_pop_right_ | O(1) | 
 _dl_deque_destroy_ | O(n) | 

@@ -21,39 +21,39 @@ dl_deque_root * dl_deque_create(t_destroyfunc destroyfunc);
  * Insert an element in the rear of the deque.
  * Complexity: O(1).
  */
-int dl_deque_push(dl_deque_root *deque, void *data);
+int dl_deque_push_left(dl_deque_root *deque, void *data);
 
 /*
  * Insert an element in the front of the deque.
  * Complexity: O(1).
  */
-int dl_deque_put(dl_deque_root *deque, void *data);
+int dl_deque_push_right(dl_deque_root *deque, void *data);
 
 /*
  * Look the first item of the deque without remove it.
  * If deque is empty, return NULL;
  * Complexity: O(1).
  */
-void * dl_deque_first(dl_deque_root *deque);
+void * dl_deque_peek_left(dl_deque_root *deque);
 
 /*
  * Look the last item of the deque without remove it.
  * If deque is empty, return NULL;
  * Complexity: O(1).
  */
-void * dl_deque_last(dl_deque_root *deque);
+void * dl_deque_peek_right(dl_deque_root *deque);
 
 /*
  * Remove the rear element from the deque and return its element.
  * Complexity: O(1).
  */
-void * dl_deque_pop(dl_deque_root *deque);
+void * dl_deque_pop_left(dl_deque_root *deque);
 
 /*
  * Remove the front element from the deque and return its element.
  * Complexity: O(1).
  */
-void * dl_deque_get(dl_deque_root *deque);
+void * dl_deque_pop_right(dl_deque_root *deque);
 
 /*
  * Destroy the deque and its elements, if have any. If destroy function is provided,
