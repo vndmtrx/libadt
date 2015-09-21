@@ -7,7 +7,7 @@
 #define QTD 10
 
 void print_list(sl_stack_root *stack) {
-	slist_node *node = stack->head;
+	list_node *node = stack->head;
 	printf("[");
 	if (sl_stack_size(stack) > 0) {
 		do {

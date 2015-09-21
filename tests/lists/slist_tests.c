@@ -5,7 +5,7 @@
 
 #define QTD 20
 
-void print_el(slist_node *node) {
+void print_el(list_node *node) {
 	printf("(");
 	if (node != NULL) {
 		printf("'%d', ", *((int *) node->data));
@@ -22,9 +22,9 @@ void print_el(slist_node *node) {
 }
 
 void print_list(slist_root *list) {
-	slist_node *node = list->head;
+	list_node *node = list->head;
 	printf("[");
-	if (slist_size(list) > 0) {
+	if (list_size(list) > 0) {
 		do {
 			print_el(node);
 			node = node->next;

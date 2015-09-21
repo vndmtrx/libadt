@@ -5,7 +5,7 @@
 
 #define QTD 10
 
-void print_el(dlist_node *node) {
+void print_el(list_node *node) {
 	printf("(");
 	if (node != NULL) {
 		if (node->prev != NULL) {
@@ -28,9 +28,9 @@ void print_el(dlist_node *node) {
 }
 
 void print_list(dlist_root *list) {
-	dlist_node *node = list->head;
+	list_node *node = list->head;
 	printf("List size: %d. Items: [", list->size);
-	if (dlist_size(list) > 0) {
+	if (list_size(list) > 0) {
 		do {
 			print_el(node);
 			node = node->next;
