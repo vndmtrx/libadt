@@ -1,6 +1,7 @@
 ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 INC_DIR := $(addprefix $(ROOT_DIR), includes/)
 LIB_DIR := $(addprefix $(ROOT_DIR), lib/)
+ALG_DIR := $(addprefix $(ROOT_DIR), algorithms/)
 TESTS_DIR := $(addprefix $(ROOT_DIR), tests/)
 EXAMPLES_DIR := $(addprefix $(ROOT_DIR), examples/)
 BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
@@ -22,6 +23,10 @@ include $(addprefix $(LIB_DIR), lib.mk)
 #Tests
 
 include $(addprefix $(TESTS_DIR), tests.mk)
+
+#Algorithms
+
+include $(addprefix $(ALG_DIR), algorithms.mk)
 
 #Examples
 
