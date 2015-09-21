@@ -3,17 +3,12 @@
 
 #include <adt_commons.h>
 
-#include <slist_decl.h>
+#include <list.h>
 
-struct _slist_root {
-	int size;			// Size of the list structure.
-	t_destroyfunc destroyfunc;
-	slist_node *head;	// Position from where we start walking the list.
-	slist_node *tail;	// Last item on the list.
-};
+typedef list_root slist_root;
 
-struct _slist_node {
-	slist_node *next;	// Pointer to next slist_node element.
+struct _list_node {
+	list_node *next;	// Pointer to next list_node element.
 	void *data;			// Pointer to the element added on the list.
 };
 
@@ -34,26 +29,26 @@ slist_root * slist_create(t_destroyfunc destroyfunc);
  * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).
  */
-int slist_insert_el_next(slist_root *list, slist_node *current, void *data);
+int slist_insert_el_next(slist_root *list, list_node *current, void *data);
 
 /*
  * Move an element to the position of newpos element.
  * Complexity: O(n).
  */
-int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos);
+int slist_move_el(slist_root *list, list_node *current, list_node *newpos);
 
 /*
  * Change positions of the two elements on the list.
  * Complexity: O(n).
  */
-int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2);
+int slist_swap_el(slist_root *list, list_node *el1, list_node *el2);
 
 /*
  * Remove the element indicated by *current and save the respective 
  * data in **data.
  * Compĺexity: O(n).
  */
-void * slist_rem_el(slist_root *list, slist_node *current);
+void * slist_rem_el(slist_root *list, list_node *current);
 
 /*
  * Destroy the list and its elements, if have any. If destroy function is provided,
@@ -61,20 +56,5 @@ void * slist_rem_el(slist_root *list, slist_node *current);
  * Complexity: O(n).
  */
 void slist_destroy(slist_root *list);
-
-/*
- *  Returns the first element of the list.
- */
-#define slist_head(list) ((list) ->head)
-
-/*
- * Returns the last element of the list.
- */
-#define slist_tail(list) ((list) ->tail)
-
-/*
- * Returns the size of the list.
- */
-#define slist_size(list) ((list) ->size)
 
 #endif

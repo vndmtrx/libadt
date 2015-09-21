@@ -45,5 +45,5 @@ void sl_queue_destroy(sl_queue_root *queue) {
  * Complexity: O(1).
  */
 int sl_queue_size(sl_queue_root *queue) {
-	return slist_size(queue);
+	return list_size(queue);
 }

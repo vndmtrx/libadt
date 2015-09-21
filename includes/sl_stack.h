@@ -2,7 +2,9 @@
 #define _LIBADT_SL_STACK_H
 
 #include <adt_commons.h>
-#include <sl_stack_decl.h>
+#include <list.h>
+
+typedef list_root sl_stack_root;
 
 /* 
  * Create a empty stack structure (FiLo - First In / Last Out) and set a

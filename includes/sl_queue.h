@@ -2,7 +2,9 @@
 #define _LIBADT_SL_QUEUE_H
 
 #include <adt_commons.h>
-#include <sl_queue_decl.h>
+#include <list.h>
+
+typedef list_root sl_queue_root;
 
 /* 
  * Create a empty queue structure (FiFo - Fist In / First Out) and set a

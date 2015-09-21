@@ -35,5 +35,5 @@ void sl_stack_destroy(sl_stack_root *stack) {
 }
 
 int sl_stack_size(sl_stack_root *stack) {
-	return slist_size(stack);
+	return list_size(stack);
 }

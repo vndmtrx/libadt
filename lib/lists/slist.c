@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static slist_node *slist_find_prior(slist_root *list, slist_node *current) {
+static list_node *slist_find_prior(slist_root *list, list_node *current) {
 	if (current != NULL) {
-		slist_node *node = list->head;
+		list_node *node = list->head;
 		
 		if (node != current) {
 			while (node->next != current) {
@@ -31,15 +31,15 @@ slist_root * slist_create(t_destroyfunc destroyfunc) {
 	return list;
 }
 
-int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
-	slist_node *new = (slist_node *) malloc(sizeof(slist_node));
+int slist_insert_el_next(slist_root *list, list_node *current,  void *data) {
+	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
 		fprintf(stderr, "Can't create new element.");
 		return -1;
 	}
 	new->data = data;
 	new->next = NULL;
-	if (list->size == 0) {
+	if (list_size(list) == 0) {
 		list->head = new;
 		list->tail = new;
 	} else {
@@ -58,10 +58,10 @@ int slist_insert_el_next(slist_root *list, slist_node *current,  void *data) {
 	return 0;
 }
 
-int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
-	if (slist_size(list) > 1) {
+int slist_move_el(slist_root *list, list_node *current, list_node *newpos) {
+	if (list_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
-			slist_node *p1, *p2;
+			list_node *p1, *p2;
 			if (current != list->head && newpos != list->head) {
 				p1 = slist_find_prior(list, current);
 				p2 = slist_find_prior(list, newpos);
@@ -99,9 +99,9 @@ int slist_move_el(slist_root *list, slist_node *current, slist_node *newpos) {
 	}
 }
 
-int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
+int slist_swap_el(slist_root *list, list_node *el1, list_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
-		slist_node *p1, *p2, *n1, *n2;
+		list_node *p1, *p2, *n1, *n2;
 		if (el1 != list->head && el2 != list->head) {
 			p1 = slist_find_prior(list, el1);
 			p2 = slist_find_prior(list, el2);
@@ -135,14 +135,14 @@ int slist_swap_el(slist_root *list, slist_node *el1, slist_node *el2) {
 	}
 }
 
-void * slist_rem_el(slist_root *list, slist_node *current) {
+void * slist_rem_el(slist_root *list, list_node *current) {
 	void *data;
 	if (current != NULL) {
-		if (slist_size(list) > 1) { // More than two elements on list;
+		if (list_size(list) > 1) { // More than two elements on list;
 			if (current == list->head) {
 				list->head = current->next;
 			} else {
-				slist_node *node = slist_find_prior(list, current);
+				list_node *node = slist_find_prior(list, current);
 				if (node == NULL) {
 					return NULL;
 				}
@@ -154,7 +154,7 @@ void * slist_rem_el(slist_root *list, slist_node *current) {
 					node->next = current->next;
 				}
 			}
-		} else if (slist_size(list) == 1) { // Only one element on list;
+		} else if (list_size(list) == 1) { // Only one element on list;
 			list->head = NULL;
 			list->tail = NULL;
 		} else { // No elements on list;
@@ -175,7 +175,7 @@ void * slist_rem_el(slist_root *list, slist_node *current) {
 
 void slist_destroy(slist_root *list) {
 	void *data;
-	while (slist_size(list) > 0) {
+	while (list_size(list) > 0) {
 		data = slist_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
