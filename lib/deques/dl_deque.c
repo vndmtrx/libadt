@@ -19,7 +19,7 @@ int dl_deque_push_right(dl_deque_root *deque, void *data) {
 }
 
 void * dl_deque_peek_left(dl_deque_root *deque) {
-	if (dlist_size(deque) > 0) {
+	if (list_size(deque) > 0) {
 		return deque->head->data;
 	} else {
 		fprintf(stderr, "Deque is empty!");
@@ -28,7 +28,7 @@ void * dl_deque_peek_left(dl_deque_root *deque) {
 }
 
 void * dl_deque_peek_right(dl_deque_root *deque) {
-	if (dlist_size(deque) > 0) {
+	if (list_size(deque) > 0) {
 		return deque->tail->data;
 	} else {
 		fprintf(stderr, "Deque is empty!");
@@ -37,7 +37,7 @@ void * dl_deque_peek_right(dl_deque_root *deque) {
 }
 
 void * dl_deque_pop_left(dl_deque_root *deque) {
-if (dlist_size(deque) > 0) {
+if (list_size(deque) > 0) {
 		return dlist_rem_el(deque, deque->head);
 	} else {
 		fprintf(stderr, "Deque is empty!");
@@ -46,7 +46,7 @@ if (dlist_size(deque) > 0) {
 }
 
 void * dl_deque_pop_right(dl_deque_root *deque) {
-	if (dlist_size(deque) > 0) {
+	if (list_size(deque) > 0) {
 		return dlist_rem_el(deque, deque->tail);
 	} else {
 		fprintf(stderr, "Deque is empty!");
@@ -59,5 +59,5 @@ void dl_deque_destroy(dl_deque_root *deque) {
 }
 
 int dl_deque_size(dl_deque_root *deque) {
-	return dlist_size(deque);
+	return list_size(deque);
 }

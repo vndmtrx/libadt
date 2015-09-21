@@ -12,8 +12,8 @@ dlist_root * dlist_create(t_destroyfunc destroyfunc) {
 	return list;
 }
 
-int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
-	dlist_node *new = (dlist_node *) malloc(sizeof(dlist_node));
+int dlist_insert_el_next(dlist_root *list, list_node *current, void *data) {
+	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
 		fprintf(stderr, "Can't create new element.");
 		return -1;
@@ -21,7 +21,7 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
 	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
-	if (list->size == 0) {
+	if (list_size(list) == 0) {
 		list->head = new;
 		list->tail = new;
 	} else {
@@ -44,8 +44,8 @@ int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data) {
 	return 0;
 }
 
-int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
-	dlist_node *new = (dlist_node *) malloc(sizeof(dlist_node));
+int dlist_insert_el_prev(dlist_root *list, list_node *current, void *data) {
+	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
 		fprintf(stderr, "Can't create new element.");
 		return -1;
@@ -53,7 +53,7 @@ int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
 	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
-	if (list->size == 0) {
+	if (list_size(list) == 0) {
 		list->head = new;
 		list->tail = new;
 	} else {
@@ -76,8 +76,8 @@ int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data) {
 	return 0;
 }
 
-int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos) {
-	if (dlist_size(list) > 1) {
+int dlist_move_el_next(dlist_root *list, list_node *current, list_node *newpos) {
+	if (list_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
 			if (current == list->head) {
 				current->next->prev = NULL;
@@ -112,8 +112,8 @@ int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos
 	}
 }
 
-int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos) {
-	if (dlist_size(list) > 1) {
+int dlist_move_el_prev(dlist_root *list, list_node *current, list_node *newpos) {
+	if (list_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
 			if (current == list->tail) {
 				current->prev->next = NULL;
@@ -148,9 +148,9 @@ int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos
 	}
 }
 
-int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2) {
+int dlist_swap_el(dlist_root *list, list_node *el1, list_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
-		dlist_node *p_el1, *n_el1, *p_el2, *n_el2;
+		list_node *p_el1, *n_el1, *p_el2, *n_el2;
 		
 		p_el1 = el1->prev;
 		n_el1 = el1->next;
@@ -176,10 +176,10 @@ int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2) {
 	}
 }
 
-void * dlist_rem_el(dlist_root *list, dlist_node *current) {
+void * dlist_rem_el(dlist_root *list, list_node *current) {
 	void *data;
 	if (current != NULL) {
-		if (dlist_size(list) > 1) { // More than two elements on list;
+		if (list_size(list) > 1) { // More than two elements on list;
 			if (current == list->head) {
 				current->next->prev = NULL;
 				list->head = current->next;
@@ -190,7 +190,7 @@ void * dlist_rem_el(dlist_root *list, dlist_node *current) {
 				current->prev->next = current->next;
 				current->next->prev = current->prev;
 			}
-		} else if (dlist_size(list) == 1) { // Only one element on list;
+		} else if (list_size(list) == 1) { // Only one element on list;
 			list->head = NULL;
 			list->tail = NULL;
 		} else { // No elements on list;
@@ -211,7 +211,7 @@ void * dlist_rem_el(dlist_root *list, dlist_node *current) {
 
 void dlist_destroy(dlist_root *list) {
 	void *data;
-	while (dlist_size(list) > 0) {
+	while (list_size(list) > 0) {
 		data = dlist_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);

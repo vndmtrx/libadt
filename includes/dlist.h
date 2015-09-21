@@ -3,18 +3,13 @@
 
 #include <adt_commons.h>
 
-#include <dlist_decl.h>
+#include <list.h>
 
-struct _dlist_root {
-	int size;			// Size of the list structure.
-	t_destroyfunc destroyfunc;
-	dlist_node *head;	// Position from where we start walking the list.
-	dlist_node *tail;	// Last item on the list.
-};
+typedef list_root dlist_root;
 
-struct _dlist_node {
-	dlist_node *prev;	// Pointer to prev dlist_node element.
-	dlist_node *next;	// Pointer to next dlist_node element.
+struct _list_node {
+	list_node *prev;	// Pointer to prev list_node element.
+	list_node *next;	// Pointer to next list_node element.
 	void *data;			// Pointer to the element added on the list.
 };
 
@@ -35,39 +30,39 @@ dlist_root * dlist_create(t_destroyfunc destroyfunc);
  * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).
  */
-int dlist_insert_el_next(dlist_root *list, dlist_node *current, void *data);
+int dlist_insert_el_next(dlist_root *list, list_node *current, void *data);
 
 /*
  * Insert an element in the list before the current element indicated.
  * If *current is NULL, *data is appended on the tail.
  * Complexity: O(1).
  */
-int dlist_insert_el_prev(dlist_root *list, dlist_node *current, void *data);
+int dlist_insert_el_prev(dlist_root *list, list_node *current, void *data);
 
 /*
  * Move an element after the newpos element indicated.
  * Complexity: O(1).
  */
-int dlist_move_el_next(dlist_root *list, dlist_node *current, dlist_node *newpos);
+int dlist_move_el_next(dlist_root *list, list_node *current, list_node *newpos);
 
 /*
  * Move an element before the newpos element indicated.
  * Complexity: O(1).
  */
-int dlist_move_el_prev(dlist_root *list, dlist_node *current, dlist_node *newpos);
+int dlist_move_el_prev(dlist_root *list, list_node *current, list_node *newpos);
 
 /*
  * Change positions of the two elements on the list.
  * Complexity: O(1).
  */
-int dlist_swap_el(dlist_root *list, dlist_node *el1, dlist_node *el2);
+int dlist_swap_el(dlist_root *list, list_node *el1, list_node *el2);
 
 /*
  * Remove the element indicated by *current and save the respective 
  * data in **data.
  * Compĺexity: O(1).
  */
-void * dlist_rem_el(dlist_root *list, dlist_node *current);
+void * dlist_rem_el(dlist_root *list, list_node *current);
 
 /*
  * Destroy the list and its elements, if have any. If destroy function is provided,
@@ -75,20 +70,5 @@ void * dlist_rem_el(dlist_root *list, dlist_node *current);
  * Complexity: O(n).
  */
 void dlist_destroy(dlist_root *list);
-
-/*
- *  Returns the first element of the list.
- */
-#define dlist_head(list) ((list) ->head)
-
-/*
- * Returns the last element of the list.
- */
-#define dlist_tail(list) ((list) ->tail)
-
-/*
- * Returns the size of the list.
- */
-#define dlist_size(list) ((list) ->size)
 
 #endif

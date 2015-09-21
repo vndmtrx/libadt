@@ -2,7 +2,9 @@
 #define _LIBADT_DL_DEQUE_H
 
 #include <adt_commons.h>
-#include <dl_deque_decl.h>
+#include <list.h>
+
+typedef list_root dl_deque_root;
 
 /* 
  * Create an empty deque structure (double ended queue) and set a
