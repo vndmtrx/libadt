@@ -24,6 +24,8 @@ before_script:
 script:
   - make -e
 
+sudo: false
+
 addons:
   apt:
     sources:
