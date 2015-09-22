@@ -8,7 +8,7 @@ BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
 
 CC=gcc
 LD=gcc
-CFLAGS=-I$(INC_DIR) -g -Wall -Werror -std=c99 -pedantic-errors
+CFLAGS=-I$(INC_DIR) -g -Wall -Werror -std=c11 -pedantic-errors
 LDFLAGS=
 
 
