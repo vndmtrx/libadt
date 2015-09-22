@@ -106,7 +106,7 @@ int main() {
 	slist_swap_el(a, a->head, a->tail);
 	print_list_iter(a);
 	slist_swap_el(a, a->tail, a->head);
-	print_list_iter(a);
+	print_list(a);
 	
 	printf("##### Test 10 - slist_rem_el - Remove from the head of the list\n");
 	num = slist_rem_el(a, a->head);

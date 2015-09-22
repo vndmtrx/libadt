@@ -21,7 +21,7 @@ slist_vg: slist_tests
 $(addprefix $(BUILD_DIR), dlist_tests.o): $(addprefix $(TESTS_DIR), lists/dlist_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dlist_tests): $(addprefix $(BUILD_DIR), dlist_tests.o dlist.o)
+$(addprefix $(BUILD_DIR), dlist_tests): $(addprefix $(BUILD_DIR), dlist_tests.o dlist.o dl_iterator.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
 dlist_tests: $(addprefix $(BUILD_DIR), dlist_tests)

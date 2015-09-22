@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include <dlist.h>
+#include <dl_iterator.h>
 
 #define QTD 10
 
@@ -39,6 +40,18 @@ void print_list(dlist_root *list) {
 	printf("]\n");
 }
 
+void print_list_iter(dlist_root *list) {
+	iterator_s *i = dl_iter_create(list, FORWARD);
+	printf("[");
+	if (i != NULL) {
+		do {
+			printf("'%d', ", *((int *) dl_iter_item(i)));
+		} while (dl_iter_next(i));
+	};
+	printf("]\n");
+	dl_iter_free(i);
+}
+
 int main() {
 	dlist_root *a;
 	int *num;
@@ -51,7 +64,7 @@ int main() {
 		*num = i;
 		dlist_insert_el_next(a, NULL, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 2 - dlist_insert_el_next - Insert in the middle of the list (with current param = head)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -59,7 +72,7 @@ int main() {
 		*num = i + QTD;
 		dlist_insert_el_next(a, a->head, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 3 - dlist_insert_el_next - Insert in the tail of the list (with current param = tail)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -67,7 +80,7 @@ int main() {
 		*num = i + (QTD * 2);
 		dlist_insert_el_next(a, a->tail, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 4 - dlist_insert_el_prev - Insert in the tail of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -147,17 +160,17 @@ int main() {
 	
 	printf("##### Test 19 - dlist_rem_el - Remove from the head of the list\n");
 	num = dlist_rem_el(a, a->head);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 20 - dlist_rem_el - Remove from the middle of the list\n");
 	num = dlist_rem_el(a, a->head->next->next);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 21 - dlist_rem_el - Remove from the tail of the list\n");
 	num = dlist_rem_el(a, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 22 - dlist_destroy - Destroy list (call destroyfunc for every member)\n");
