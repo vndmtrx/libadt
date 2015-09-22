@@ -2,35 +2,49 @@
 #include <stdlib.h>
 
 #include <slist.h>
+#include <sl_iterator.h>
 
 #define QTD 20
 
-void print_el(list_node *node) {
-	printf("(");
-	if (node != NULL) {
-		printf("'%d', ", *((int *) node->data));
+//void print_el(list_node *node) {
+	//printf("(");
+	//if (node != NULL) {
+		//printf("'%d', ", *((int *) node->data));
 		
-		if (node->next != NULL) {
-			printf("%d", *((int *) node->next->data));
-		} else {
-			printf("NULL");
-		}
-	} else {
-		printf("NULL");
-	}
-	printf(") ");
-}
+		//if (node->next != NULL) {
+			//printf("%d", *((int *) node->next->data));
+		//} else {
+			//printf("NULL");
+		//}
+	//} else {
+		//printf("NULL");
+	//}
+	//printf(") ");
+//}
+
+//void print_list(slist_root *list) {
+	//list_node *node = list->head;
+	//printf("[");
+	//if (list_size(list) > 0) {
+		//do {
+			//print_el(node);
+			//node = node->next;
+		//} while (node != NULL);
+	//}
+	//printf("]\n");
+//}
 
 void print_list(slist_root *list) {
-	list_node *node = list->head;
+	iterator_s *i = sl_iter_create(list);
 	printf("[");
-	if (list_size(list) > 0) {
-		do {
-			print_el(node);
-			node = node->next;
-		} while (node != NULL);
-	}
+	if (i != NULL) {
+		printf("'%d', ", *((int *) sl_iter_item(i)));
+		while (sl_iter_next(i)) {
+			printf("'%d', ", *((int *) sl_iter_item(i)));
+		}
+	};
 	printf("]\n");
+	sl_iter_free(i);
 }
 
 int main() {

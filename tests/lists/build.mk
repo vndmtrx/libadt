@@ -6,7 +6,7 @@ list_tests: slist_tests dlist_tests
 $(addprefix $(BUILD_DIR), slist_tests.o): $(addprefix $(TESTS_DIR), lists/slist_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), slist_tests): $(addprefix $(BUILD_DIR), slist_tests.o slist.o)
+$(addprefix $(BUILD_DIR), slist_tests): $(addprefix $(BUILD_DIR), slist_tests.o slist.o sl_iterator.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
 slist_tests: $(addprefix $(BUILD_DIR), slist_tests)
