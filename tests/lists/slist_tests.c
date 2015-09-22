@@ -6,42 +6,41 @@
 
 #define QTD 20
 
-//void print_el(list_node *node) {
-	//printf("(");
-	//if (node != NULL) {
-		//printf("'%d', ", *((int *) node->data));
+void print_el(list_node *node) {
+	printf("(");
+	if (node != NULL) {
+		printf("'%d', ", *((int *) node->data));
 		
-		//if (node->next != NULL) {
-			//printf("%d", *((int *) node->next->data));
-		//} else {
-			//printf("NULL");
-		//}
-	//} else {
-		//printf("NULL");
-	//}
-	//printf(") ");
-//}
-
-//void print_list(slist_root *list) {
-	//list_node *node = list->head;
-	//printf("[");
-	//if (list_size(list) > 0) {
-		//do {
-			//print_el(node);
-			//node = node->next;
-		//} while (node != NULL);
-	//}
-	//printf("]\n");
-//}
+		if (node->next != NULL) {
+			printf("%d", *((int *) node->next->data));
+		} else {
+			printf("NULL");
+		}
+	} else {
+		printf("NULL");
+	}
+	printf(") ");
+}
 
 void print_list(slist_root *list) {
+	list_node *node = list->head;
+	printf("[");
+	if (list_size(list) > 0) {
+		do {
+			print_el(node);
+			node = node->next;
+		} while (node != NULL);
+	}
+	printf("]\n");
+}
+
+void print_list_iter(slist_root *list) {
 	iterator_s *i = sl_iter_create(list);
 	printf("[");
 	if (i != NULL) {
-		printf("'%d', ", *((int *) sl_iter_item(i)));
-		while (sl_iter_next(i)) {
+		do {
 			printf("'%d', ", *((int *) sl_iter_item(i)));
-		}
+		} while (sl_iter_next(i));
 	};
 	printf("]\n");
 	sl_iter_free(i);
@@ -59,7 +58,7 @@ int main() {
 		*num = i;
 		slist_insert_el_next(a, NULL, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 2 - slist_insert_el_next - Insert in the middle of the list (with current param = head)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -67,7 +66,7 @@ int main() {
 		*num = i + QTD;
 		slist_insert_el_next(a, a->head, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 3 - slist_insert_el_next - Insert in the tail of the list (with current param = tail)\n");
 	for (int i = 0; i < QTD; i++) {
@@ -75,7 +74,7 @@ int main() {
 		*num = i + (QTD * 2);
 		slist_insert_el_next(a, a->tail, num);
 	}
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 4 - slist_move_el - Move head item to middle of the list\n");
 	slist_move_el(a, a->head, a->head->next->next);
@@ -105,23 +104,23 @@ int main() {
 	
 	printf("##### Test 9 - slist_swap_el - Swap head and tail on the list\n");
 	slist_swap_el(a, a->head, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	slist_swap_el(a, a->tail, a->head);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 10 - slist_rem_el - Remove from the head of the list\n");
 	num = slist_rem_el(a, a->head);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 11 - slist_rem_el - Remove from the middle of the list\n");
 	num = slist_rem_el(a, a->head->next->next);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 12 - slist_rem_el - Remove from the tail of the list\n");
 	num = slist_rem_el(a, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	free(num);
 	
 	printf("##### Test 13 - slist_destroy - Destroy list (call destroyfunc for every member)\n");

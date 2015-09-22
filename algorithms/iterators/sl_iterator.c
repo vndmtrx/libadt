@@ -30,8 +30,8 @@ int sl_iter_next(iterator_s *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
 			iter->current = iter->current->next;
-			return 1;
 		}
+		return (iter->current != NULL);
 	}
 	return 0;
 }
