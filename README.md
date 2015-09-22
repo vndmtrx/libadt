@@ -44,7 +44,21 @@ Once completed, the next to be implemented are as follows:
 
 ### Other related algorithms
 
-Along with the data structures we also add some algorithms that use structures such as sorting, converters, etc. More details soon.
+When we are dealing with data structures, certain code patterns appear in the form of specialized algorithms to work with each type of structure.
+
+With that in mind, we will be adding these algorithms into another folder to avoid confusion between data structures and algorithms that operate on top of these.
+
+Algorithms implemented:
+ * Infix to Postfix converter using Stack;
+ * Expression evaluator using Queue;
+
+Algorithms being implemented:
+ * Iterators
+ * Sorting
+   * Quick Sort
+   * Merge Sort
+
+
 
 ### Naming structure
 
