@@ -23,3 +23,13 @@ before_script:
 
 script:
   - make -e
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - build-essential
+    - git
