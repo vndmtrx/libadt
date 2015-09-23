@@ -29,9 +29,13 @@ sudo: false
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - gcc-4.9
-    - build-essential
-    update-alternatives:
-    - install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
+      - gcc-4.9
+      - build-essential
+    alternatives:
+      - alternative:
+        name: gcc
+        link: /usr/bin/gcc
+        path: /usr/bin/gcc-4.9
+        priority: 50
