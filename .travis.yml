@@ -20,6 +20,7 @@ branches:
 
 before_script:
   - make clean
+  - export CC=/usr/bin/gcc-4.9
 
 script:
   - make -e
