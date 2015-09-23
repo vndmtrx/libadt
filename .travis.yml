@@ -4,7 +4,7 @@
 language: c
 
 compiler:
-  - gcc
+  - gcc-4.9
   - clang
 
 os:
@@ -20,7 +20,6 @@ branches:
 
 before_script:
   - make clean
-  - export CC=/usr/bin/gcc-4.9
 
 script:
   - make -e
