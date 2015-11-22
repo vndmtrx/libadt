@@ -62,7 +62,7 @@ Algorithms being implemented:
 
 ### Naming structure
 
-In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "SL_" for use internally a simple linked list, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
+In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "SL_" because they use a simple linked list internally, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
 
 ### Future and beyond...
 
