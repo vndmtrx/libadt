@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static list_node *slist_find_prior(slist_root *list, list_node *current) {
+static list_node * slist_find_prior(slist_root *list, list_node *current) {
 	if (current != NULL) {
 		list_node *node = list->head;
 		
