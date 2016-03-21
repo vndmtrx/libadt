@@ -31,19 +31,10 @@ void * sl_queue_pop(sl_queue_root *queue) {
 	}
 }
 
-/*
- * Destroy the queue and the elements in it. If destroy function is provided,
- * it will be used, otherwise, uses free.
- * Complexity: O(n).
- */
 void sl_queue_destroy(sl_queue_root *queue) {
 	slist_destroy(queue);
 }
 
-/*
- * Returns the size of the queue.
- * Complexity: O(1).
- */
 int sl_queue_size(sl_queue_root *queue) {
 	return list_size(queue);
 }
