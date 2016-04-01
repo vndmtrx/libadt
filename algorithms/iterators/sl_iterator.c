@@ -1,6 +1,6 @@
 #include <sl_iterator.h>
 
-#include <slist.h>
+#include <sl_list.h>
 
 #include <stdio.h>
 #include <stdlib.h>

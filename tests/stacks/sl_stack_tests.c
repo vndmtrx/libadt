@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include <sl_stack.h>
-#include <slist.h>
+#include <sl_list.h>
 
 #define QTD 10
 
