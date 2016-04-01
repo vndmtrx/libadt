@@ -1,9 +1,9 @@
-#include <slist.h>
+#include <sl_list.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 
-static list_node * slist_find_prior(slist_root *list, list_node *current) {
+static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 	if (current != NULL) {
 		list_node *node = list->head;
 		
@@ -22,8 +22,8 @@ static list_node * slist_find_prior(slist_root *list, list_node *current) {
 	}
 }
 
-slist_root * slist_create(t_destroyfunc destroyfunc) {
-	slist_root *list = (slist_root *) malloc(sizeof(slist_root));
+sl_list_root * sl_list_create(t_destroyfunc destroyfunc) {
+	sl_list_root *list = (sl_list_root *) malloc(sizeof(sl_list_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
@@ -31,7 +31,7 @@ slist_root * slist_create(t_destroyfunc destroyfunc) {
 	return list;
 }
 
-int slist_insert_el_next(slist_root *list, list_node *current,  void *data) {
+int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) {
 	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
 		fprintf(stderr, "Can't create new element.");
@@ -58,13 +58,13 @@ int slist_insert_el_next(slist_root *list, list_node *current,  void *data) {
 	return 0;
 }
 
-int slist_move_el(slist_root *list, list_node *current, list_node *newpos) {
+int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos) {
 	if (list_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
 			list_node *p1, *p2;
 			if (current != list->head && newpos != list->head) {
-				p1 = slist_find_prior(list, current);
-				p2 = slist_find_prior(list, newpos);
+				p1 = sl_list_find_prior(list, current);
+				p2 = sl_list_find_prior(list, newpos);
 				p1->next = current->next;
 				p2->next = current;
 				
@@ -73,11 +73,11 @@ int slist_move_el(slist_root *list, list_node *current, list_node *newpos) {
 				}
 			} else {
 				if (current == list->head) {
-					p2 = slist_find_prior(list, newpos);
+					p2 = sl_list_find_prior(list, newpos);
 					p2->next = current;
 					list->head = current->next;
 				} else if (newpos == list->head) {
-					p1 = slist_find_prior(list, current);
+					p1 = sl_list_find_prior(list, current);
 					p1->next = current->next;
 					list->head = current;
 					
@@ -99,21 +99,21 @@ int slist_move_el(slist_root *list, list_node *current, list_node *newpos) {
 	}
 }
 
-int slist_swap_el(slist_root *list, list_node *el1, list_node *el2) {
+int sl_list_swap_el(sl_list_root *list, list_node *el1, list_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
 		list_node *p1, *p2, *n1, *n2;
 		if (el1 != list->head && el2 != list->head) {
-			p1 = slist_find_prior(list, el1);
-			p2 = slist_find_prior(list, el2);
+			p1 = sl_list_find_prior(list, el1);
+			p2 = sl_list_find_prior(list, el2);
 			p1->next = el2;
 			p2->next = el1;
 		} else {
 			if (el1 == list->head) {
-				p2 = slist_find_prior(list, el2);
+				p2 = sl_list_find_prior(list, el2);
 				p2->next = el1;
 				list->head = el2;
 			} else if (el2 == list->head) {
-				p1 = slist_find_prior(list, el1);
+				p1 = sl_list_find_prior(list, el1);
 				p1->next = el2;
 				list->head = el1;
 			}
@@ -135,14 +135,14 @@ int slist_swap_el(slist_root *list, list_node *el1, list_node *el2) {
 	}
 }
 
-void * slist_rem_el(slist_root *list, list_node *current) {
+void * sl_list_rem_el(sl_list_root *list, list_node *current) {
 	void *data;
 	if (current != NULL) {
 		if (list_size(list) > 1) { // More than two elements on list;
 			if (current == list->head) {
 				list->head = current->next;
 			} else {
-				list_node *node = slist_find_prior(list, current);
+				list_node *node = sl_list_find_prior(list, current);
 				if (node == NULL) {
 					return NULL;
 				}
@@ -173,10 +173,10 @@ void * slist_rem_el(slist_root *list, list_node *current) {
 	}
 }
 
-void slist_destroy(slist_root *list) {
+void sl_list_destroy(sl_list_root *list) {
 	void *data;
 	while (list_size(list) > 0) {
-		data = slist_rem_el(list, list->head);
+		data = sl_list_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
 		}
