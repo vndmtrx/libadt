@@ -1,11 +1,14 @@
+SL_LIST_INC := $(addprefix $(LIB_DIR), lists/sl_list.c) $(addprefix $(INC_DIR), sl_list.h)
+DL_LIST_INC := $(addprefix $(LIB_DIR), lists/dl_list.c) $(addprefix $(INC_DIR), dl_list.h)
+
 # Build target for Single Linked List
-$(addprefix $(BUILD_DIR), slist.o): $(addprefix $(LIB_DIR), lists/slist.c) $(addprefix $(INC_DIR), slist.h) | build
+$(addprefix $(BUILD_DIR), sl_list.o): $(SL_LIST_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Build target for Double Linked List
-$(addprefix $(BUILD_DIR), dlist.o): $(addprefix $(LIB_DIR), lists/dlist.c) $(addprefix $(INC_DIR), dlist.h) | build
+$(addprefix $(BUILD_DIR), dl_list.o): $(DL_LIST_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
-slist.o: $(addprefix $(BUILD_DIR), slist.o)
+sl_list.o: $(addprefix $(BUILD_DIR), sl_list.o)
 
-dlist.o: $(addprefix $(BUILD_DIR), dlist.o)
+dl_list.o: $(addprefix $(BUILD_DIR), dl_list.o)
