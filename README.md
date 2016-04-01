@@ -31,16 +31,17 @@ But this repository is in its very beginning and another structures will come in
 At the present time, the following structures are being implemented:
 
 * Queue and Stack using deque as infrastructure;
-* Sets using doubly linked list;
 
 Once completed, the next to be implemented are as follows:
 
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
 * Heaps;
+* Priority Queues;
 * Associative Arrays;
 * Graphs;
 * Sparse Matrix;
-* Stack and Queue using Tree as infrastructure;
+* Sets using tree as infrastructure;
+* Stack and Queue using tree as infrastructure;
 
 ### Other related algorithms
 
@@ -57,8 +58,6 @@ Algorithms being implemented:
  * Sorting
    * Quick Sort
    * Merge Sort
-
-
 
 ### Naming structure
 
