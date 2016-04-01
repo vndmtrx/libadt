@@ -5,6 +5,6 @@ $(addprefix $(BUILD_DIR), dl_deque.partial): $(DL_DEQUE_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(addprefix $(BUILD_DIR), dl_deque.o): $(addprefix $(BUILD_DIR), dl_deque.partial dl_list.o)
-	ld $(LDFLAGS) -r $^ -o $@
+	$(LD) $(LDFLAGS) -r $^ -o $@
 
 dl_deque.o: $(addprefix $(BUILD_DIR), dl_deque.o)

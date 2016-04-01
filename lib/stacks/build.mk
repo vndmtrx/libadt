@@ -5,7 +5,7 @@ $(addprefix $(BUILD_DIR), sl_stack.partial): $(SL_STACK_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(addprefix $(BUILD_DIR), sl_stack.o): $(addprefix $(BUILD_DIR), sl_stack.partial sl_list.o)
-	ld $(LDFLAGS) -r $^ -o $@
+	$(LD) $(LDFLAGS) -r $^ -o $@
 
 sl_stack.o: $(addprefix $(BUILD_DIR), sl_stack.o)
 
@@ -14,6 +14,6 @@ $(addprefix $(BUILD_DIR), dq_stack.partial): $(addprefix $(LIB_DIR), stacks/dq_s
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(addprefix $(BUILD_DIR), dq_stack.o): $(addprefix $(BUILD_DIR), dq_stack.partial dl_deque.o)
-	ld $(LDFLAGS) -r $^ -o $@
+	$(LD) $(LDFLAGS) -r $^ -o $@
 
 dq_stack.o: $(addprefix $(BUILD_DIR), dq_stack.o)

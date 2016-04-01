@@ -6,10 +6,10 @@ TESTS_DIR := $(addprefix $(ROOT_DIR), tests/)
 EXAMPLES_DIR := $(addprefix $(ROOT_DIR), examples/)
 BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
 
-CC=gcc
-LD=gcc
-CFLAGS=-I$(INC_DIR) -g -Wall -Werror -std=c11 -pedantic-errors
-LDFLAGS=
+CC ?= gcc
+LD ?= ld
+CFLAGS = -I$(INC_DIR) -g -Wall -Werror -std=c11 -pedantic-errors
+LDFLAGS =
 
 
 .PHONY: clean

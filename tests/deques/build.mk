@@ -1,4 +1,4 @@
-## Build target for double-ended queue tests
+## Build target for doubly-list-backed deque
 
 stack_tests: dl_deque_tests
 

@@ -5,7 +5,7 @@ $(addprefix $(BUILD_DIR), sl_queue.partial): $(SL_QUEUE_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(addprefix $(BUILD_DIR), sl_queue.o): $(addprefix $(BUILD_DIR), sl_queue.partial sl_list.o)
-	ld $(LDFLAGS) -r $^ -o $@
+	$(LD) $(LDFLAGS) -r $^ -o $@
 
 sl_queue.o: $(addprefix $(BUILD_DIR), sl_queue.o)
 
@@ -14,6 +14,6 @@ $(addprefix $(BUILD_DIR), dq_queue.partial): $(addprefix $(LIB_DIR), queues/dq_q
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(addprefix $(BUILD_DIR), dq_queue.o): $(addprefix $(BUILD_DIR), dq_queue.partial dl_deque.o)
-	ld $(LDFLAGS) -r $^ -o $@
+	$(LD) $(LDFLAGS) -r $^ -o $@
 
 dq_queue.o: $(addprefix $(BUILD_DIR), dq_queue.o)
