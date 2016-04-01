@@ -26,7 +26,7 @@ $(addprefix $(BUILD_DIR), dl_list_tests): $(addprefix $(BUILD_DIR), dl_list_test
 
 dl_list_tests: $(addprefix $(BUILD_DIR), dl_list_tests)
 
-dl_list_time: dlist_tests
+dl_list_time: dl_list_tests
 	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
 dl_list_vg: dl_list_tests
