@@ -36,7 +36,7 @@ Once completed, the next to be implemented are as follows:
 
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
 * Heaps;
-* Priority Queues;
+* Priority Structures (P-Queue, P-Stack and P-Deque);
 * Associative Arrays;
 * Graphs;
 * Sparse Matrix;
