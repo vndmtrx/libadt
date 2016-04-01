@@ -1,33 +1,33 @@
 # Build target for Linked List Tests
 
-list_tests: slist_tests dlist_tests
+list_tests: sl_list_tests dl_list_tests
 
 # Single Linked List
-$(addprefix $(BUILD_DIR), slist_tests.o): $(addprefix $(TESTS_DIR), lists/slist_tests.c) | build
+$(addprefix $(BUILD_DIR), sl_list_tests.o): $(addprefix $(TESTS_DIR), lists/sl_list_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), slist_tests): $(addprefix $(BUILD_DIR), slist_tests.o slist.o sl_iterator.o)
+$(addprefix $(BUILD_DIR), sl_list_tests): $(addprefix $(BUILD_DIR), sl_list_tests.o sl_list.o sl_iterator.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-slist_tests: $(addprefix $(BUILD_DIR), slist_tests)
+sl_list_tests: $(addprefix $(BUILD_DIR), sl_list_tests)
 
-slist_time: slist_tests
+sl_list_time: sl_list_tests
 	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
-slist_vg: slist_tests
+sl_list_vg: sl_list_tests
 	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)
 
 # Double Linked List
-$(addprefix $(BUILD_DIR), dlist_tests.o): $(addprefix $(TESTS_DIR), lists/dlist_tests.c) | build
+$(addprefix $(BUILD_DIR), dl_list_tests.o): $(addprefix $(TESTS_DIR), lists/dl_list_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dlist_tests): $(addprefix $(BUILD_DIR), dlist_tests.o dlist.o dl_iterator.o)
+$(addprefix $(BUILD_DIR), dl_list_tests): $(addprefix $(BUILD_DIR), dl_list_tests.o dl_list.o dl_iterator.o)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-dlist_tests: $(addprefix $(BUILD_DIR), dlist_tests)
+dl_list_tests: $(addprefix $(BUILD_DIR), dl_list_tests)
 
-dlist_time: dlist_tests
+dl_list_time: dlist_tests
 	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
-dlist_vg: dlist_tests
+dl_list_vg: dl_list_tests
 	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)

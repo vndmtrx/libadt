@@ -12,4 +12,4 @@ include $(addprefix $(LIB_DIR), stacks/build.mk)
 #DEQUES - Build target for Deques
 include $(addprefix $(LIB_DIR), deques/build.mk)
 
-libs: slist.o dlist.o sl_stack.o sl_queue.o dl_deque.o
+libs: sl_list.o dl_list.o sl_stack.o sl_queue.o dl_deque.o
