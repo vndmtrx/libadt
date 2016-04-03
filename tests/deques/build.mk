@@ -15,5 +15,6 @@ dl_deque_time: dl_deque_tests
 	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
 
 dl_deque_vg: dl_deque_tests
-	valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^)
-
+	@echo "\nDoubly-list-backed Queue Valgrind Test"
+	@valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^) 2>&1 | grep -i -e "total heap usage" -e "All heap" -e "definitely lost" -e "indirectly lost" -e "ERROR SUMMARY" -e "LEAK SUMMARY" -e "HEAP SUMMARY"
+	@echo
