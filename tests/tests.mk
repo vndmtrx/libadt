@@ -9,6 +9,9 @@ include $(addprefix $(TESTS_DIR), queues/build.mk)
 # STACKS
 include $(addprefix $(TESTS_DIR), stacks/build.mk)
 
-tests: list_tests queue_tests stack_tests
+# DEQUES
+include $(addprefix $(TESTS_DIR), deques/build.mk)
 
-vg_tests: sl_list_vg dl_list_vg sl_queue_vg sl_stack_vg
+tests: list_tests queue_tests stack_tests deque_tests
+
+vg_tests: sl_list_vg dl_list_vg sl_queue_vg sl_stack_vg dl_deque_vg
