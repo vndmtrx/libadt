@@ -7,7 +7,7 @@ $(addprefix $(BUILD_DIR), sl_queue_tests.o): $(addprefix $(TESTS_DIR), queues/sl
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_queue.o)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 sl_queue_tests: $(addprefix $(BUILD_DIR), sl_queue_tests)
 

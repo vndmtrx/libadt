@@ -7,7 +7,7 @@ $(addprefix $(BUILD_DIR), sl_stack_tests.o): $(addprefix $(TESTS_DIR), stacks/sl
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(addprefix $(BUILD_DIR), sl_stack_tests): $(addprefix $(BUILD_DIR), sl_stack_tests.o sl_stack.o)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 sl_stack_tests: $(addprefix $(BUILD_DIR), sl_stack_tests)
 

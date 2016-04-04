@@ -7,7 +7,7 @@ $(addprefix $(BUILD_DIR), dl_deque_tests.o): $(addprefix $(TESTS_DIR), deques/dl
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(addprefix $(BUILD_DIR), dl_deque_tests): $(addprefix $(BUILD_DIR), dl_deque_tests.o dl_deque.o dl_iterator.o)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 dl_deque_tests: $(addprefix $(BUILD_DIR), dl_deque_tests)
 

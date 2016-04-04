@@ -7,7 +7,7 @@ $(addprefix $(BUILD_DIR), sl_list_tests.o): $(addprefix $(TESTS_DIR), lists/sl_l
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(addprefix $(BUILD_DIR), sl_list_tests): $(addprefix $(BUILD_DIR), sl_list_tests.o sl_list.o sl_iterator.o)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 sl_list_tests: $(addprefix $(BUILD_DIR), sl_list_tests)
 
@@ -24,7 +24,7 @@ $(addprefix $(BUILD_DIR), dl_list_tests.o): $(addprefix $(TESTS_DIR), lists/dl_l
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(addprefix $(BUILD_DIR), dl_list_tests): $(addprefix $(BUILD_DIR), dl_list_tests.o dl_list.o dl_iterator.o)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 dl_list_tests: $(addprefix $(BUILD_DIR), dl_list_tests)
 
