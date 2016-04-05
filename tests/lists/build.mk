@@ -1,6 +1,7 @@
 # Build target for Linked List Tests
 
 list_tests: sl_list_tests dl_list_tests
+list_vg_tests: sl_list_vg dl_list_vg
 
 # Single Linked List
 $(addprefix $(BUILD_DIR), sl_list_tests.o): $(addprefix $(TESTS_DIR), lists/sl_list_tests.c) | build
