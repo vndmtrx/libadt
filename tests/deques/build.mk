@@ -1,7 +1,7 @@
 ## Build target for doubly-list-backed deque
 
 deque_tests: dl_deque_tests
-deque_vg_tests: dl_deque_tests
+deque_vg_tests: dl_deque_vg
 
 # Deques
 $(addprefix $(BUILD_DIR), dl_deque_tests.o): $(addprefix $(TESTS_DIR), deques/dl_deque_tests.c) | build
