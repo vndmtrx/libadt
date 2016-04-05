@@ -2,20 +2,20 @@
 #include <stdlib.h>
 
 #include <sl_stack.h>
-#include <sl_list.h>
+#include <sl_iterator.h>
 
-#define QTD 10
+#define QTD 100
 
-void print_list(sl_stack_root *stack) {
-	list_node *node = stack->head;
+void print_stack_iter(sl_stack_root *stack) {
+	iterator_s *i = sl_iter_create(stack);
 	printf("[");
-	if (sl_stack_size(stack) > 0) {
+	if (i != NULL) {
 		do {
-			printf("%d, ", *((int *) node->data));
-			node = node->next;
-		} while (node != NULL);
-	}
+			printf("'%d', ", *((int *) sl_iter_item(i)));
+		} while (sl_iter_next(i));
+	};
 	printf("]\n");
+	sl_iter_free(i);
 }
 
 int main() {
@@ -30,7 +30,7 @@ int main() {
 		*num = i;
 		sl_stack_push(a, num);
 	}
-	print_list(a);
+	print_stack_iter(a);
 	
 	printf("##### Test 2 - sl_stack_peek - View the top element without pop it from the stack.\n");
 	num = sl_stack_peek(a);
@@ -42,7 +42,7 @@ int main() {
 		printf("Popped item: %d\n", *num);
 		free(num);
 	}
-	print_list(a);
+	print_stack_iter(a);
 	
 	printf("##### Test 2 - sl_stack_destroy - Destroy stack (call destroyfunc for every member).\n");
 	sl_stack_destroy(a);

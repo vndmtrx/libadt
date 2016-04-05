@@ -6,7 +6,7 @@ queue_tests: sl_queue_tests
 $(addprefix $(BUILD_DIR), sl_queue_tests.o): $(addprefix $(TESTS_DIR), queues/sl_queue_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_queue.o)
+$(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_queue.o sl_iterator.o)
 	$(CC) $(CFLAGS) $^ -o $@
 
 sl_queue_tests: $(addprefix $(BUILD_DIR), sl_queue_tests)

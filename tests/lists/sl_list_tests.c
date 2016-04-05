@@ -4,35 +4,7 @@
 #include <sl_list.h>
 #include <sl_iterator.h>
 
-#define QTD 20
-
-void print_el(list_node *node) {
-	printf("(");
-	if (node != NULL) {
-		printf("'%d', ", *((int *) node->data));
-		
-		if (node->next != NULL) {
-			printf("%d", *((int *) node->next->data));
-		} else {
-			printf("NULL");
-		}
-	} else {
-		printf("NULL");
-	}
-	printf(") ");
-}
-
-void print_list(sl_list_root *list) {
-	list_node *node = list->head;
-	printf("[");
-	if (list_size(list) > 0) {
-		do {
-			print_el(node);
-			node = node->next;
-		} while (node != NULL);
-	}
-	printf("]\n");
-}
+#define QTD 100
 
 void print_list_iter(sl_list_root *list) {
 	iterator_s *i = sl_iter_create(list);
@@ -78,35 +50,35 @@ int main() {
 	
 	printf("##### Test 4 - sl_list_move_el - Move head item to middle of the list\n");
 	sl_list_move_el(a, a->head, a->head->next->next);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("#####  Test 5 - sl_list_move_el - Move item to tail of the list\n");
 	sl_list_move_el(a, a->head->next, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 6 - sl_list_move_el - Move item to another position\n");
 	sl_list_move_el(a, a->head->next->next->next, a->head->next);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 7 - sl_list_move_el - Move head to tail (and back again)\n");
 	sl_list_move_el(a, a->head, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	sl_list_move_el(a, a->tail, a->head);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 8 - sl_list_swap_el - Swap two items on the list\n");
 	sl_list_swap_el(a, a->head->next->next, a->head->next->next->next->next);
-	print_list(a);
+	print_list_iter(a);
 	sl_list_swap_el(a, a->head, a->head->next->next->next);
-	print_list(a);
+	print_list_iter(a);
 	sl_list_swap_el(a, a->head->next->next, a->tail);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 9 - sl_list_swap_el - Swap head and tail on the list\n");
 	sl_list_swap_el(a, a->head, a->tail);
 	print_list_iter(a);
 	sl_list_swap_el(a, a->tail, a->head);
-	print_list(a);
+	print_list_iter(a);
 	
 	printf("##### Test 10 - sl_list_rem_el - Remove from the head of the list\n");
 	num = sl_list_rem_el(a, a->head);

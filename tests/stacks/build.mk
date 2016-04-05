@@ -6,7 +6,7 @@ stack_tests: sl_stack_tests
 $(addprefix $(BUILD_DIR), sl_stack_tests.o): $(addprefix $(TESTS_DIR), stacks/sl_stack_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), sl_stack_tests): $(addprefix $(BUILD_DIR), sl_stack_tests.o sl_stack.o)
+$(addprefix $(BUILD_DIR), sl_stack_tests): $(addprefix $(BUILD_DIR), sl_stack_tests.o sl_stack.o sl_iterator.o)
 	$(CC) $(CFLAGS) $^ -o $@
 
 sl_stack_tests: $(addprefix $(BUILD_DIR), sl_stack_tests)

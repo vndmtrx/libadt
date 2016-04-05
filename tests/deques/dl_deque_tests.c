@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <dl_list.h>
 #include <dl_deque.h>
 #include <dl_iterator.h>
 
-#define QTD 10
+#define QTD 100
 
 void print_deque_iter(dl_deque_root *deque) {
 	iterator_s *i = dl_iter_create(deque, FORWARD);

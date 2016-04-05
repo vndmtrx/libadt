@@ -2,20 +2,20 @@
 #include <stdlib.h>
 
 #include <sl_queue.h>
-#include <sl_list.h>
+#include <sl_iterator.h>
 
-#define QTD 10
+#define QTD 100
 
-void print_list(sl_queue_root *queue) {
-	list_node *node = queue->head;
+void print_queue_iter(sl_queue_root *queue) {
+	iterator_s *i = sl_iter_create(queue);
 	printf("[");
-	if (sl_queue_size(queue) > 0) {
+	if (i != NULL) {
 		do {
-			printf("%d, ", *((int *) node->data));
-			node = node->next;
-		} while (node != NULL);
-	}
+			printf("'%d', ", *((int *) sl_iter_item(i)));
+		} while (sl_iter_next(i));
+	};
 	printf("]\n");
+	sl_iter_free(i);
 }
 
 int main() {
@@ -30,7 +30,7 @@ int main() {
 		*num = i;
 		sl_queue_push(a, num);
 	}
-	print_list(a);
+	print_queue_iter(a);
 	
 	printf("##### Test 2 - sl_queue_peek - View the last element without pop it from the queue.\n");
 	num = sl_queue_peek(a);
@@ -42,7 +42,7 @@ int main() {
 		printf("Popped item: %d\n", *num);
 		free(num);
 	}
-	print_list(a);
+	print_queue_iter(a);
 	
 	printf("##### Test 2 - sl_queue_destroy - Destroy queue (call destroyfunc for every member).\n");
 	sl_queue_destroy(a);
