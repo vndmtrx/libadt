@@ -53,9 +53,9 @@ With that in mind, we will be adding these algorithms into another folder to avo
 Algorithms implemented:
  * Infix to Postfix converter using Stack;
  * Expression evaluator using Queue;
+ * Iterators for Lists;
 
 Algorithms being implemented:
- * Iterators
  * Sorting
    * Quick Sort
    * Merge Sort
