@@ -57,3 +57,18 @@ _dlist_rem_el_ | O(1) |
 _dlist_destroy_ | O(n) | 
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list)
+
+A special case: Circular Linked Lists
+-------------------------------------
+
+A circular list is a linked list where the last node in the list points to the first node in the list. A circular list does not contain NULL pointers.
+
+A circularly linked list may be a natural option to represent arrays that are naturally circular, such as a pool of buffers that are used and released in FIFO ("first in, first out") order.
+
+A good example of an application where circular linked list should be used is a timesharing problem solved by the operating system.
+
+In a timesharing environment, the operating system must maintain a list of present users and must alternately allow each user to use a small slice of CPU time, one user at a time. The operating system will pick a user, let him/her use a small amount of CPU time and then move on to the next user, etc.
+
+For this application, there should be no NULL pointers unless there is absolutely no one requesting CPU time.
+
+More on [Wikipedia](https://en.wikipedia.org/wiki/Linked_list#Circularly_linked_vs._linearly_linked)
