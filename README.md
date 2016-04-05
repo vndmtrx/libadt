@@ -23,6 +23,7 @@ Because in C we deal directly with memory, and the structures provided by the la
 * Queue using singly linked list as infrastructure ([README](lib/queues/README.md));
 * Stack using singly linked list as infrastructure ([README](lib/stacks/README.md));
 * Deque using doubly linked list as infrastructure ([README](lib/deques/README.md));
+* Queue and Stack using deque as infrastructure;
 
 But this repository is in its very beginning and another structures will come in time.
 
@@ -30,7 +31,7 @@ But this repository is in its very beginning and another structures will come in
 
 At the present time, the following structures are being implemented:
 
-* Queue and Stack using deque as infrastructure;
+* Circular Linked List;
 
 Once completed, the next to be implemented are as follows:
 
