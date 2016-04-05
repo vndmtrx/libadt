@@ -13,18 +13,18 @@ int dq_queue_push(dq_queue_root *queue, void *data) {
 	return dl_deque_push_left(queue, data);
 }
 
-void * sl_queue_peek(sl_queue_root *queue) {
+void * dq_queue_peek(dq_queue_root *queue) {
 	return dl_deque_peek_right(queue);
 }
 
-void * sl_queue_pop(sl_queue_root *queue) {
-	return dl_deque_pop_right(queue)
+void * dq_queue_pop(dq_queue_root *queue) {
+	return dl_deque_pop_right(queue);
 }
 
-void sl_queue_destroy(sl_queue_root *queue) {
+void dq_queue_destroy(dq_queue_root *queue) {
 	dl_deque_destroy(queue);
 }
 
-int sl_queue_size(sl_queue_root *queue) {
+int dq_queue_size(dq_queue_root *queue) {
 	return dl_deque_size(queue);
 }

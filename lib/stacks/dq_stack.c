@@ -14,17 +14,17 @@ int dq_stack_push(dq_stack_root *stack, void *data) {
 }
 
 void * dq_stack_peek(dq_stack_root *stack) {
-	dl_deque_peek_left(stack);
+	return dl_deque_peek_left(stack);
 }
 
 void * dq_stack_pop(dq_stack_root *stack) {
-	dl_deque_pop_left(stack)
+	return dl_deque_pop_left(stack);
 }
 
 void dq_stack_destroy(dq_stack_root *stack) {
 	dl_deque_destroy(stack);
 }
 
-int dq_stack_size(sl_stack_root *stack) {
+int dq_stack_size(dq_stack_root *stack) {
 	return dl_deque_size(stack);
 }
