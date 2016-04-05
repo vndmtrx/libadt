@@ -1,5 +1,9 @@
 # Compilation rules for lib examples.
 
+# LISTS
+
+include $(addprefix $(EXAMPLES_DIR), lists/build.mk)
+
 # QUEUES
 include $(addprefix $(EXAMPLES_DIR), queues/build.mk)
 
