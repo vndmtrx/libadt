@@ -18,4 +18,4 @@ dl_list.o: $(addprefix $(BUILD_DIR), dl_list.o)
 $(addprefix $(BUILD_DIR), cl_list.o): $(CL_LIST_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
-dl_list.o: $(addprefix $(BUILD_DIR), cl_list.o)
+cl_list.o: $(addprefix $(BUILD_DIR), cl_list.o)
