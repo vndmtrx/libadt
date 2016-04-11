@@ -3,6 +3,7 @@
 
 ### Status
 
+[![GitHub Rank](https://reporank.com/vndmtrx/libadt)](https://reporank.com)
 [![Build Status](https://travis-ci.org/vndmtrx/libadt.svg?branch=master)](https://travis-ci.org/vndmtrx/libadt)
 
 ### What is libadt?
