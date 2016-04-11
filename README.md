@@ -69,8 +69,4 @@ In some data structures, you may notice that there is a prefix the name of each 
 
 There is no future set. Getting to the point we implement all the most common and important structures, other focuses will be defined, always having its focus on the learning provided to the person who will use these structures.
 
-### Addendum: Code Convention
-
-As we know, everyone has their opinion about code design in programming languages, and C is no different. For this reason, this repository will use the convention explained on the [C Coding Standard] (http://users.ece.cmu.edu/~eno/coding/CCodingStandard.html) site.
-
 Have fun!
