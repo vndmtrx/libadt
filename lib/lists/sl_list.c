@@ -28,6 +28,7 @@ sl_list_root * sl_list_create(t_destroyfunc destroyfunc) {
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	list->mode = HEAD;
 	return list;
 }
 
@@ -44,9 +45,14 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->next = list->head;
-			list->head = new;
-		} else {
+			if (list->mode == HEAD) { //Insert on head
+				new->next = list->head;
+				list->head = new;
+			} else { //Insert on tail
+				list->tail->next = new;
+				list->tail = new;
+			}
+		} else { // Insert after the current element (current->next points to new element)
 			if (current == list->tail) {
 				list->tail = new;
 			}
