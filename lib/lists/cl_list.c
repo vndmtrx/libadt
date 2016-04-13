@@ -26,16 +26,14 @@ int cl_list_insert_el_next(cl_list_root *list, list_node *current, void *data) {
 		new->next = new;
 		new->prev = new;
 	} else {
-		if (current == NULL) {
+		if (current == NULL) { //Insert on head
 			new->next = list->head;
 			new->prev = list->head->prev;
+			list->head->prev->next = new;
 			list->head->prev = new;
 			list->head = new;
-		} else {
+		} else { // Insert after the current element (current->next points to new element)
 			new->next = current->next;
-			new->prev = current;
-			current->next->prev = new;
-			current->next = new;
 		}
 	}
 	list->size++;
