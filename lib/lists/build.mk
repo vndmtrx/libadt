@@ -2,6 +2,8 @@ SL_LIST_INC := $(addprefix $(LIB_DIR), lists/sl_list.c) $(addprefix $(INC_DIR), 
 DL_LIST_INC := $(addprefix $(LIB_DIR), lists/dl_list.c) $(addprefix $(INC_DIR), dl_list.h)
 CL_LIST_INC := $(addprefix $(LIB_DIR), lists/cl_list.c) $(addprefix $(INC_DIR), cl_list.h)
 
+lists_o: sl_list.o dl_list.o cl_list.o
+
 # Build target for Single Linked List
 $(addprefix $(BUILD_DIR), sl_list.o): $(SL_LIST_INC) | build
 	$(CC) $(CFLAGS) -c $< -o $@
