@@ -169,6 +169,8 @@ void cl_list_destroy(cl_list_root *list) {
 		data = cl_list_rem_el(list);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
+		} else {
+			free(data);
 		}
 	}
 	free(list);
