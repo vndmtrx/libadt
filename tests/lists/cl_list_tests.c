@@ -12,7 +12,7 @@ void print_list_iter(cl_list_root *list) {
 	if (i != NULL) {
 		do {
 			printf("'%d', ", *((int *) cl_iter_item(i)));
-		} while (cl_iter_next(i) && cl_iter_is_item(i, list->head));
+		} while (cl_iter_next(i) && !cl_iter_is_item(i, list->head));
 	};
 	printf("]\n");
 	cl_iter_free(i);
