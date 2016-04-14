@@ -28,7 +28,7 @@ int cl_iter_is_item(iterator_c *iter, list_node *item) {
 	if (iter != NULL) {
 		return iter->current == item;
 	} else {
-		retuen 0;
+		return 0;
 	}
 }
 
