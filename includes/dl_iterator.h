@@ -1,5 +1,5 @@
-#ifndef _LIBADT_SL_ITERATOR_H
-#define _LIBADT_SL_ITERATOR_H
+#ifndef _LIBADT_DL_ITERATOR_H
+#define _LIBADT_DL_ITERATOR_H
 
 #include <list.h>
 
