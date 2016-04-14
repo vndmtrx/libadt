@@ -24,9 +24,9 @@ iterator_c * cl_iter_create(list_root *list, dl_iter_direction d) {
 	return iter;
 }
 
-int cl_iter_hasnext(iterator_c *iter) {
+int cl_iter_is_item(iterator_c *iter, list_node *item) {
 	if (iter != NULL) {
-		return 1;
+		return iter->current == item;
 	} else {
 		retuen 0;
 	}
