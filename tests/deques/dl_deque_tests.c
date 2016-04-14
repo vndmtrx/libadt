@@ -7,7 +7,7 @@
 #define QTD 100
 
 void print_deque_iter(dl_deque_root *deque) {
-	iterator_s *i = dl_iter_create(deque, FORWARD);
+	iterator_d *i = dl_iter_create(deque, FORWARD);
 	printf("[");
 	if (i != NULL) {
 		do {
