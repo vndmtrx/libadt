@@ -60,6 +60,8 @@ void * dl_iter_item(iterator_d *iter) {
 }
 
 void dl_iter_free(iterator_d *iter) {
-	iter->current = NULL;
-	free(iter);
+	if (iter != NULL) {
+		iter->current = NULL;
+		free(iter);
+	}
 }
