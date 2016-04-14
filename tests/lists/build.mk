@@ -36,3 +36,20 @@ dl_list_vg: dl_list_tests
 	@echo "\nDoubly-linked List Valgrind Test"
 	@valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^) 2>&1 | grep -i -e "total heap usage" -e "All heap" -e "definitely lost" -e "indirectly lost" -e "ERROR SUMMARY" -e "LEAK SUMMARY" -e "HEAP SUMMARY"
 	@echo
+
+# Double Circular List
+$(addprefix $(BUILD_DIR), cl_list_tests.o): $(addprefix $(TESTS_DIR), lists/cl_list_tests.c) | build
+	$(CC) $(CFLAGS) -c $^ -o $@
+
+$(addprefix $(BUILD_DIR), cl_list_tests): $(addprefix $(BUILD_DIR), cl_list_tests.o cl_list.o cl_iterator.o)
+	$(CC) $(CFLAGS) $^ -o $@
+
+cl_list_tests: $(addprefix $(BUILD_DIR), cl_list_tests)
+
+cl_list_time: cl_list_tests
+	/usr/bin/time -v $(addprefix $(BUILD_DIR), $^)
+
+cl_list_vg: cl_list_tests
+	@echo "\nDoubly-linked List Valgrind Test"
+	@valgrind -v --leak-check=full $(addprefix $(BUILD_DIR), $^) 2>&1 | grep -i -e "total heap usage" -e "All heap" -e "definitely lost" -e "indirectly lost" -e "ERROR SUMMARY" -e "LEAK SUMMARY" -e "HEAP SUMMARY"
+	@echo
