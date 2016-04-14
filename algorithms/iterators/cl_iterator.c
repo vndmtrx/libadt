@@ -10,11 +10,11 @@ struct iterator_c {
 	cl_iter_direction flow;
 };
 
-iterator_c * cl_iter_create(list_root *list, cl_iter_direction d) {
+iterator_c * cl_iter_create(list_root *list, cl_iter_direction c) {
 	iterator_c *iter = NULL;
 	if (list->head != NULL) {
 		iter = (iterator_c *) malloc(sizeof(iterator_c));
-		iter->flow = d;
+		iter->flow = c;
 		switch (iter->flow) {
 			case FORWARD:
 			case BACKWARD: iter->current = list->head; break;

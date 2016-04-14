@@ -14,7 +14,7 @@ typedef struct iterator_c iterator_c;
 
 typedef enum cl_iter_direction cl_iter_direction;
 
-iterator_c * cl_iter_create(list_root *list, dl_iter_direction d);
+iterator_c * cl_iter_create(list_root *list, cl_iter_direction c);
 
 int cl_iter_is_item(iterator_c *iter, list_node *item);
 
