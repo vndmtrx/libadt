@@ -10,7 +10,7 @@ struct iterator_c {
 	cl_iter_direction flow;
 };
 
-iterator_c * cl_iter_create(list_root *list, dl_iter_direction d) {
+iterator_c * cl_iter_create(list_root *list, cl_iter_direction d) {
 	iterator_c *iter = NULL;
 	if (list->head != NULL) {
 		iter = (iterator_c *) malloc(sizeof(iterator_c));
