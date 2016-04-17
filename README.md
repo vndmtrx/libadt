@@ -35,7 +35,7 @@ But this repository is in its very beginning and another structures will come in
 
 At the present time, the following structures are being implemented:
 
-* Circular Linked List;
+* Circular Linked List ([README](lib/lists/README.md#a-special-case-circular-linked-lists));
 
 Once completed, the next to be implemented are as follows:
 
