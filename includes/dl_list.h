@@ -26,6 +26,13 @@ struct _list_node {
 dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode);
 
 /*
+ * Change the list default behavior for insert itens without pass a node
+ * as reference.
+ * Complexity: O(1).
+ */
+int dl_change_insert_behaviour(dl_list_root *list, enum list_insert_el_mode mode);
+
+/*
  * Insert an element in the list after the current element indicated.
  * If *current is NULL, *data is appended on the head.
  * Complexity: O(1).

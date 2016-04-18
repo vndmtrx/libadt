@@ -32,6 +32,16 @@ sl_list_root * sl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mod
 	return list;
 }
 
+int sl_change_insert_behaviour(sl_list_root *list, enum list_insert_el_mode mode) {
+	if (list_size(list) > 0) {
+		fprintf(stderr, "List behavior can only be changed on a empty list.");
+		return -1;
+	} else {
+		list->mode = mode;
+		return 0;
+	}
+}
+
 int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) {
 	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
@@ -62,16 +72,6 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 	}
 	list->size++;
 	return 0;
-}
-
-int sl_change_insert_behaviour(sl_list_root *list, enum list_insert_el_mode mode) {
-	if (list_size(list) > 0) {
-		fprintf(stderr, "List behavior can only be changed on a empty list.");
-		return -1;
-	} else {
-		list->mode = mode;
-		return 0;
-	}
 }
 
 int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos) {

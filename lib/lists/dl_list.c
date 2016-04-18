@@ -13,6 +13,16 @@ dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mod
 	return list;
 }
 
+int dl_change_insert_behaviour(dl_list_root *list, enum list_insert_el_mode mode) {
+	if (list_size(list) > 0) {
+		fprintf(stderr, "List behavior can only be changed on a empty list.");
+		return -1;
+	} else {
+		list->mode = mode;
+		return 0;
+	}
+}
+
 int dl_list_insert_el_next(dl_list_root *list, list_node *current, void *data) {
 	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
