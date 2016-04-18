@@ -22,7 +22,7 @@ int main() {
 	sl_list_root *a;
 	int *num;
 	
-	a = sl_list_create(&free);
+	a = sl_list_create(&free, HEAD);
 	
 	printf("##### Test 1 - sl_list_insert_el_next - Insert in the head of the list (without current param)\n");
 	for (int i = 0; i < QTD; i++) {
