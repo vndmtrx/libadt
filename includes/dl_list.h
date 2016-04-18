@@ -23,7 +23,7 @@ struct _list_node {
  * memory, NULL must be set.
  * Complexity: O(1).
  */
-dl_list_root * dl_list_create(t_destroyfunc destroyfunc);
+dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode);
 
 /*
  * Insert an element in the list after the current element indicated.

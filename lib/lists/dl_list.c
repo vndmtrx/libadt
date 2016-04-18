@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-dl_list_root * dl_list_create(t_destroyfunc destroyfunc) {
+dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	dl_list_root *list = (dl_list_root *) malloc(sizeof(dl_list_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	list->mode = mode;
 	return list;
 }
 
@@ -26,9 +27,15 @@ int dl_list_insert_el_next(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->next = list->head;
-			list->head->prev = new;
-			list->head = new;
+			if (list->mode == HEAD) {
+				list->head->prev = new;
+				new->next = list->head;
+				list->head = new;
+			} else {
+				list->tail->next = new;
+				new->prev = list->tail;
+				list->tail = new;
+			}
 		} else {
 			new->prev = current;
 			new->next = current->next;
@@ -58,9 +65,15 @@ int dl_list_insert_el_prev(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->prev = list->tail;
-			list->tail->next = new;
-			list->tail = new;
+			if (list->mode == TAIL) {
+				list->tail->next = new;
+				new->prev = list->tail;
+				list->tail = new;
+			} else {
+				list->head->prev = new;
+				new->next = list->head;
+				list->head = new;
+			}
 		} else {
 			new->next = current;
 			new->prev = current->prev;
