@@ -22,13 +22,13 @@ static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 	}
 }
 
-sl_list_root * sl_list_create(t_destroyfunc destroyfunc) {
+sl_list_root * sl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	sl_list_root *list = (sl_list_root *) malloc(sizeof(sl_list_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
-	list->mode = HEAD;
+	list->mode = mode;
 	return list;
 }
 
