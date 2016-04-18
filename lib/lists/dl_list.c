@@ -37,16 +37,16 @@ int dl_list_insert_el_next(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			if (list->mode == HEAD) {
+			if (list->mode == HEAD) { //Insert on head
 				list->head->prev = new;
 				new->next = list->head;
 				list->head = new;
-			} else {
+			} else {  //Insert on tail
 				list->tail->next = new;
 				new->prev = list->tail;
 				list->tail = new;
 			}
-		} else {
+		} else { // Insert after the current element (current->next points to new element)
 			new->prev = current;
 			new->next = current->next;
 			if (current == list->tail) {
@@ -75,16 +75,16 @@ int dl_list_insert_el_prev(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			if (list->mode == TAIL) {
+			if (list->mode == TAIL) {  //Insert on tail
 				list->tail->next = new;
 				new->prev = list->tail;
 				list->tail = new;
-			} else {
+			} else { //Insert on head
 				list->head->prev = new;
 				new->next = list->head;
 				list->head = new;
 			}
-		} else {
+		} else { // Insert before the current element (current->prev points to new element)
 			new->next = current;
 			new->prev = current->prev;
 			if (current == list->head) {

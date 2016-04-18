@@ -37,13 +37,13 @@ int cl_list_insert_el_next(cl_list_root *list, list_node *current, void *data) {
 		new->prev = new;
 	} else {
 		if (current == NULL) {
-			if (list->mode == HEAD) {
+			if (list->mode == HEAD) { //Insert on head
 				new->next = list->head;
 				new->prev = list->head->prev;
 				list->head->prev->next = new;
 				list->head->prev = new;
 				list->head = new;
-			} else {
+			} else { //Insert on tail
 				new->prev = list->head;
 				new->next = list->head->next;
 				list->head->next->prev = new;
@@ -76,13 +76,13 @@ int cl_list_insert_el_prev(cl_list_root *list, list_node *current, void *data) {
 		new->prev = new;
 	} else {
 		if (current == NULL) {
-			if (list->mode == TAIL) {
+			if (list->mode == TAIL) {  //Insert on tail
 				new->prev = list->head;
 				new->next = list->head->next;
 				list->head->next->prev = new;
 				list->head->next = new;
 				list->head = new;
-			} else {
+			} else { //Insert on head
 				new->next = list->head;
 				new->prev = list->head->prev;
 				list->head->prev->next = new;
