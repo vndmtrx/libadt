@@ -7,7 +7,7 @@
 #define QTD 100
 
 void print_queue_iter(dq_queue_root *queue) {
-	iterator_s *i = dl_iter_create(queue, FORWARD);
+	iterator_d *i = dl_iter_create(queue, FORWARD);
 	printf("[");
 	if (i != NULL) {
 		do {

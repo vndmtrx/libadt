@@ -7,7 +7,7 @@
 #define QTD 100
 
 void print_list_iter(dl_list_root *list) {
-	iterator_s *i = dl_iter_create(list, FORWARD);
+	iterator_d *i = dl_iter_create(list, FORWARD);
 	printf("[");
 	if (i != NULL) {
 		do {

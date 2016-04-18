@@ -185,6 +185,8 @@ void sl_list_destroy(sl_list_root *list) {
 		data = sl_list_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
+		} else {
+			free(data);
 		}
 	}
 	free(list);

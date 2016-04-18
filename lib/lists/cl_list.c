@@ -122,15 +122,13 @@ int cl_list_move_el_prev(cl_list_root *list, list_node *current, list_node *newp
 
 int cl_list_swap_el(cl_list_root *list, list_node *el1, list_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
-		list_node *p_el1, *n_el1, *p_el2, *n_el2;
+		list_node *p_el1, *n_el2;
 		
 		p_el1 = el1->prev;
-		n_el1 = el1->next;
-		p_el2 = el2->prev;
 		n_el2 = el2->next;
 		
 		cl_list_move_el_prev(list, el1, n_el2);
-		dl_list_move_el_next(list, el2, p_el1);
+		cl_list_move_el_next(list, el2, p_el1);
 		
 		return 0;
 	} else {
@@ -139,7 +137,7 @@ int cl_list_swap_el(cl_list_root *list, list_node *el1, list_node *el2) {
 	}
 }
 
-void * cl_list_rem_el(cl_list_root *list) {
+void * cl_list_rem_el(cl_list_root *list, list_node *current) {
 	void *data;
 	if (current != NULL) {
 		if (list_size(list) > 1) { // More than two elements on list;
@@ -166,9 +164,11 @@ void * cl_list_rem_el(cl_list_root *list) {
 void cl_list_destroy(cl_list_root *list) {
 	void *data;
 	while (list_size(list) > 0) {
-		data = cl_list_rem_el(list);
+		data = cl_list_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
+		} else {
+			free(data);
 		}
 	}
 	free(list);

@@ -21,10 +21,13 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 * Singly linked list ([README](lib/lists/README.md#singly-linked-lists));
 * Doubly linked list ([README](lib/lists/README.md#doubly-linked-lists));
-* Queue using singly linked list as infrastructure ([README](lib/queues/README.md));
-* Stack using singly linked list as infrastructure ([README](lib/stacks/README.md));
 * Deque using doubly linked list as infrastructure ([README](lib/deques/README.md));
-* Queue and Stack using deque as infrastructure;
+* Queues
+  * using singly linked list as infrastructure ([README](lib/queues/README.md));
+  * using deque as infrastructure ([README](lib/queues/README.md));
+* Stacks
+  * using singly linked list as infrastructure ([README](lib/stacks/README.md));
+  * using deque as infrastructure ([README](lib/stacks/README.md));
 
 But this repository is in its very beginning and another structures will come in time.
 
@@ -32,7 +35,7 @@ But this repository is in its very beginning and another structures will come in
 
 At the present time, the following structures are being implemented:
 
-* Circular Linked List;
+* Circular Linked List ([README](lib/lists/README.md#a-special-case-circular-linked-lists));
 
 Once completed, the next to be implemented are as follows:
 

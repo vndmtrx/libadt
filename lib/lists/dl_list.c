@@ -215,6 +215,8 @@ void dl_list_destroy(dl_list_root *list) {
 		data = dl_list_rem_el(list, list->head);
 		if (list->destroyfunc != NULL) {
 			list->destroyfunc(data);
+		} else {
+			free(data);
 		}
 	}
 	free(list);

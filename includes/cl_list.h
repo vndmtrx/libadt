@@ -60,7 +60,7 @@ int cl_list_swap_el(cl_list_root *list, list_node *el1, list_node *el2);
  * Remove the element in the head and save the respective data in **data.
  * Compĺexity: O(1).
  */
-void * cl_list_rem_el(cl_list_root *list);
+void * cl_list_rem_el(cl_list_root *list, list_node *current);
 
 /*
  * Destroy the list and its elements, if have any. If destroy function is provided,
