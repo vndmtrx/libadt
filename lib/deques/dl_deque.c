@@ -7,7 +7,7 @@
 
 
 dl_deque_root * dl_deque_create(t_destroyfunc destroyfunc) {
-	return dl_list_create(destroyfunc);
+	return dl_list_create(destroyfunc, HEAD);
 }
 
 int dl_deque_push_left(dl_deque_root *deque, void *data) {
