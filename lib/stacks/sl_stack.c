@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 sl_stack_root * sl_stack_create(t_destroyfunc destroyfunc) {
-	return sl_list_create(destroyfunc);
+	return sl_list_create(destroyfunc, HEAD);
 }
 
 int sl_stack_push(sl_stack_root *stack, void *data) {
