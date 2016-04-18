@@ -3,13 +3,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-dl_list_root * dl_list_create(t_destroyfunc destroyfunc) {
+dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	dl_list_root *list = (dl_list_root *) malloc(sizeof(dl_list_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	list->mode = mode;
 	return list;
+}
+
+int dl_change_insert_behaviour(dl_list_root *list, enum list_insert_el_mode mode) {
+	if (list_size(list) > 0) {
+		fprintf(stderr, "List behavior can only be changed on a empty list.");
+		return -1;
+	} else {
+		list->mode = mode;
+		return 0;
+	}
 }
 
 int dl_list_insert_el_next(dl_list_root *list, list_node *current, void *data) {
@@ -26,10 +37,16 @@ int dl_list_insert_el_next(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->next = list->head;
-			list->head->prev = new;
-			list->head = new;
-		} else {
+			if (list->mode == HEAD) { //Insert on head
+				list->head->prev = new;
+				new->next = list->head;
+				list->head = new;
+			} else {  //Insert on tail
+				list->tail->next = new;
+				new->prev = list->tail;
+				list->tail = new;
+			}
+		} else { // Insert after the current element (current->next points to new element)
 			new->prev = current;
 			new->next = current->next;
 			if (current == list->tail) {
@@ -58,10 +75,16 @@ int dl_list_insert_el_prev(dl_list_root *list, list_node *current, void *data) {
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->prev = list->tail;
-			list->tail->next = new;
-			list->tail = new;
-		} else {
+			if (list->mode == TAIL) {  //Insert on tail
+				list->tail->next = new;
+				new->prev = list->tail;
+				list->tail = new;
+			} else { //Insert on head
+				list->head->prev = new;
+				new->next = list->head;
+				list->head = new;
+			}
+		} else { // Insert before the current element (current->prev points to new element)
 			new->next = current;
 			new->prev = current->prev;
 			if (current == list->head) {

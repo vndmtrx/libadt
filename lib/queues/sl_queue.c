@@ -6,11 +6,11 @@
 #include <stdlib.h>
 
 sl_queue_root * sl_queue_create(t_destroyfunc destroyfunc) {
-	return sl_list_create(destroyfunc);
+	return sl_list_create(destroyfunc, TAIL);
 }
 
 int sl_queue_push(sl_queue_root *queue, void *data) {
-	return sl_list_insert_el_next(queue, queue->tail, data);
+	return sl_list_insert_el_next(queue, NULL, data);
 }
 
 void * sl_queue_peek(sl_queue_root *queue) {

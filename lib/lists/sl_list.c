@@ -22,13 +22,24 @@ static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 	}
 }
 
-sl_list_root * sl_list_create(t_destroyfunc destroyfunc) {
+sl_list_root * sl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	sl_list_root *list = (sl_list_root *) malloc(sizeof(sl_list_root));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	list->mode = mode;
 	return list;
+}
+
+int sl_change_insert_behaviour(sl_list_root *list, enum list_insert_el_mode mode) {
+	if (list_size(list) > 0) {
+		fprintf(stderr, "List behavior can only be changed on a empty list.");
+		return -1;
+	} else {
+		list->mode = mode;
+		return 0;
+	}
 }
 
 int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) {
@@ -44,9 +55,14 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 		list->tail = new;
 	} else {
 		if (current == NULL) {
-			new->next = list->head;
-			list->head = new;
-		} else {
+			if (list->mode == HEAD) { //Insert on head
+				new->next = list->head;
+				list->head = new;
+			} else { //Insert on tail
+				list->tail->next = new;
+				list->tail = new;
+			}
+		} else { // Insert after the current element (current->next points to new element)
 			if (current == list->tail) {
 				list->tail = new;
 			}
