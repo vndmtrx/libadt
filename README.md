@@ -19,14 +19,14 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 ### What Structures do you have now?
 
-* Singly linked list ([README](lib/lists/README.md#singly-linked-lists));
-* Doubly linked list ([README](lib/lists/README.md#doubly-linked-lists));
-* Deque using doubly linked list as infrastructure ([README](lib/deques/README.md));
+* Singly-linked list ([README](lib/lists/README.md#singly-linked-lists));
+* Doubly-linked list ([README](lib/lists/README.md#doubly-linked-lists));
+* Deque using doubly-linked list as infrastructure ([README](lib/deques/README.md));
 * Queues
-  * using singly linked list as infrastructure ([README](lib/queues/README.md));
+  * using singly-linked list as infrastructure ([README](lib/queues/README.md));
   * using deque as infrastructure ([README](lib/queues/README.md));
 * Stacks
-  * using singly linked list as infrastructure ([README](lib/stacks/README.md));
+  * using singly-linked list as infrastructure ([README](lib/stacks/README.md));
   * using deque as infrastructure ([README](lib/stacks/README.md));
 
 But this repository is in its very beginning and another structures will come in time.
@@ -39,14 +39,15 @@ At the present time, the following structures are being implemented:
 
 Once completed, the next to be implemented are as follows:
 
+* Graphs;
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
 * Heaps;
 * Priority Structures (P-Queue, P-Stack and P-Deque);
 * Associative Arrays;
-* Graphs;
-* Sparse Matrix;
-* Sets using tree as infrastructure;
+* Sparse Matrixes;
+* Sets using sorted tree as infrastructure;
 * Stack and Queue using tree as infrastructure;
+* Priority Structures (P-Queue, P-Stack and P-Deque) using sorted tree as infrastructure;
 
 ### Other related algorithms
 
@@ -66,7 +67,7 @@ Algorithms being implemented:
 
 ### Naming structure
 
-In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "SL_" because they use a simple linked list internally, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
+In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "sl_" because they use a simple linked list internally, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
 
 ### Future and beyond...
 
