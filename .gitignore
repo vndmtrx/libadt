@@ -30,6 +30,9 @@
 
 # Debug files
 *.dSYM/
+*.gcov
+*.gcno
+*.gcda
 
 # Build folder
 build/
