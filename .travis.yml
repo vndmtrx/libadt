@@ -38,6 +38,7 @@ addons:
     packages:
       - gcc-4.9
       - build-essential
+      - valgrind
     alternatives:
       - alternative:
         name: gcc
