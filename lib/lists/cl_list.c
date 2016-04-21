@@ -9,6 +9,7 @@ cl_list_root * cl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mod
 	list->head = NULL;
 	list->tail = NULL;
 	list->destroyfunc = destroyfunc;
+	list->mode = mode;
 	return list;
 }
 
