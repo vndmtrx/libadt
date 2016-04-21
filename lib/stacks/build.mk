@@ -2,19 +2,27 @@ SL_STACK_INC := $(addprefix $(LIB_DIR), stacks/sl_stack.c) $(addprefix $(INC_DIR
 DQ_STACK_INC := $(addprefix $(LIB_DIR), stacks/dq_stack.c) $(addprefix $(INC_DIR), dq_stack.h) $(DL_DEQUE_INC)
 
 # Build target for singly-list-backed stack
-$(addprefix $(BUILD_DIR), sl_stack.partial): $(SL_STACK_INC) | build
-	$(CC) $(CFLAGS) -c $< -o $@
 
-$(addprefix $(BUILD_DIR), sl_stack.o): $(addprefix $(BUILD_DIR), sl_stack.partial sl_list.o)
-	$(LD) $(LDFLAGS) -r $^ -o $@
+$(addprefix $(BUILD_DIR), sl_stack.o): $(SL_STACK_INC) | build
+	$(CC) $(CLIBFLAGS) -c $< -o $@
 
-sl_stack.o: $(addprefix $(BUILD_DIR), sl_stack.o)
+$(addprefix $(BUILD_DIR), sl_stack.a): $(addprefix $(BUILD_DIR), sl_stack.o sl_list.a)
+	$(AR) $(ARFLAGS) $@ $^
+	$(RL) $@
 
 # Build target for deque-backed stack
-$(addprefix $(BUILD_DIR), dq_stack.partial): $(DQ_STACK_INC) | build
-	$(CC) $(CFLAGS) -c $< -o $@
 
-$(addprefix $(BUILD_DIR), dq_stack.o): $(addprefix $(BUILD_DIR), dq_stack.partial dl_deque.o)
-	$(LD) $(LDFLAGS) -r $^ -o $@
+$(addprefix $(BUILD_DIR), dq_stack.o): $(DQ_STACK_INC) | build
+	$(CC) $(CLIBFLAGS) -c $< -o $@
 
-dq_stack.o: $(addprefix $(BUILD_DIR), dq_stack.o)
+$(addprefix $(BUILD_DIR), dq_stack.a): $(addprefix $(BUILD_DIR), dq_stack.o dl_deque.a)
+	$(AR) $(ARFLAGS) $@ $^
+	$(RL) $@
+
+# Build targets for standalone compilation
+
+sl_stack.a: $(addprefix $(BUILD_DIR), sl_stack.a)
+
+dq_stack.a: $(addprefix $(BUILD_DIR), dq_stack.a)
+
+stacks: sl_stack.a dq_stack.a
