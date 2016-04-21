@@ -8,9 +8,12 @@ BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
 
 CC?=gcc
 LD?=ld
-CFLAGS=-I$(INC_DIR) -g -Wall -Werror -Wextra -std=c11 -coverage
+AR?=ar
+RL?=ranlib
+CFLAGS=-I$(INC_DIR) -g -Wall -Werror -Wextra -std=c11
+CLIBFLAGS=$(CFLAGS) -fPIC
 LDFLAGS=
-
+ARFLAGS=rcsTv
 
 .PHONY: clean
 
