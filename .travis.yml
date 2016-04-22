@@ -30,14 +30,14 @@ matrix:
         - CC=gcc-4.9
         - AR=ar
         - RL=ranlib
-#    - compiler: clang
-#      addons:
-#        apt:
-#          packages:
-#            - clang
-#            - llvm
-#            - valgrind
-#      env:
-#        - CC=clang
-#        - AR=llvm-ar
-#        - RL=llvm-ranlib
+    - compiler: clang
+      addons:
+        apt:
+          packages:
+            - clang
+            - llvm
+            - valgrind
+      env:
+        - CC=clang
+        - AR=llvm-ar
+        - RL=llvm-ranlib
