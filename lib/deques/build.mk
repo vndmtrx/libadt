@@ -1,6 +1,6 @@
-DL_DEQUE_INC := $(addprefix $(LIB_DIR), deques/dl_deque.c) $(addprefix $(INC_DIR), dl_deque.h) $(DL_LIST_INC)
+DL_DEQUE_INC = $(addprefix $(LIB_DIR), deques/dl_deque.c) $(addprefix $(INC_DIR), dl_deque.h) $(DL_LIST_INC)
 
-DL_DEQUE_OBJ := $(addprefix $(BUILD_DIR), dl_deque.o) $(DL_LIST_OBJ) 
+DL_DEQUE_OBJ = $(addprefix $(BUILD_DIR), dl_deque.o) $(DL_LIST_OBJ) 
 
 # Build target for doubly-list-backed deque
 
