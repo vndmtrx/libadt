@@ -1,18 +1,8 @@
 # Travis-CI Build for libadt
 # see travis-ci.org for details
 
-language: c
-
-compiler:
-  - gcc-4.9
-  - clang
-
-os:
-  - linux
-
-env:
-  global:
-   - SECRET_TOKEN=rPPjmuNMjbdspnrrTxqf
+sudo: required
+dist: trusty
 
 branches:
   only:
@@ -26,19 +16,28 @@ script:
   - make tests
   - make vg_tests
 
-sudo: false
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.9
-      - build-essential
-      - valgrind
-    alternatives:
-      - alternative:
-        name: gcc
-        link: /usr/bin/gcc
-        path: /usr/bin/gcc-4.9
-        priority: 50
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-4.9
+            - valgrind
+      env: 
+        - CC=gcc-4.9
+        - AR=ar
+        - RL=ranlib
+#    - compiler: clang
+#      addons:
+#        apt:
+#          packages:
+#            - clang
+#            - llvm
+#            - valgrind
+#      env:
+#        - CC=clang
+#        - AR=llvm-ar
+#        - RL=llvm-ranlib
