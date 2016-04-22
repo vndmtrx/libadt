@@ -7,7 +7,7 @@ queue_vg_tests: sl_queue_vg dq_queue_vg
 $(addprefix $(BUILD_DIR), sl_queue_tests.o): $(addprefix $(TESTS_DIR), queues/sl_queue_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_queue.a sl_iterator.o)
+$(addprefix $(BUILD_DIR), sl_queue_tests): $(addprefix $(BUILD_DIR), sl_queue_tests.o sl_iterator.o sl_queue.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 sl_queue_tests: $(addprefix $(BUILD_DIR), sl_queue_tests)
@@ -24,7 +24,7 @@ sl_queue_vg: sl_queue_tests
 $(addprefix $(BUILD_DIR), dq_queue_tests.o): $(addprefix $(TESTS_DIR), queues/dq_queue_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dq_queue_tests): $(addprefix $(BUILD_DIR), dq_queue_tests.o dq_queue.a dl_iterator.o)
+$(addprefix $(BUILD_DIR), dq_queue_tests): $(addprefix $(BUILD_DIR), dq_queue_tests.o dl_iterator.o dq_queue.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 dq_queue_tests: $(addprefix $(BUILD_DIR), dq_queue_tests)

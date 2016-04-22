@@ -7,7 +7,7 @@ list_vg_tests: sl_list_vg dl_list_vg cl_list_vg
 $(addprefix $(BUILD_DIR), sl_list_tests.o): $(addprefix $(TESTS_DIR), lists/sl_list_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), sl_list_tests): $(addprefix $(BUILD_DIR), sl_list_tests.o sl_list.a sl_iterator.o)
+$(addprefix $(BUILD_DIR), sl_list_tests): $(addprefix $(BUILD_DIR), sl_list_tests.o sl_iterator.o sl_list.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 sl_list_tests: $(addprefix $(BUILD_DIR), sl_list_tests)
@@ -24,7 +24,7 @@ sl_list_vg: sl_list_tests
 $(addprefix $(BUILD_DIR), dl_list_tests.o): $(addprefix $(TESTS_DIR), lists/dl_list_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dl_list_tests): $(addprefix $(BUILD_DIR), dl_list_tests.o dl_list.a dl_iterator.o)
+$(addprefix $(BUILD_DIR), dl_list_tests): $(addprefix $(BUILD_DIR), dl_list_tests.o dl_iterator.o dl_list.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 dl_list_tests: $(addprefix $(BUILD_DIR), dl_list_tests)
@@ -41,7 +41,7 @@ dl_list_vg: dl_list_tests
 $(addprefix $(BUILD_DIR), cl_list_tests.o): $(addprefix $(TESTS_DIR), lists/cl_list_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), cl_list_tests): $(addprefix $(BUILD_DIR), cl_list_tests.o cl_list.a cl_iterator.o)
+$(addprefix $(BUILD_DIR), cl_list_tests): $(addprefix $(BUILD_DIR), cl_list_tests.o cl_iterator.o cl_list.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 cl_list_tests: $(addprefix $(BUILD_DIR), cl_list_tests)

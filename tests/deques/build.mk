@@ -7,7 +7,7 @@ deque_vg_tests: dl_deque_vg
 $(addprefix $(BUILD_DIR), dl_deque_tests.o): $(addprefix $(TESTS_DIR), deques/dl_deque_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dl_deque_tests): $(addprefix $(BUILD_DIR), dl_deque_tests.o dl_deque.a dl_iterator.o)
+$(addprefix $(BUILD_DIR), dl_deque_tests): $(addprefix $(BUILD_DIR), dl_deque_tests.o dl_iterator.o dl_deque.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 dl_deque_tests: $(addprefix $(BUILD_DIR), dl_deque_tests)

@@ -7,7 +7,7 @@ stack_vg_tests: sl_stack_vg dq_stack_vg
 $(addprefix $(BUILD_DIR), sl_stack_tests.o): $(addprefix $(TESTS_DIR), stacks/sl_stack_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), sl_stack_tests): $(addprefix $(BUILD_DIR), sl_stack_tests.o sl_stack.a sl_iterator.o)
+$(addprefix $(BUILD_DIR), sl_stack_tests): $(addprefix $(BUILD_DIR), sl_stack_tests.o sl_iterator.o sl_stack.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 sl_stack_tests: $(addprefix $(BUILD_DIR), sl_stack_tests)
@@ -24,7 +24,7 @@ sl_stack_vg: sl_stack_tests
 $(addprefix $(BUILD_DIR), dq_stack_tests.o): $(addprefix $(TESTS_DIR), stacks/dq_stack_tests.c) | build
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(addprefix $(BUILD_DIR), dq_stack_tests): $(addprefix $(BUILD_DIR), dq_stack_tests.o dq_stack.a dl_iterator.o)
+$(addprefix $(BUILD_DIR), dq_stack_tests): $(addprefix $(BUILD_DIR), dq_stack_tests.o dl_iterator.o dq_stack.a)
 	$(CC) $(CFLAGS) $^ -o $@
 
 dq_stack_tests: $(addprefix $(BUILD_DIR), dq_stack_tests)
