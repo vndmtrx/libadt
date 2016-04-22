@@ -13,7 +13,7 @@ RL?=ranlib
 CFLAGS=-I$(INC_DIR) -g -Wall -Werror -Wextra -std=c11
 CLIBFLAGS=$(CFLAGS) -fPIC
 LDFLAGS=
-ARFLAGS=rcsTv
+ARFLAGS=rcs
 
 .PHONY: clean
 
