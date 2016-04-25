@@ -17,7 +17,7 @@ script:
   - make vg_tests
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -s build/
+  - bash <(curl -s https://codecov.io/bash) -v -s build/
 
 matrix:
   include:
