@@ -9,7 +9,7 @@ BUILD_DIR := $(addprefix $(ROOT_DIR), build/)
 CC?=gcc
 AR?=ar
 RL?=ranlib
-CFLAGS=-I$(INC_DIR) -g -Wall -Werror -Wextra -std=c11
+CFLAGS=-I$(INC_DIR) -g -Wall -Werror -Wextra -std=c11 -coverage -O0
 CLIBFLAGS=$(CFLAGS) -fPIC
 ARFLAGS=rcs
 
