@@ -16,6 +16,9 @@ script:
   - make tests
   - make vg_tests
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -s build/
+
 matrix:
   include:
     - compiler: gcc
