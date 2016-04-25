@@ -5,6 +5,7 @@
 
 [![GitHub Rank](https://reporank.com/vndmtrx/libadt)](https://reporank.com)
 [![Build Status](https://travis-ci.org/vndmtrx/libadt.svg?branch=master)](https://travis-ci.org/vndmtrx/libadt)
+[![MIT licensed](https://img.shields.io/github/license/vndmtrx/libadt.svg)](https://github.com/vndmtrx/libadt/blob/master/LICENSE)
 
 ### What is libadt?
 
@@ -12,10 +13,6 @@ Libadt is a C library for those who want to study a little more about Abstract D
 
 > ADTs are a theoretical concept in computer science, used in the design and analysis of algorithms, data structures, and software systems, and do not correspond to specific features of computer languages - mainstream computer languages do not directly support formally specified ADTs. However, various language features correspond to certain aspects of ADTs, and are easily confused with ADTs proper; these include abstract types, opaque data types, protocols, and design by contract.
 > -- [Wikipedia](http://en.wikipedia.org/wiki/Abstract_data_type)
-
-### License
-
-This project is licensed under the terms of the [MIT license](LICENSE).
 
 ### Why?
 
