@@ -1,7 +1,7 @@
 #ifndef _LIBADT_CL_ITERATOR_H
 #define _LIBADT_CL_ITERATOR_H
 
-#include <list.h>
+#include <adt_commons.h>
 
 struct iterator_c;
 

@@ -2,14 +2,13 @@
 #define _LIBADT_SL_STACK_H
 
 #include <adt_commons.h>
-#include <list.h>
 
 typedef list_root sl_stack_root;
 
-/* 
+/*
  * Create a empty stack structure (FiLo - First In / Last Out) and set a
  * destroy function for its elements.
- * 
+ *
  * The destroy argument gives a way to free the entire structure when we
  * call slist_destroy. For malloc/calloc data, free must be used. If data
  * is a struct with other members, a function designed to free its memory

@@ -3,8 +3,6 @@
 
 #include <adt_commons.h>
 
-#include <list.h>
-
 typedef list_root dl_list_root;
 
 struct _list_node {
@@ -14,7 +12,7 @@ struct _list_node {
 };
 
 
-/* 
+/*
  * Create a empty list structure and set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
  * call dl_list_destroy. For malloc/calloc data, free must be used. If data
@@ -65,7 +63,7 @@ int dl_list_move_el_prev(dl_list_root *list, list_node *current, list_node *newp
 int dl_list_swap_el(dl_list_root *list, list_node *el1, list_node *el2);
 
 /*
- * Remove the element indicated by *current and save the respective 
+ * Remove the element indicated by *current and save the respective
  * data in **data.
  * Compĺexity: O(1).
  */

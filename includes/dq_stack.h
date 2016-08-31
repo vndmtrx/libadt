@@ -2,7 +2,7 @@
 #define _LIBADT_DQ_STACK_H
 
 #include <adt_commons.h>
-#include <list.h>
+#include <dl_deque.h>
 
 typedef list_root dq_stack_root;
 

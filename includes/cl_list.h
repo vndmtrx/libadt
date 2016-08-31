@@ -3,8 +3,6 @@
 
 #include <adt_commons.h>
 
-#include <list.h>
-
 typedef list_root cl_list_root;
 
 struct _list_node {
@@ -13,7 +11,7 @@ struct _list_node {
 	void *data;			// Pointer to the element added on the list.
 };
 
-/* 
+/*
  * Create a empty list structure and set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
  * call dl_list_destroy. For malloc/calloc data, free must be used. If data
