@@ -4,7 +4,6 @@
 ### Status
 
 [![MIT licensed](https://img.shields.io/github/license/vndmtrx/libadt.svg)](https://github.com/vndmtrx/libadt/blob/master/LICENSE)
-[![GitHub Rank](https://reporank.com/vndmtrx/libadt)](https://reporank.com)
 [![Build Status](https://travis-ci.org/vndmtrx/libadt.svg?branch=master)](https://travis-ci.org/vndmtrx/libadt)
 [![codecov](https://img.shields.io/codecov/c/github/vndmtrx/libadt.svg)](https://codecov.io/gh/vndmtrx/libadt)
 
@@ -70,6 +69,10 @@ Algorithms being implemented:
 ### Naming structure
 
 In some data structures, you may notice that there is a prefix the name of each function. The prefixes refer to the structures used to build each structure. For example, stacks and queues use the prefix "sl_" because they use a simple linked list internally, in its implementation. This notation is used because, in the future, there can be other implementations using different support structures such as heaps or trees.
+
+### Base Documentation
+
+[Dictionary of Algorithms](https://xlinux.nist.gov/dads/)
 
 ### Future and beyond...
 
