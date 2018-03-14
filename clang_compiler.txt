@@ -1,0 +1,7 @@
+SET (CMAKE_AR            "/usr/bin/llvm-ar"      CACHE string "LLVM AR Tool" FORCE)
+SET (CMAKE_LINKER        "/usr/bin/llvm-ld"      CACHE string "LLVM LD Tool" FORCE)
+SET (CMAKE_NM            "/usr/bin/llvm-nm"      CACHE string "LLVM NM Tool" FORCE)
+SET (CMAKE_OBJDUMP       "/usr/bin/llvm-objdump" CACHE string "LLVM ObjDump Tool" FORCE)
+SET (CMAKE_RANLIB        "/usr/bin/llvm-ranlib"  CACHE string "LLVM Ranlib Tool" FORCE)
+SET (CMAKE_C_COMPILER    "/usr/bin/clang"        CACHE string "Clang C Compiler" FORCE)
+SET (CMAKE_CXX_COMPILER  "/usr/bin/clang++"      CACHE string "Clang C++ Compiler" FORCE)
