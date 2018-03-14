@@ -11,3 +11,7 @@ include_directories(includes)
 add_subdirectory(lib)
 
 add_subdirectory(algorithms)
+
+enable_testing()
+
+add_subdirectory(tests)
