@@ -14,7 +14,7 @@ struct _list_node {
 /*
  * Create a empty list structure and set a destroy function for its elements.
  * The destroy argument gives a way to free the entire structure when we
- * call dl_list_destroy. For malloc/calloc data, free must be used. If data
+ * call cl_list_destroy. For malloc/calloc data, free must be used. If data
  * is a struct with other members, a function designed to free its memory
  * must be provided. If the data is static or have another way to free its
  * memory, NULL must be set.
@@ -23,22 +23,15 @@ struct _list_node {
 cl_list_root * cl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode);
 
 /*
- * Change the list default behavior for insert itens without pass a node
- * as reference.
- * Complexity: O(1).
- */
-int cl_change_insert_behaviour(cl_list_root *list, enum list_insert_el_mode mode);
-
-/*
  * Insert an element in the list after the current element indicated.
- * If *current is NULL, *data is appended on the head.
+ * If *current is NULL, the new element is set as head.
  * Complexity: O(1).
  */
 int cl_list_insert_el_next(cl_list_root *list, list_node *current, void *data);
 
 /*
  * Insert an element in the list before the current element indicated.
- * If *current is NULL, *data is appended on the tail.
+ * If *current is NULL, the new element is set as head.
  * Complexity: O(1).
  */
 int cl_list_insert_el_prev(cl_list_root *list, list_node *current, void *data);
