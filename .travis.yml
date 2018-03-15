@@ -29,13 +29,3 @@ matrix:
         apt:
           packages:
             - build-essential
-    - compiler: clang
-      addons:
-        apt:
-          packages:
-            - clang
-            - llvm
-      env:
-        - CC=clang
-        - AR=llvm-ar
-        - RL=llvm-ranlib
