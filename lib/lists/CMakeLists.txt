@@ -6,4 +6,4 @@ target_include_directories(sl_list PUBLIC includes)
 target_include_directories(dl_list PUBLIC includes)
 target_include_directories(cl_list PUBLIC includes)
 
-set_target_properties(sl_list dl_list cl_list PROPERTIES PREFIX "")
+set_target_properties(sl_list dl_list cl_list PROPERTIES PREFIX "${PRJ_NAME}_")

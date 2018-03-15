@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 
-set(PROJECT_NAME "libadt")
+set(PRJ_NAME "libadt")
 
-project(${PROJECT_NAME})
+project(${PRJ_NAME})
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Werror -Wextra -std=c11 -coverage -O0")
 
