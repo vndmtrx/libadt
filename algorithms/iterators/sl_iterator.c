@@ -5,11 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct _list_node {
-	list_node *next;	// Pointer to next list_node element.
-	void *data;			// Pointer to the element added on the list.
-};
-
 struct iterator_s {
 	list_node *current;
 };
@@ -25,7 +20,7 @@ iterator_s * sl_iter_create(list_root *list) {
 
 int sl_iter_hasnext(iterator_s *iter) {
 	if (iter != NULL) {
-		return (iter->current->next != NULL);
+		return (sl_list_next(iter->current) != NULL);
 	} else {
 		return 0;
 	}
@@ -34,7 +29,7 @@ int sl_iter_hasnext(iterator_s *iter) {
 int sl_iter_next(iterator_s *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
-			iter->current = iter->current->next;
+			iter->current = sl_list_next(iter->current);
 		}
 		return (iter->current != NULL);
 	}
@@ -43,9 +38,7 @@ int sl_iter_next(iterator_s *iter) {
 
 void * sl_iter_item(iterator_s *iter) {
 	if (iter != NULL) {
-		if (iter->current != NULL) {
-			return iter->current->data;
-		}
+		return sl_list_get_data(iter->current);
 	}
 	return NULL;
 }

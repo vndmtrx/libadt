@@ -27,6 +27,22 @@ static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 	}
 }
 
+list_node * sl_list_next(list_node *current) {
+	if (current != NULL) {
+		return current->next;
+	} else {
+		return NULL;
+	}
+}
+
+void * sl_list_get_data(list_node *current) {
+	if (current != NULL) {
+		return current->data;
+	} else {
+		return NULL;
+	}
+}
+
 sl_list_root * sl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	sl_list_root *list = (sl_list_root *) malloc(sizeof(sl_list_root));
 	list->size = 0;
