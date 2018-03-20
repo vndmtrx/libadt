@@ -1,7 +1,7 @@
 #ifndef _LIBADT_SL_STACK_H
 #define _LIBADT_SL_STACK_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 typedef list_root sl_stack_root;
 

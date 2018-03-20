@@ -1,5 +1,5 @@
-#ifndef _LIBADT_ADT_COMMONS_H
-#define _LIBADT_ADT_COMMONS_H
+#ifndef _LIBADT_LIST_COMMONS_H
+#define _LIBADT_LIST_COMMONS_H
 
 typedef void (*t_destroyfunc)(void *data);
 
@@ -27,4 +27,4 @@ struct _list_root {
  */
 #define list_size(list) ((list) ->size)
 
-#endif
+#endif /* _LIBADT_LIST_COMMONS_H */

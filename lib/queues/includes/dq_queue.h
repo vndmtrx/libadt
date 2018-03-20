@@ -1,10 +1,9 @@
 #ifndef _LIBADT_DQ_QUEUE_H
 #define _LIBADT_DQ_QUEUE_H
 
-#include <adt_commons.h>
-#include <dl_deque.h>
+#include <list_commons.h>
 
-typedef dl_deque_root dq_queue_root;
+typedef list_root dq_queue_root;
 
 /*
  * Create a empty queue structure (FiFo - Fist In / First Out) and set a

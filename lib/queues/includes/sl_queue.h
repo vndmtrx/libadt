@@ -1,7 +1,7 @@
 #ifndef _LIBADT_SL_QUEUE_H
 #define _LIBADT_SL_QUEUE_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 typedef list_root sl_queue_root;
 

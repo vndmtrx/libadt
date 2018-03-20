@@ -1,16 +1,30 @@
 #ifndef _LIBADT_DL_LIST_H
 #define _LIBADT_DL_LIST_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 typedef list_root dl_list_root;
 
-struct _list_node {
-	list_node *prev;	// Pointer to prev list_node element.
-	list_node *next;	// Pointer to next list_node element.
-	void *data;			// Pointer to the element added on the list.
-};
+/*
+ * Get the next element of the list based on current element.
+ * If the current is NULL, return NULL instead.
+ * Complexity: O(1).
+ */
+list_node * dl_list_next(list_node *current);
 
+/*
+ * Get the previous element of the list based on current element.
+ * If the current is NULL, return NULL instead.
+ * Complexity: O(1).
+ */
+list_node * dl_list_prev(list_node *current);
+
+/*
+ * Get the data from the current element.
+ * If the current is NULL, return NULL instead.
+ * Complexity: O(1).
+ */
+void * dl_list_get_data(list_node *current);
 
 /*
  * Create a empty list structure and set a destroy function for its elements.

@@ -3,6 +3,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct _list_node {
+	list_node *prev;	// Pointer to prev list_node element.
+	list_node *next;	// Pointer to next list_node element.
+	void *data;			// Pointer to the element added on the list.
+};
+
+list_node * cl_list_next(list_node *current) {
+	if (current != NULL) {
+		return current->next;
+	} else {
+		return NULL;
+	}
+}
+
+list_node * cl_list_prev(list_node *current) {
+	if (current != NULL) {
+		return current->prev;
+	} else {
+		return NULL;
+	}
+}
+
+void * cl_list_get_data(list_node *current) {
+	if (current != NULL) {
+		return current->data;
+	} else {
+		return NULL;
+	}
+}
+
 cl_list_root * cl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	cl_list_root *list = (cl_list_root *) malloc(sizeof(cl_list_root));
 	list->size = 0;

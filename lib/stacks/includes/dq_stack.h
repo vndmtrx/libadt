@@ -1,8 +1,7 @@
 #ifndef _LIBADT_DQ_STACK_H
 #define _LIBADT_DQ_STACK_H
 
-#include <adt_commons.h>
-#include <dl_deque.h>
+#include <list_commons.h>
 
 typedef list_root dq_stack_root;
 

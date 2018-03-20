@@ -3,6 +3,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct _list_node {
+	list_node *prev;	// Pointer to prev list_node element.
+	list_node *next;	// Pointer to next list_node element.
+	void *data;			// Pointer to the element added on the list.
+};
+
+list_node * dl_list_next(list_node *current) {
+	if (current != NULL) {
+		return current->next;
+	} else {
+		return NULL;
+	}
+}
+
+list_node * dl_list_prev(list_node *current) {
+	if (current != NULL) {
+		return current->prev;
+	} else {
+		return NULL;
+	}
+}
+
+void * dl_list_get_data(list_node *current) {
+	if (current != NULL) {
+		return current->data;
+	} else {
+		return NULL;
+	}
+}
+
 dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	dl_list_root *list = (dl_list_root *) malloc(sizeof(dl_list_root));
 	list->size = 0;
@@ -112,7 +142,7 @@ int dl_list_move_el_next(dl_list_root *list, list_node *current, list_node *newp
 				current->next->prev = current->prev;
 				current->prev->next = current->next;
 			}
-			
+
 			if (newpos == list->tail) {
 				current->next = NULL;
 				list->tail = current;
@@ -120,10 +150,10 @@ int dl_list_move_el_next(dl_list_root *list, list_node *current, list_node *newp
 				current->next = newpos->next;
 				newpos->next->prev = current;
 			}
-			
+
 			current->prev = newpos;
 			newpos->next = current;
-			
+
 			return 0;
 		} else {
 			fprintf(stderr, "One of the elements is NULL. Can't swap.");
@@ -148,7 +178,7 @@ int dl_list_move_el_prev(dl_list_root *list, list_node *current, list_node *newp
 				current->prev->next = current->next;
 				current->next->prev = current->prev;
 			}
-			
+
 			if (newpos == list->head) {
 				current->prev = NULL;
 				list->head = current;
@@ -156,10 +186,10 @@ int dl_list_move_el_prev(dl_list_root *list, list_node *current, list_node *newp
 				current->prev = newpos->prev;
 				newpos->prev->next = current;
 			}
-			
+
 			current->next = newpos;
 			newpos->prev = current;
-			
+
 			return 0;
 		} else {
 			fprintf(stderr, "One of the elements is NULL. Can't swap.");
@@ -174,24 +204,24 @@ int dl_list_move_el_prev(dl_list_root *list, list_node *current, list_node *newp
 int dl_list_swap_el(dl_list_root *list, list_node *el1, list_node *el2) {
 	if (el1 != NULL && el2 != NULL) {
 		list_node *p_el1, *n_el1, *p_el2, *n_el2;
-		
+
 		p_el1 = el1->prev;
 		n_el1 = el1->next;
 		p_el2 = el2->prev;
 		n_el2 = el2->next;
-		
+
 		if (el2 != list->head) {
 			dl_list_move_el_next(list, el1, p_el2);
 		} else {
 			dl_list_move_el_prev(list, el1, n_el2);
 		}
-		
+
 		if (el1 != list->tail) {
 			dl_list_move_el_prev(list, el2, n_el1);
 		} else {
 			dl_list_move_el_next(list, el2, p_el1);
 		}
-		
+
 		return 0;
 	} else {
 		fprintf(stderr, "One of the elements is NULL. Can't swap.");
@@ -220,11 +250,11 @@ void * dl_list_rem_el(dl_list_root *list, list_node *current) {
 			fprintf(stderr, "List is empty.");
 			return NULL;
 		}
-		
+
 		data = current->data;
 		free(current);
 		list->size--;
-		
+
 		return data;
 	} else { // Why remove an item that does not exist?
 		fprintf(stderr, "No element to remove.");

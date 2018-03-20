@@ -27,8 +27,8 @@ iterator_d * dl_iter_create(list_root *list, dl_iter_direction d) {
 int dl_iter_hasnext(iterator_d *iter) {
 	if (iter != NULL) {
 		switch (iter->flow) {
-			case FORWARD: return (iter->current->next != NULL); break;
-			case BACKWARD: return (iter->current->prev != NULL); break;
+			case FORWARD: return (dl_list_next(iter->current) != NULL); break;
+			case BACKWARD: return (dl_list_prev(iter->current) != NULL); break;
 			default: return 0;
 		}
 	} else {
@@ -40,8 +40,8 @@ int dl_iter_next(iterator_d *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
 			switch (iter->flow) {
-				case FORWARD: iter->current = iter->current->next; break;
-				case BACKWARD: iter->current = iter->current->prev; break;
+				case FORWARD: iter->current = dl_list_next(iter->current); break;
+				case BACKWARD: iter->current = dl_list_prev(iter->current); break;
 				default: return 0;
 			}
 		}
@@ -53,7 +53,7 @@ int dl_iter_next(iterator_d *iter) {
 void * dl_iter_item(iterator_d *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
-			return iter->current->data;
+			return dl_list_get_data(iter->current);
 		}
 	}
 	return NULL;
