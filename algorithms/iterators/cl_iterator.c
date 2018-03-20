@@ -5,12 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct _list_node {
-	list_node *prev;	// Pointer to prev list_node element.
-	list_node *next;	// Pointer to next list_node element.
-	void *data;			// Pointer to the element added on the list.
-};
-
 struct iterator_c {
 	list_node *current;
 	cl_iter_direction flow;
@@ -34,8 +28,8 @@ int cl_iter_next(iterator_c *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
 			switch (iter->flow) {
-				case FORWARD: iter->current = iter->current->next; break;
-				case BACKWARD: iter->current = iter->current->prev; break;
+				case FORWARD: iter->current = cl_list_next(iter->current); break;
+				case BACKWARD: iter->current = cl_list_prev(iter->current); break;
 				default: return 0;
 			}
 		}
@@ -47,7 +41,7 @@ int cl_iter_next(iterator_c *iter) {
 void * cl_iter_item(iterator_c *iter) {
 	if (iter != NULL) {
 		if (iter->current != NULL) {
-			return iter->current->data;
+			return cl_list_get_data(iter->current);
 		}
 	}
 	return NULL;
