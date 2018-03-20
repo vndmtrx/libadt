@@ -9,6 +9,30 @@ struct _list_node {
 	void *data;			// Pointer to the element added on the list.
 };
 
+list_node * dl_list_next(list_node *current) {
+	if (current != NULL) {
+		return current->next;
+	} else {
+		return NULL;
+	}
+}
+
+list_node * dl_list_prev(list_node *current) {
+	if (current != NULL) {
+		return current->prev;
+	} else {
+		return NULL;
+	}
+}
+
+void * dl_list_get_data(list_node *current) {
+	if (current != NULL) {
+		return current->data;
+	} else {
+		return NULL;
+	}
+}
+
 dl_list_root * dl_list_create(t_destroyfunc destroyfunc, enum list_insert_el_mode mode) {
 	dl_list_root *list = (dl_list_root *) malloc(sizeof(dl_list_root));
 	list->size = 0;
