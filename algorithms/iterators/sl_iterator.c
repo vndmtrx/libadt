@@ -5,6 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct _list_node {
+	list_node *next;	// Pointer to next list_node element.
+	void *data;			// Pointer to the element added on the list.
+};
+
 struct iterator_s {
 	list_node *current;
 };

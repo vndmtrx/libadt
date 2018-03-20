@@ -1,16 +1,9 @@
 #ifndef _LIBADT_DL_LIST_H
 #define _LIBADT_DL_LIST_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 typedef list_root dl_list_root;
-
-struct _list_node {
-	list_node *prev;	// Pointer to prev list_node element.
-	list_node *next;	// Pointer to next list_node element.
-	void *data;			// Pointer to the element added on the list.
-};
-
 
 /*
  * Create a empty list structure and set a destroy function for its elements.

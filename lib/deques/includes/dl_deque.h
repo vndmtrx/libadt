@@ -1,7 +1,7 @@
 #ifndef _LIBADT_DL_DEQUE_H
 #define _LIBADT_DL_DEQUE_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 typedef list_root dl_deque_root;
 

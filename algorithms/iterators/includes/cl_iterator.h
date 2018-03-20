@@ -1,7 +1,7 @@
 #ifndef _LIBADT_CL_ITERATOR_H
 #define _LIBADT_CL_ITERATOR_H
 
-#include <adt_commons.h>
+#include <list_commons.h>
 
 struct iterator_c;
 
@@ -15,8 +15,6 @@ typedef struct iterator_c iterator_c;
 typedef enum cl_iter_direction cl_iter_direction;
 
 iterator_c * cl_iter_create(list_root *list, cl_iter_direction c);
-
-int cl_iter_is_item(iterator_c *iter, list_node *item);
 
 int cl_iter_next(iterator_c *iter);
 

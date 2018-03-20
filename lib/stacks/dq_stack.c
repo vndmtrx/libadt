@@ -5,6 +5,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct _list_node {
+	list_node *prev;	// Pointer to prev list_node element.
+	list_node *next;	// Pointer to next list_node element.
+	void *data;			// Pointer to the element added on the list.
+};
+
 dq_stack_root * dq_stack_create(t_destroyfunc destroyfunc) {
 	return dl_deque_create(destroyfunc);
 }

@@ -3,10 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct _list_node {
+	list_node *next;	// Pointer to next list_node element.
+	void *data;			// Pointer to the element added on the list.
+};
+
 static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 	if (current != NULL) {
 		list_node *node = list->head;
-		
+
 		if (node != current) {
 			while (node->next != current) {
 				node = node->next;
@@ -14,7 +19,7 @@ static list_node * sl_list_find_prior(sl_list_root *list, list_node *current) {
 		} else {
 			node = NULL;
 		}
-		
+
 		return node;
 	} else {
 		fprintf(stderr, "No prior element to find. Current doesn't exist.");
@@ -83,7 +88,7 @@ int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos) {
 				p2 = sl_list_find_prior(list, newpos);
 				p1->next = current->next;
 				p2->next = current;
-				
+
 				if (current == list->tail) {
 					list->tail = p1;
 				}
@@ -96,13 +101,13 @@ int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos) {
 					p1 = sl_list_find_prior(list, current);
 					p1->next = current->next;
 					list->head = current;
-					
+
 					if (current == list->tail) {
 						list->tail = p1;
 					}
 				}
 			}
-			
+
 			current->next = newpos;
 			return 0;
 		} else {
@@ -134,16 +139,16 @@ int sl_list_swap_el(sl_list_root *list, list_node *el1, list_node *el2) {
 				list->head = el1;
 			}
 		}
-		
+
 		n1 = el1->next;
 		n2 = el2->next;
-		
+
 		el1->next = n2;
 		el2->next = n1;
-		
+
 		if (el1 == list->tail || el2 == list->tail)
 			list->tail = (el1 == list->tail ? el2 : el1);
-		
+
 		return 0;
 	} else {
 		fprintf(stderr, "One of the elements is NULL. Can't swap.");
@@ -162,7 +167,7 @@ void * sl_list_rem_el(sl_list_root *list, list_node *current) {
 				if (node == NULL) {
 					return NULL;
 				}
-				
+
 				if (current == list->tail) {
 					node->next = NULL;
 					list->tail = node;
@@ -177,11 +182,11 @@ void * sl_list_rem_el(sl_list_root *list, list_node *current) {
 			fprintf(stderr, "List is empty.");
 			return NULL;
 		}
-		
+
 		data = current->data;
 		free(current);
 		list->size--;
-		
+
 		return data;
 	} else { // Why remove an item that does not exist?
 		fprintf(stderr, "No element to remove.");
