@@ -27,12 +27,14 @@ On the other hand, singly linked lists by themselves do not allow random access 
 
 function name | complexity | explanation
 :-- | :--:  |:--
-_slist_create_ | O(1) | 
-_slist_insert_el_next_ | O(1) | 
-_slist_move_el_ | O(n)| because it needs to find prior element
-_slist_swap_el_ | O(n) | because it needs to find prior element
-_slist_rem_el_ | O(n) | O(1) if remove the head element
-_slist_destroy_ | O(n) | removing in the head avoids the O(n^2)
+_sl_list_next_ | O(1) |
+_sl_list_get_data_ | O(1) |
+_sl_list_create_ | O(1) |
+_sl_list_insert_el_next_ | O(1) |
+_sl_list_move_el_ | O(n)| because it needs to find prior element
+_sl_list_swap_el_ | O(n) | because it needs to find prior element
+_sl_list_rem_el_ | O(n) | O(1) if remove the head element
+_sl_list_destroy_ | O(n) | removing in the head avoids the O(n^2)
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
 
@@ -47,14 +49,17 @@ The two node links allow traversal of the list in either direction. While adding
 
 function name | complexity | explanation
 :-- | :--:  |:--
-_dlist_create_ | O(1) | 
-_dlist_insert_el_next_ | O(1) | 
-_dlist_insert_el_prev_ | O(1) | 
-_dlist_move_el_next_ | O(1)| 
-_dlist_move_el_prev_ | O(1)| 
-_dlist_swap_el_ | O(1) | two move operations
-_dlist_rem_el_ | O(1) | 
-_dlist_destroy_ | O(n) | 
+_dl_list_next_ | O(1) |
+_dl_list_prev_ | O(1) |
+_dl_list_get_data_ | O(1) |
+_dl_list_create_ | O(1) |
+_dl_list_insert_el_next_ | O(1) |
+_dl_list_insert_el_prev_ | O(1) |
+_dl_list_move_el_next_ | O(1)|
+_dl_list_move_el_prev_ | O(1)|
+_dl_list_swap_el_ | O(1) | two move operations
+_dl_list_rem_el_ | O(1) |
+_dl_list_destroy_ | O(n) |
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list)
 
