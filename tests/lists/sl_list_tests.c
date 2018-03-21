@@ -96,7 +96,7 @@ int main() {
 	free(num);
 
 	printf("##### Test 13 - sl_list_destroy - Destroy list (call destroyfunc for every member)\n");
-	sl_list_destroy(a);
+	sl_list_destroy(&a);
 
 	return EXIT_SUCCESS;
 }

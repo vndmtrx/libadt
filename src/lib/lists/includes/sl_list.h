@@ -68,6 +68,6 @@ void * sl_list_rem_el(sl_list_root *list, list_node *current);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void sl_list_destroy(sl_list_root *list);
+void sl_list_destroy(sl_list_root **list);
 
 #endif
