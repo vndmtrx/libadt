@@ -22,7 +22,7 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 * Singly-linked list ([README](src/lib/lists/README.md#singly-linked-lists));
 * Doubly-linked list ([README](src/lib/lists/README.md#doubly-linked-lists));
-* Deque using doubly-linked list as infrastructure ([README](lib/deques/README.md));
+* Deque using doubly-linked list as infrastructure ([README](src/lib/deques/README.md));
 * Queues
   * using singly-linked list as infrastructure ([README](src/lib/queues/README.md));
   * using deque as infrastructure ([README](src/lib/queues/README.md));
