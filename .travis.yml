@@ -4,11 +4,14 @@
 language: c
 
 sudo: required
-dist: xenial
 
 branches:
   only:
     - master
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y build-essential cmake check valgrind
 
 before_script:
   - mkdir build
@@ -21,11 +24,3 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
-matrix:
-  include:
-    - compiler: gcc
-      addons:
-        apt:
-          packages:
-            - build-essential

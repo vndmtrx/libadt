@@ -20,15 +20,15 @@ Because in C we deal directly with memory, and the structures provided by the la
 
 ### What Structures do you have now?
 
-* Singly-linked list ([README](lib/lists/README.md#singly-linked-lists));
-* Doubly-linked list ([README](lib/lists/README.md#doubly-linked-lists));
+* Singly-linked list ([README](src/lib/lists/README.md#singly-linked-lists));
+* Doubly-linked list ([README](src/lib/lists/README.md#doubly-linked-lists));
 * Deque using doubly-linked list as infrastructure ([README](lib/deques/README.md));
 * Queues
-  * using singly-linked list as infrastructure ([README](lib/queues/README.md));
-  * using deque as infrastructure ([README](lib/queues/README.md));
+  * using singly-linked list as infrastructure ([README](src/lib/queues/README.md));
+  * using deque as infrastructure ([README](src/lib/queues/README.md));
 * Stacks
-  * using singly-linked list as infrastructure ([README](lib/stacks/README.md));
-  * using deque as infrastructure ([README](lib/stacks/README.md));
+  * using singly-linked list as infrastructure ([README](src/lib/stacks/README.md));
+  * using deque as infrastructure ([README](src/lib/stacks/README.md));
 
 But this repository is in its very beginning and another structures will come in time.
 
@@ -36,19 +36,19 @@ But this repository is in its very beginning and another structures will come in
 
 At the present time, the following structures are being implemented:
 
-* Circular Linked List ([README](lib/lists/README.md#a-special-case-circular-linked-lists));
+* Circular Linked List ([README](src/lib/lists/README.md#a-special-case-circular-linked-lists));
 
 Once completed, the next to be implemented are as follows:
 
-* Graphs;
 * Trees (Binary Search Tree, AVL Tree, Red-black Tree);
 * Heaps;
 * Priority Structures (P-Queue, P-Stack and P-Deque);
-* Associative Arrays;
-* Sparse Matrixes;
 * Sets using sorted tree as infrastructure;
 * Stack and Queue using tree as infrastructure;
 * Priority Structures (P-Queue, P-Stack and P-Deque) using sorted tree as infrastructure;
+* Associative Arrays;
+* Sparse Matrixes;
+* Graphs;
 
 ### Other related algorithms
 
