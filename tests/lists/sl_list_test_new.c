@@ -41,7 +41,7 @@ void teardown(void) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Test with Setup/Teardown and InsertMode = HEAD */
+/* Insertion Test with Setup/Teardown and InsertMode = HEAD */
 
 START_TEST(test_list_insert_head_next_data_null) {
   int r = sl_list_insert_el_next(list, NULL, NULL);
@@ -128,7 +128,7 @@ Suite * make_test_list_insert_head(void) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Test with Setup/Teardown and InsertMode = TAIL */
+/* Insertion Test with Setup/Teardown and InsertMode = TAIL */
 
 START_TEST(test_list_insert_tail_next_data_null) {
   int r = sl_list_insert_el_next(list, NULL, NULL);
@@ -203,13 +203,51 @@ START_TEST(test_list_insert_tail_next_el_tail) {
 
 Suite * make_test_list_insert_tail(void) {
   Suite *s; TCase *tc_core;
-  s = suite_create("Insertion Test with InsertMode = HEAD");
+  s = suite_create("Insertion Test with InsertMode = TAIL");
   tc_core = tcase_create("List Insertion");
   tcase_add_checked_fixture(tc_core, setup_tail, teardown);
   tcase_add_test(tc_core, test_list_insert_tail_next_data_null);
   tcase_add_test(tc_core, test_list_insert_tail_next_el_null);
   tcase_add_test(tc_core, test_list_insert_tail_next_el_head);
   tcase_add_test(tc_core, test_list_insert_tail_next_el_tail);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Move Test with Setup/Teardown */
+
+START_TEST(test_list_move_head_to_middle) {
+  int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int result[10] = {2, 3, 1, 4, 5, 6, 7, 8, 9, 10};
+  int sz_sample = sizeof(sample)/sizeof(sample[0]);
+  int *num;
+
+  for (int i = 0; i < sz_sample; i++) {
+		num = (int *) malloc(sizeof(int));
+		*num = sample[i];
+    int r = sl_list_insert_el_next(list, NULL, num);
+		ck_assert_int_eq(r, 0);
+	}
+
+  list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
+  sl_list_move_el(list, list->head, mid);
+
+  iterator_s *itr = sl_iter_create(list);
+  for(int i = 0; i < sz_sample; i++) {
+    int el = *((int *) sl_iter_item(itr));
+    ck_assert_int_eq(result[i], el);
+    sl_iter_next(itr);
+  }
+  sl_iter_free(&itr);
+} END_TEST
+
+Suite * make_test_list_move(void) {
+  Suite *s; TCase *tc_core;
+  s = suite_create("Insertion Test with InsertMode = TAIL");
+  tc_core = tcase_create("List Insertion");
+  tcase_add_checked_fixture(tc_core, setup_tail, teardown);
+  tcase_add_test(tc_core, test_list_move_head_to_middle);
   suite_add_tcase(s, tc_core);
   return s;
 }
@@ -224,6 +262,7 @@ int main(void) {
   sr = srunner_create(make_test_list_create_destroy());
   srunner_add_suite (sr, make_test_list_insert_head());
   srunner_add_suite (sr, make_test_list_insert_tail());
+  srunner_add_suite (sr, make_test_list_move());
   srunner_set_fork_status(sr, CK_NOFORK);
   srunner_set_log(sr, "test.log");
   srunner_set_xml(sr, "test.xml");
