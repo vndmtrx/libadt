@@ -15,7 +15,7 @@ void print_stack_iter(sl_stack_root *stack) {
 		} while (sl_iter_next(i));
 	};
 	printf("]\n");
-	sl_iter_free(i);
+	sl_iter_free(&i);
 }
 
 int main() {

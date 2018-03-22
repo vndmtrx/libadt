@@ -15,7 +15,7 @@ void print_list_iter(sl_list_root *list) {
 		} while (sl_iter_next(i));
 	};
 	printf("]\n");
-	sl_iter_free(i);
+	sl_iter_free(&i);
 }
 
 int main() {
