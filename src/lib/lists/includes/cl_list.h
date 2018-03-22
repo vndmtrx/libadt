@@ -80,6 +80,6 @@ void * cl_list_rem_el(cl_list_root *list, list_node *current);
  * it will be used.
  * Complexity: O(n).
  */
-void cl_list_destroy(cl_list_root *list);
+void cl_list_destroy(cl_list_root **list);
 
 #endif

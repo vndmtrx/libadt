@@ -27,7 +27,7 @@ void * dq_queue_pop(dq_queue_root *queue) {
 	return dl_deque_pop_right(queue);
 }
 
-void dq_queue_destroy(dq_queue_root *queue) {
+void dq_queue_destroy(dq_queue_root **queue) {
 	dl_deque_destroy(queue);
 }
 

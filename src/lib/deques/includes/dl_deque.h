@@ -61,7 +61,7 @@ void * dl_deque_pop_right(dl_deque_root *deque);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void dl_deque_destroy(dl_deque_root *deque);
+void dl_deque_destroy(dl_deque_root **deque);
 
 /*
  * Returns the size of the deque.

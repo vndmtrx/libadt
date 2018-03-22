@@ -35,7 +35,7 @@ void * sl_stack_pop(sl_stack_root *stack) {
 	}
 }
 
-void sl_stack_destroy(sl_stack_root *stack) {
+void sl_stack_destroy(sl_stack_root **stack) {
 	sl_list_destroy(stack);
 }
 

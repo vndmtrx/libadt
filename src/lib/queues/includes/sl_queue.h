@@ -44,7 +44,7 @@ void * sl_queue_pop(sl_queue_root *queue);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void sl_queue_destroy(sl_queue_root *queue);
+void sl_queue_destroy(sl_queue_root **queue);
 
 /*
  * Returns the size of the queue.

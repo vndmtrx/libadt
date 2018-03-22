@@ -44,7 +44,7 @@ void * dq_queue_pop(dq_queue_root *queue);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void dq_queue_destroy(dq_queue_root *queue);
+void dq_queue_destroy(dq_queue_root **queue);
 
 /*
  * Returns the size of the queue.

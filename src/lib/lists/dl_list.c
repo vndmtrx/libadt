@@ -262,15 +262,18 @@ void * dl_list_rem_el(dl_list_root *list, list_node *current) {
 	}
 }
 
-void dl_list_destroy(dl_list_root *list) {
-	void *data;
-	while (list_size(list) > 0) {
-		data = dl_list_rem_el(list, list->head);
-		if (list->destroyfunc != NULL) {
-			list->destroyfunc(data);
-		} else {
-			free(data);
+void dl_list_destroy(dl_list_root **list) {
+	if (list != NULL) {
+		void *data;
+		while (list_size(*list) > 0) {
+			data = dl_list_rem_el(*list, (*list)->head);
+			if ((*list)->destroyfunc != NULL) {
+				(*list)->destroyfunc(data);
+			} else {
+				free(data);
+			}
 		}
+		free(*list);
+		*list = NULL;
 	}
-	free(list);
 }

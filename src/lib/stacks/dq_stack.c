@@ -27,7 +27,7 @@ void * dq_stack_pop(dq_stack_root *stack) {
 	return dl_deque_pop_left(stack);
 }
 
-void dq_stack_destroy(dq_stack_root *stack) {
+void dq_stack_destroy(dq_stack_root **stack) {
 	dl_deque_destroy(stack);
 }
 

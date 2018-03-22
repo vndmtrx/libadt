@@ -36,7 +36,7 @@ void * sl_queue_pop(sl_queue_root *queue) {
 	}
 }
 
-void sl_queue_destroy(sl_queue_root *queue) {
+void sl_queue_destroy(sl_queue_root **queue) {
 	sl_list_destroy(queue);
 }
 

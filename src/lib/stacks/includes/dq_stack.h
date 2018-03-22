@@ -44,7 +44,7 @@ void * dq_stack_pop(dq_stack_root *stack);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void dq_stack_destroy(dq_stack_root *stack);
+void dq_stack_destroy(dq_stack_root **stack);
 
 int dq_stack_size(dq_stack_root *stack);
 

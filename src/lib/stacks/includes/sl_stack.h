@@ -44,7 +44,7 @@ void * sl_stack_pop(sl_stack_root *stack);
  * it will be used, otherwise, uses free.
  * Complexity: O(n).
  */
-void sl_stack_destroy(sl_stack_root *stack);
+void sl_stack_destroy(sl_stack_root **stack);
 
 int sl_stack_size(sl_stack_root *stack);
 
