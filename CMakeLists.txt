@@ -41,5 +41,18 @@ add_custom_command(TARGET gcov POST_BUILD
   COMMENT "Coverage Reports Generated"
 )
 
+add_custom_target(lcov
+  COMMAND mkdir -p Coverage
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Testing
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+
+add_custom_command(TARGET lcov POST_BUILD
+  COMMAND lcov --directory .. --capture --output-file lcov.info
+  COMMAND genhtml -o . lcov.info
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/Coverage
+  COMMENT "Coverage Reports Generated"
+)
+
 # Add 'Coverage' folder into clean target
 set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES Coverage)
