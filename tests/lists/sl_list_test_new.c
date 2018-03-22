@@ -219,7 +219,7 @@ Suite * make_test_list_insert_tail(void) {
 
 START_TEST(test_list_move_head_to_middle) {
   int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-  int result[10] = {2, 3, 1, 4, 5, 6, 7, 8, 9, 10};
+  int result[10] = {2, 3, 4, 1, 5, 6, 7, 8, 9, 10};
   int sz_sample = sizeof(sample)/sizeof(sample[0]);
   int *num;
 
@@ -231,7 +231,7 @@ START_TEST(test_list_move_head_to_middle) {
 	}
 
   list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
-  sl_list_move_el(list, list->head, mid);
+  sl_list_move_el_next(list, list->head, mid);
 
   iterator_s *itr = sl_iter_create(list);
   for(int i = 0; i < sz_sample; i++) {
