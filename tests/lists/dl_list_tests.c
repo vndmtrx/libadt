@@ -140,7 +140,7 @@ int main() {
 	free(num);
 
 	printf("##### Test 22 - dl_list_destroy - Destroy list (call destroyfunc for every member)\n");
-	dl_list_destroy(a);
+	dl_list_destroy(&a);
 
 	return EXIT_SUCCESS;
 }
