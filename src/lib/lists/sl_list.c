@@ -95,7 +95,7 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 	return 0;
 }
 
-int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos) {
+int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newpos) {
 	if (list_size(list) > 1) {
 		if (current != NULL && newpos != NULL) {
 			list_node *p1, *p2;

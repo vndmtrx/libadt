@@ -45,10 +45,10 @@ int sl_change_insert_behaviour(sl_list_root *list, enum list_insert_el_mode mode
 int sl_list_insert_el_next(sl_list_root *list, list_node *current, void *data);
 
 /*
- * Move an element to the position of newpos element.
+ * Move an element after the position of newpos element.
  * Complexity: O(n).
  */
-int sl_list_move_el(sl_list_root *list, list_node *current, list_node *newpos);
+int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newpos);
 
 /*
  * Change positions of the two elements on the list.
