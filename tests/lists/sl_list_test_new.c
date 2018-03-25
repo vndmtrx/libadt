@@ -264,8 +264,8 @@ int main(void) {
   srunner_add_suite (sr, make_test_list_insert_tail());
   srunner_add_suite (sr, make_test_list_move());
   srunner_set_fork_status(sr, CK_NOFORK);
-  srunner_set_log(sr, "test.log");
-  srunner_set_xml(sr, "test.xml");
+  srunner_set_log(sr, "sl_list_test.log");
+  srunner_set_xml(sr, "sl_list_test.xml");
   srunner_run_all(sr, CK_VERBOSE);
 
   number_failed = srunner_ntests_failed(sr);
