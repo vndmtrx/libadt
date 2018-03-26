@@ -97,37 +97,34 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 
 int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newpos) {
 	if (list_size(list) > 1) {
-		if (current != NULL && newpos != NULL) {
-			list_node *p1, *p2;
-			if (current != list->head && newpos != list->head) {
+		if (current != NULL) {
+			list_node *p1;
+			if (current == list->head) {
+				list->head = current->next;
+			} else {
 				p1 = sl_list_find_prior(list, current);
-				p2 = sl_list_find_prior(list, newpos);
 				p1->next = current->next;
-				p2->next = current;
-
 				if (current == list->tail) {
 					list->tail = p1;
-				}
-			} else {
-				if (current == list->head) {
-					p2 = sl_list_find_prior(list, newpos);
-					p2->next = current;
-					list->head = current->next;
-				} else if (newpos == list->head) {
-					p1 = sl_list_find_prior(list, current);
-					p1->next = current->next;
-					list->head = current;
-
-					if (current == list->tail) {
-						list->tail = p1;
-					}
+					list->tail->next = NULL;
 				}
 			}
 
-			current->next = newpos;
+			if (newpos != NULL) {
+				if (newpos == list->tail) {
+					current->next = NULL;
+					list->tail = current;
+				} else {
+					current->next = newpos->next;
+				}
+				newpos->next = current;
+			} else {
+				current->next = list->head;
+				list->head = current;
+			}
 			return 0;
 		} else {
-			fprintf(stderr, "One of the elements is NULL. Can't swap.");
+			fprintf(stderr, "Current element is NULL. Can't move.");
 			return -1;
 		}
 	} else {

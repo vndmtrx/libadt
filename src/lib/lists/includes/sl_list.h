@@ -46,6 +46,7 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current, void *data);
 
 /*
  * Move an element after the position of newpos element.
+ * If *newpos is NULL, *current is moved to the head.
  * Complexity: O(n).
  */
 int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newpos);
