@@ -22,12 +22,12 @@ int isoperator(char c) {
 	return (c == '(' || c == ')' || c == '+' || c == '-' || c == '*' || c == '/' || c == '^') ? 1 : 0;
 }
 
-int main(int argc, char *argv[]) {
+int main(void) {
 	char c;
 	char *cm, *cs;
-	
+
 	sl_stack_root *stack = sl_stack_create(&free);
-	
+
 	while ((c = fgetc(stdin)) != EOF) {
 		if (isalpha(c) || isdigit(c)) {
 			printf("%c", c);
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 			if (c == '(') {
 				cm = (char *) malloc(sizeof(char));
 				*cm = c;
-				
+
 				sl_stack_push(stack, cm);
 			} else if (c == ')') {
 				cs = sl_stack_pop(stack);
@@ -55,10 +55,10 @@ int main(int argc, char *argv[]) {
 						break;
 					}
 				}
-				
+
 				cm = (char *) malloc(sizeof(char));
 				*cm = c;
-				
+
 				sl_stack_push(stack, cm);
 			} else {
 				while (sl_stack_size(stack) > 0) {
@@ -69,9 +69,9 @@ int main(int argc, char *argv[]) {
 			}
 		}
 	}
-	
-	sl_stack_destroy(stack);
+
+	sl_stack_destroy(&stack);
 	printf("\n");
-	
+
 	return EXIT_SUCCESS;
 }

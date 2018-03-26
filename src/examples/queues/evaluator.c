@@ -7,12 +7,12 @@
 
 #define digit(d) (d-'0')
 
-int main(int argc, char *argv[]) {
+int main(void) {
 	char c;
 	char *cm;
 	long num;
 	sl_queue_root *queue = sl_queue_create(&free);
-	
+
 	while ((c = fgetc(stdin)) != EOF) {
 		if (isdigit(c)) {
 			cm = (char *) malloc(sizeof(char));
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 		} else {
 			num = 0;
 			int num_converted = 0;
-			
+
 			while (sl_queue_size(queue) > 0) {
 				if (num < (LONG_MAX/10)) {
 					num_converted = 1;
@@ -33,19 +33,19 @@ int main(int argc, char *argv[]) {
 					return EXIT_FAILURE;
 				}
 			}
-			
+
 			if (num_converted == 1) {
 				printf("NUMBER: (%li).\n", num);
 			}
-			
+
 			if (c != '\n') {
 				printf("CHARACTER: (%c).\n", c);
 			}
 		}
 	}
-	
-	sl_queue_destroy(queue);
+
+	sl_queue_destroy(&queue);
 	printf("\n");
-	
+
 	return EXIT_SUCCESS;
 }
