@@ -267,6 +267,57 @@ START_TEST(test_list_move_middle_to_tail) {
 	sl_iter_free(&itr);
 } END_TEST
 
+START_TEST(test_list_move_middle_to_middle) {
+	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int result[10] = {1, 2, 4, 5, 3, 6, 7, 8, 9, 10};
+	int sz_sample = sizeof(sample)/sizeof(sample[0]);
+	int *num;
+
+	for (int i = 0; i < sz_sample; i++) {
+		num = (int *) malloc(sizeof(int));
+		*num = sample[i];
+		int r = sl_list_insert_el_next(list, NULL, num);
+		ck_assert_int_eq(r, 0);
+	}
+
+	list_node *mid1 = sl_list_next(sl_list_next(list->head));
+	list_node *mid2 = sl_list_next(sl_list_next(mid1));
+	sl_list_move_el_next(list, mid1, mid2);
+
+	iterator_s *itr = sl_iter_create(list);
+	for(int i = 0; i < sz_sample; i++) {
+		int el = *((int *) sl_iter_item(itr));
+		ck_assert_int_eq(result[i], el);
+		sl_iter_next(itr);
+	}
+	sl_iter_free(&itr);
+} END_TEST
+
+START_TEST(test_list_move_el_to_next) {
+	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int result[10] = {1, 2, 4, 3, 5, 6, 7, 8, 9, 10};
+	int sz_sample = sizeof(sample)/sizeof(sample[0]);
+	int *num;
+
+	for (int i = 0; i < sz_sample; i++) {
+		num = (int *) malloc(sizeof(int));
+		*num = sample[i];
+		int r = sl_list_insert_el_next(list, NULL, num);
+		ck_assert_int_eq(r, 0);
+	}
+
+	list_node *mid1 = sl_list_next(sl_list_next(list->head));
+	sl_list_move_el_next(list, mid1, mid1);
+
+	iterator_s *itr = sl_iter_create(list);
+	for(int i = 0; i < sz_sample; i++) {
+		int el = *((int *) sl_iter_item(itr));
+		ck_assert_int_eq(result[i], el);
+		sl_iter_next(itr);
+	}
+	sl_iter_free(&itr);
+} END_TEST
+
 Suite * make_test_list_move(void) {
 	Suite *s; TCase *tc_core;
 	s = suite_create("Move Test with InsertMode = TAIL");
@@ -274,6 +325,8 @@ Suite * make_test_list_move(void) {
 	tcase_add_checked_fixture(tc_core, setup_tail, teardown);
 	tcase_add_test(tc_core, test_list_move_head_to_middle);
 	tcase_add_test(tc_core, test_list_move_middle_to_tail);
+	tcase_add_test(tc_core, test_list_move_middle_to_middle);
+	tcase_add_test(tc_core, test_list_move_el_to_next);
 	suite_add_tcase(s, tc_core);
 	return s;
 }
