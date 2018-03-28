@@ -293,9 +293,8 @@ START_TEST(test_list_move_middle_to_middle) {
 	sl_iter_free(&itr);
 } END_TEST
 
-START_TEST(test_list_move_el_to_next) {
+START_TEST(test_list_move_el_to_itself) {
 	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int result[10] = {1, 2, 4, 3, 5, 6, 7, 8, 9, 10};
 	int sz_sample = sizeof(sample)/sizeof(sample[0]);
 	int *num;
 
@@ -307,15 +306,8 @@ START_TEST(test_list_move_el_to_next) {
 	}
 
 	list_node *mid1 = sl_list_next(sl_list_next(list->head));
-	sl_list_move_el_next(list, mid1, mid1);
-
-	iterator_s *itr = sl_iter_create(list);
-	for(int i = 0; i < sz_sample; i++) {
-		int el = *((int *) sl_iter_item(itr));
-		ck_assert_int_eq(result[i], el);
-		sl_iter_next(itr);
-	}
-	sl_iter_free(&itr);
+	int ret = sl_list_move_el_next(list, mid1, mid1);
+	ck_assert_int_eq(ret, -1);
 } END_TEST
 
 Suite * make_test_list_move(void) {
@@ -326,7 +318,7 @@ Suite * make_test_list_move(void) {
 	tcase_add_test(tc_core, test_list_move_head_to_middle);
 	tcase_add_test(tc_core, test_list_move_middle_to_tail);
 	tcase_add_test(tc_core, test_list_move_middle_to_middle);
-	tcase_add_test(tc_core, test_list_move_el_to_next);
+	tcase_add_test(tc_core, test_list_move_el_to_itself);
 	suite_add_tcase(s, tc_core);
 	return s;
 }
@@ -344,7 +336,7 @@ int main(void) {
 	srunner_add_suite (sr, make_test_list_move());
 	srunner_set_fork_status(sr, CK_NOFORK);
 	srunner_set_log(sr, "sl_list_test.log");
-	srunner_set_xml(sr, "sl_list_test.xml");
+	//srunner_set_xml(sr, "sl_list_test.xml");
 	srunner_run_all(sr, CK_VERBOSE);
 
 	number_failed = srunner_ntests_failed(sr);
