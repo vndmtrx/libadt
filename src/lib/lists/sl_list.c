@@ -64,6 +64,7 @@ int sl_change_insert_behaviour(sl_list_root *list, enum list_insert_el_mode mode
 }
 
 int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) {
+	if (data == NULL)  { fprintf(stderr, "Data is NULL."); return -1; }
 	list_node *new = (list_node *) malloc(sizeof(list_node));
 	if (new == NULL) {
 		fprintf(stderr, "Can't create new element.");
@@ -96,41 +97,35 @@ int sl_list_insert_el_next(sl_list_root *list, list_node *current,  void *data) 
 }
 
 int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newpos) {
-	if (list_size(list) > 1) {
-		if (current != NULL) {
-			list_node *p1;
-			if (current == list->head) {
-				list->head = current->next;
-			} else {
-				p1 = sl_list_find_prior(list, current);
-				p1->next = current->next;
-				if (current == list->tail) {
-					list->tail = p1;
-					list->tail->next = NULL;
-				}
-			}
+	if (list_size(list) <= 1) { fprintf(stderr, "No enough elements to move."); return -1; }
+	if (current == NULL)  { fprintf(stderr, "Current element is NULL. Can't move."); return -1; }
+	if (current == newpos) { fprintf(stderr, "Current and newpos are the same. Can't move."); return -1; }
 
-			if (newpos != NULL) {
-				if (newpos == list->tail) {
-					current->next = NULL;
-					list->tail = current;
-				} else {
-					current->next = newpos->next;
-				}
-				newpos->next = current;
-			} else {
-				current->next = list->head;
-				list->head = current;
-			}
-			return 0;
-		} else {
-			fprintf(stderr, "Current element is NULL. Can't move.");
-			return -1;
-		}
+	list_node *p1;
+	if (current == list->head) {
+		list->head = current->next;
 	} else {
-		fprintf(stderr, "No enough elements to move.");
-		return -1;
+		p1 = sl_list_find_prior(list, current);
+		p1->next = current->next;
+		if (current == list->tail) {
+			list->tail = p1;
+			list->tail->next = NULL;
+		}
 	}
+
+	if (newpos != NULL) {
+		if (newpos == list->tail) {
+			current->next = NULL;
+			list->tail = current;
+		} else {
+			current->next = newpos->next;
+		}
+		newpos->next = current;
+	} else {
+		current->next = list->head;
+		list->head = current;
+	}
+	return 0;
 }
 
 int sl_list_swap_el(sl_list_root *list, list_node *el1, list_node *el2) {
