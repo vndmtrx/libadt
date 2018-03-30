@@ -4,8 +4,9 @@
 ### Status
 
 [![MIT licensed](https://img.shields.io/github/license/vndmtrx/libadt.svg)](https://github.com/vndmtrx/libadt/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/vndmtrx/libadt.svg?branch=master)](https://travis-ci.org/vndmtrx/libadt)
-[![codecov](https://img.shields.io/codecov/c/github/vndmtrx/libadt.svg)](https://codecov.io/gh/vndmtrx/libadt)
+[![Build Status](https://travis-ci.org/vndmtrx/check-cmake-example.svg?branch=master)](https://travis-ci.org/vndmtrx/check-cmake-example)
+[![codecov](https://codecov.io/gh/vndmtrx/libadt/branch/master/graph/badge.svg)](https://codecov.io/gh/vndmtrx/libadt)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8b0eaaaf5c4040a8b50c47fb7acc8b92)](https://www.codacy.com/app/vndmtrx/libadt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vndmtrx/libadt&amp;utm_campaign=Badge_Grade)
 
 ### What is libadt?
 
