@@ -242,7 +242,7 @@ START_TEST(test_list_move_head_to_middle) {
 	int result[10] = {2, 3, 4, 1, 5, 6, 7, 8, 9, 10};
 	int sz_result = sizeof(result)/sizeof(result[0]);
 
-	list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
+	list_node *mid = sl_list_get_el_by_index(list, 3);
 	sl_list_move_el_next(list, list->head, mid);
 
 	iterator_s *itr = sl_iter_create(list);
@@ -258,7 +258,7 @@ START_TEST(test_list_move_middle_to_tail) {
 	int result[10] = {1, 2, 3, 5, 6, 7, 8, 9, 10, 4};
 	int sz_result = sizeof(result)/sizeof(result[0]);
 
-	list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
+	list_node *mid = sl_list_get_el_by_index(list, 3);
 	sl_list_move_el_next(list, mid, list->tail);
 
 	iterator_s *itr = sl_iter_create(list);
@@ -274,8 +274,8 @@ START_TEST(test_list_move_middle_to_middle) {
 	int result[10] = {1, 2, 4, 5, 3, 6, 7, 8, 9, 10};
 	int sz_result = sizeof(result)/sizeof(result[0]);
 
-	list_node *mid1 = sl_list_next(sl_list_next(list->head));
-	list_node *mid2 = sl_list_next(sl_list_next(mid1));
+	list_node *mid1 = sl_list_get_el_by_index(list, 2);
+	list_node *mid2 = sl_list_get_el_by_index(list, 4);
 	sl_list_move_el_next(list, mid1, mid2);
 
 	iterator_s *itr = sl_iter_create(list);
@@ -288,7 +288,7 @@ START_TEST(test_list_move_middle_to_middle) {
 } END_TEST
 
 START_TEST(test_list_move_el_to_itself) {
-	list_node *mid1 = sl_list_next(sl_list_next(list->head));
+	list_node *mid1 = sl_list_get_el_by_index(list, 2);
 	int ret = sl_list_move_el_next(list, mid1, mid1);
 	ck_assert_int_eq(ret, -1);
 } END_TEST
