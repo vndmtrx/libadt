@@ -14,7 +14,7 @@ list_node * sl_list_next(list_node *current);
 
 /*
  * Get the element on the `index` position.
- * If the current is NULL, return NULL instead.
+ * If the list is NULL or index is off bounds, return NULL instead.
  * Complexity: O(n).
  */
 list_node * sl_list_get_el_by_index(sl_list_root *list, int index);

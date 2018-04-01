@@ -41,9 +41,10 @@ list_node * sl_list_get_el_by_index(sl_list_root *list, int index) {
 
 	list_node * el = list->head;
 	for (int i = 0; i < list->size; i++) {
-		if (i == index) return el;
+		if (i == index) break;
 		el = sl_list_next(el);
 	}
+	return el;
 }
 
 void * sl_list_get_data(list_node *current) {
