@@ -118,6 +118,8 @@ int sl_list_move_el_next(sl_list_root *list, list_node *current, list_node *newp
 		list->head = current->next;
 	} else {
 		p1 = sl_list_find_prior(list, current);
+		if (newpos == p1) { fprintf(stderr, "Current is already the next item."); return -1; }
+
 		p1->next = current->next;
 		if (current == list->tail) {
 			list->tail = p1;
