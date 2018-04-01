@@ -19,21 +19,19 @@ START_TEST(test_list_create_destroy) {
 	ck_assert_ptr_eq(a, NULL);
 } END_TEST
 
+START_TEST(test_list_get_by_index) {
+	list_node * a = sl_list_get_el_by_index(NULL, 0);
+	ck_assert_ptr_eq(a, NULL);
+} END_TEST
+
 Suite * make_test_list_create_destroy(void) {
 	Suite *s; TCase *tc_core;
 	s = suite_create("List Create Destroy Test Suite");
 	tc_core = tcase_create("create/destroy");
 	tcase_add_test(tc_core, test_list_create_destroy);
+	tcase_add_test(tc_core, test_list_get_by_index);
 	suite_add_tcase(s, tc_core);
 	return s;
-}
-
-void setup_head(void) {
-	list = sl_list_create(&free, HEAD);
-}
-
-void setup_tail(void) {
-	list = sl_list_create(&free, TAIL);
 }
 
 void teardown(void) {
@@ -42,6 +40,10 @@ void teardown(void) {
 
 /* -------------------------------------------------------------------------- */
 /* Insertion Test with Setup/Teardown and InsertMode = HEAD */
+
+void setup_head(void) {
+	list = sl_list_create(&free, HEAD);
+}
 
 START_TEST(test_list_insert_head_next_data_null) {
 	int r = sl_list_insert_el_next(list, NULL, NULL);
@@ -130,6 +132,10 @@ Suite * make_test_list_insert_head(void) {
 /* -------------------------------------------------------------------------- */
 /* Insertion Test with Setup/Teardown and InsertMode = TAIL */
 
+void setup_tail(void) {
+	list = sl_list_create(&free, TAIL);
+}
+
 START_TEST(test_list_insert_tail_next_data_null) {
 	int r = sl_list_insert_el_next(list, NULL, NULL);
 	ck_assert_int_eq(r, -1);
@@ -215,13 +221,14 @@ Suite * make_test_list_insert_tail(void) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Move Test with Setup/Teardown */
+/* Move Test */
 
-START_TEST(test_list_move_head_to_middle) {
+void setup_tail_fill(void) {
 	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int result[10] = {2, 3, 4, 1, 5, 6, 7, 8, 9, 10};
 	int sz_sample = sizeof(sample)/sizeof(sample[0]);
 	int *num;
+
+	list = sl_list_create(&free, TAIL);
 
 	for (int i = 0; i < sz_sample; i++) {
 		num = (int *) malloc(sizeof(int));
@@ -229,12 +236,17 @@ START_TEST(test_list_move_head_to_middle) {
 		int r = sl_list_insert_el_next(list, NULL, num);
 		ck_assert_int_eq(r, 0);
 	}
+}
+
+START_TEST(test_list_move_head_to_middle) {
+	int result[10] = {2, 3, 4, 1, 5, 6, 7, 8, 9, 10};
+	int sz_result = sizeof(result)/sizeof(result[0]);
 
 	list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
 	sl_list_move_el_next(list, list->head, mid);
 
 	iterator_s *itr = sl_iter_create(list);
-	for(int i = 0; i < sz_sample; i++) {
+	for(int i = 0; i < sz_result; i++) {
 		int el = *((int *) sl_iter_item(itr));
 		ck_assert_int_eq(result[i], el);
 		sl_iter_next(itr);
@@ -243,23 +255,14 @@ START_TEST(test_list_move_head_to_middle) {
 } END_TEST
 
 START_TEST(test_list_move_middle_to_tail) {
-	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	int result[10] = {1, 2, 3, 5, 6, 7, 8, 9, 10, 4};
-	int sz_sample = sizeof(sample)/sizeof(sample[0]);
-	int *num;
-
-	for (int i = 0; i < sz_sample; i++) {
-		num = (int *) malloc(sizeof(int));
-		*num = sample[i];
-		int r = sl_list_insert_el_next(list, NULL, num);
-		ck_assert_int_eq(r, 0);
-	}
+	int sz_result = sizeof(result)/sizeof(result[0]);
 
 	list_node *mid = sl_list_next(sl_list_next(sl_list_next(list->head)));
 	sl_list_move_el_next(list, mid, list->tail);
 
 	iterator_s *itr = sl_iter_create(list);
-	for(int i = 0; i < sz_sample; i++) {
+	for(int i = 0; i < sz_result; i++) {
 		int el = *((int *) sl_iter_item(itr));
 		ck_assert_int_eq(result[i], el);
 		sl_iter_next(itr);
@@ -268,24 +271,15 @@ START_TEST(test_list_move_middle_to_tail) {
 } END_TEST
 
 START_TEST(test_list_move_middle_to_middle) {
-	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	int result[10] = {1, 2, 4, 5, 3, 6, 7, 8, 9, 10};
-	int sz_sample = sizeof(sample)/sizeof(sample[0]);
-	int *num;
-
-	for (int i = 0; i < sz_sample; i++) {
-		num = (int *) malloc(sizeof(int));
-		*num = sample[i];
-		int r = sl_list_insert_el_next(list, NULL, num);
-		ck_assert_int_eq(r, 0);
-	}
+	int sz_result = sizeof(result)/sizeof(result[0]);
 
 	list_node *mid1 = sl_list_next(sl_list_next(list->head));
 	list_node *mid2 = sl_list_next(sl_list_next(mid1));
 	sl_list_move_el_next(list, mid1, mid2);
 
 	iterator_s *itr = sl_iter_create(list);
-	for(int i = 0; i < sz_sample; i++) {
+	for(int i = 0; i < sz_result; i++) {
 		int el = *((int *) sl_iter_item(itr));
 		ck_assert_int_eq(result[i], el);
 		sl_iter_next(itr);
@@ -294,17 +288,6 @@ START_TEST(test_list_move_middle_to_middle) {
 } END_TEST
 
 START_TEST(test_list_move_el_to_itself) {
-	int sample[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int sz_sample = sizeof(sample)/sizeof(sample[0]);
-	int *num;
-
-	for (int i = 0; i < sz_sample; i++) {
-		num = (int *) malloc(sizeof(int));
-		*num = sample[i];
-		int r = sl_list_insert_el_next(list, NULL, num);
-		ck_assert_int_eq(r, 0);
-	}
-
 	list_node *mid1 = sl_list_next(sl_list_next(list->head));
 	int ret = sl_list_move_el_next(list, mid1, mid1);
 	ck_assert_int_eq(ret, -1);
@@ -312,9 +295,9 @@ START_TEST(test_list_move_el_to_itself) {
 
 Suite * make_test_list_move(void) {
 	Suite *s; TCase *tc_core;
-	s = suite_create("Move Test with InsertMode = TAIL");
+	s = suite_create("Move Test");
 	tc_core = tcase_create("List Insertion");
-	tcase_add_checked_fixture(tc_core, setup_tail, teardown);
+	tcase_add_checked_fixture(tc_core, setup_tail_fill, teardown);
 	tcase_add_test(tc_core, test_list_move_head_to_middle);
 	tcase_add_test(tc_core, test_list_move_middle_to_tail);
 	tcase_add_test(tc_core, test_list_move_middle_to_middle);
