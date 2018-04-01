@@ -35,6 +35,17 @@ list_node * sl_list_next(list_node *current) {
 	}
 }
 
+list_node * sl_list_get_el_by_index(sl_list_root *list, int index) {
+	if (list == NULL) {fprintf(stderr, "List doesn't exist."); return NULL;}
+	if (index >= list->size || index < 0) {fprintf(stderr, "Index out of range."); return NULL;}
+
+	list_node * el = list->head;
+	for (int i = 0; i < list->size; i++) {
+		if (i = index) return el;
+		el = sl_list_next(el);
+	}
+}
+
 void * sl_list_get_data(list_node *current) {
 	if (current != NULL) {
 		return current->data;

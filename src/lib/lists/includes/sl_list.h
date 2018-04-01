@@ -13,6 +13,13 @@ typedef list_root sl_list_root;
 list_node * sl_list_next(list_node *current);
 
 /*
+ * Get the element on the `index` position.
+ * If the current is NULL, return NULL instead.
+ * Complexity: O(n).
+ */
+list_node * sl_list_get_el_by_index(sl_list_root *list, int index);
+
+/*
  * Get the data from the current element.
  * If the current is NULL, return NULL instead.
  * Complexity: O(1).
